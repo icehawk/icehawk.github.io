@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'AndikaR';
+	src: url('../fonts/andika-r-webfont.eot');
+	src: url('../fonts/andika-r-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/andika-r-webfont.woff') format('woff'),
+	url('../fonts/andika-r-webfont.woff2') format('woff2'),
+	url('../fonts/andika-r-webfont.ttf') format('truetype'),
+	url('../fonts/andika-r-webfont.svg#webfont') format('svg');
+}
