@@ -28,6 +28,20 @@
 				"/docs.html"
 			]
 		},
+		"/404.html": {
+			"pageLevel": 1,
+			"navName": "Not Found",
+			"pageTitle": "404 - Not Found",
+			"description": "The page you requested was not found.",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [],
+			"contentType": "html",
+			"renderer": "twig",
+			"template": "404.twig",
+			"contentFile": "",
+			"children": []
+		},
 		"/components.html": {
 			"pageLevel": 2,
 			"navName": "Components",

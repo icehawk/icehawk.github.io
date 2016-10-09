@@ -1,3 +1,4 @@
+{% block frontmatter %}{% endblock %}
 {% macro subTree(loopPage, pages, breadCrumb) %}
 	{% set isActive = (loopPage.getUri in breadCrumb|keys) %}
 	<li{% if isActive %} class="active"{% endif %}>
@@ -12,9 +13,7 @@
 		{% endif %}
 	</li>
 {% endmacro subTree %}
-
 {% import _self as nav %}
-
 <!doctype html>
 <html lang="en">
 <head>
