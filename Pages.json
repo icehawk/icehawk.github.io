@@ -1,5 +1,5 @@
 {
-	"projectName": "IceHawk",
+	"projectName": "IceHawk | PHP micro framework respecting CQRS",
 	"baseUrl": "https://icehawk.github.io",
 	"outputDir": "./",
 	"contentsDir": "Contents/",
@@ -88,7 +88,10 @@
 			"template": "page.twig",
 			"contentFile": "documentation.md",
 			"children": [
-				"/docs/icehawk.html"
+				"/docs/icehawk.html",
+				"/docs/session.html",
+				"/docs/forms.html",
+				"/docs/pubsub.html"
 			]
 		},
 		"/docs/icehawk.html": {
@@ -170,6 +173,68 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/icehawk/delegation.md",
+			"children": []
+		},
+		"/docs/session.html": {
+			"pageLevel": 3,
+			"navName": "Session",
+			"pageTitle": "Session component",
+			"description": "Session - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [
+				"session",
+				"components",
+				"applications",
+				"routing",
+				"documentation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/session.md",
+			"children": []
+		},
+		"/docs/forms.html": {
+			"pageLevel": 3,
+			"navName": "Forms",
+			"pageTitle": "Forms component",
+			"description": "Forms - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [
+				"forms",
+				"components",
+				"applications",
+				"routing",
+				"documentation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/forms.md",
+			"children": []
+		},
+		"/docs/pubsub.html": {
+			"pageLevel": 3,
+			"navName": "PubSub",
+			"pageTitle": "PubSub component",
+			"description": "PubSub - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [
+				"publish",
+				"subscribe",
+				"pubsub",
+				"components",
+				"applications",
+				"routing",
+				"documentation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/pubsub.md",
 			"children": []
 		},
 		"/coverage.html": {

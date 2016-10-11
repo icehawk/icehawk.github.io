@@ -3,8 +3,9 @@
 }
 
 body {
-	color: #212221;
+	color: #5d5d5d;
 	padding-top: 130px;
+	font-weight: 100;
 }
 
 pre {
@@ -21,8 +22,13 @@ h3,
 h4,
 h5,
 h6 {
-	color: #212221;
+	color: #222222;
 	font-weight: 300;
+	text-transform: uppercase;
+}
+
+strong, b {
+	font-weight: 900;
 }
 
 a {
@@ -59,11 +65,12 @@ a:focus {
 
 #top-navigation {
 	position: fixed;
-	z-index: 900;
+	z-index: 800;
 	width: 100%;
 	top: 0;
-	background: #f6f6f6;
-	height: 76px;
+	background: #387190;
+	height: 75px;
+	border-bottom: 1px solid #8e9193;
 }
 
 #top-navigation .left-nav {
@@ -78,8 +85,12 @@ a:focus {
 }
 
 #top-navigation .left-nav > h1.h4 > .brand {
-	color: #387190;
+	color: #ffffff;
 	font-weight: bold;
+}
+
+#top-navigation .left-nav > h1.h4 > small {
+	color: #f6f6f6;
 }
 
 #top-navigation .right-nav {
@@ -101,11 +112,14 @@ a:focus {
 	float: right;
 }
 
+#top-navigation .right-nav > ul > li a {
+	color: #f6f6f6;
+}
+
 .navbar-brand {
 	position: fixed;
 	top: 0;
 	z-index: 1000;
-	background-color: #ffffff;
 	height: 130px;
 	border-radius: 50%;
 	text-align: center;
@@ -113,6 +127,24 @@ a:focus {
 	width: 150px;
 	left: 50%;
 	margin-left: -65px;
+	background-color: #ffffff;
+	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0.4) 76px, rgba(255, 255, 255, 0) 130px);
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0.4) 76px, rgba(255, 255, 255, 0) 130px);
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0.4) 76px, rgba(255, 255, 255, 0) 130px);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
+}
+
+#top-fader {
+	position: fixed;
+	top: 76px;
+	height: 54px;
+	width: 100%;
+	z-index: 900;
+	background-color: #ffffff;
+	background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0) 100%);
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0) 100%);
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
 }
 
 .breadcrumb {
@@ -170,7 +202,7 @@ a:focus {
 
 #footer {
 	border-top: 1px solid #f2f2f2;
-	margin-top: 30px;
+	margin: 30px 0;
 	padding-top: 15px;
 }
 
@@ -187,7 +219,73 @@ a:focus {
 }
 
 .brand-image:hover {
-	box-shadow: 0 1px 2px #C4C4C4;
+	box-shadow: 0 1px 2px #c4c4c4;
+}
+
+hr.blockspace {
+	border: 0;
+	border-bottom: 1px solid #f6f6f6;
+	padding: 0;
+	margin: 50px 15%;
+}
+
+.spacer {
+	margin-top: 30px;
+}
+
+.circle {
+	position: relative;
+	width: 75%;
+	display: inline-block;
+	margin: 15px auto;
+}
+
+.circle:hover .circle-content {
+	box-shadow: 0 1px 2px #808080;
+}
+
+.circle:before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+}
+
+.circle-content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: #68b8e8;
+	color: #ffffff;
+	font-size: x-large;
+	display: flex;
+	justify-content: center; /* align horizontal */
+	align-items: center;
+	height: 100%;
+	line-height: 100%;
+	border-radius: 50%;
+	padding: 15px;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 1px #808080;
+}
+
+.circle-content a {
+	color: #ffffff;
+}
+
+.circle-content a:focus,
+.circle-content a:hover {
+	color: #f6f6f6;
+}
+
+.circle-content.session {
+	background-color: rgba(112, 205, 255, 0.57);
+}
+
+.circle-content.icehawk,
+.circle-content.pubsub {
+	background-color: #387190;
 }
 
 /* collapsed sidebar styles */
@@ -204,13 +302,11 @@ a:focus {
 		transition: all 0.25s ease-out;
 	}
 
-	.row-offcanvas-right
-	.sidebar-offcanvas {
+	.row-offcanvas-right .sidebar-offcanvas {
 		right: -41.6%;
 	}
 
-	.row-offcanvas-left
-	.sidebar-offcanvas {
+	.row-offcanvas-left .sidebar-offcanvas {
 		left: -41.6%;
 	}
 
@@ -239,5 +335,13 @@ a:focus {
 	.brand-image {
 		width: 150px;
 		height: 150px;
+	}
+
+	hr.blockspace {
+		margin: 30px 10%;
+	}
+
+	.spacer {
+		margin-top: 20px;
 	}
 }

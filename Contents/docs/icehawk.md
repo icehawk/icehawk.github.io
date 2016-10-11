@@ -1,1 +1,1 @@
-# IceHawk routing component - Documentation
+# IceHawk component
