@@ -25,7 +25,9 @@
 			"contentFile": "",
 			"children": [
 				"/components.html",
-				"/docs.html"
+				"/docs.html",
+				"/coverage.html",
+				"/metrics.html"
 			]
 		},
 		"/404.html": {
