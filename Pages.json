@@ -117,7 +117,12 @@
 			"children": [
 				"/docs/icehawk/installation.html",
 				"/docs/icehawk/configuration.html",
-				"/docs/icehawk/delegation.html"
+				"/docs/icehawk/delegation.html",
+				"/docs/icehawk/routing.html",
+				"/docs/icehawk/request-information.html",
+				"/docs/icehawk/request-data.html",
+				"/docs/icehawk/events-and-subscribers.html",
+				"/docs/icehawk/final-responding.html"
 			]
 		},
 		"/docs/icehawk/installation.html": {
@@ -175,6 +180,101 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/icehawk/delegation.md",
+			"children": []
+		},
+		"/docs/icehawk/routing.html": {
+			"pageLevel": 4,
+			"navName": "Routing",
+			"pageTitle": "IceHawk routing",
+			"description": "IceHawk routing - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [
+				"IceHawk",
+				"routing",
+				"documentation",
+				"delegation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/routing.md",
+			"children": []
+		},
+		"/docs/icehawk/request-information.html": {
+			"pageLevel": 4,
+			"navName": "Request information",
+			"pageTitle": "IceHawk information",
+			"description": "IceHawk request information - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [
+				"IceHawk",
+				"request",
+				"information",
+				"documentation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/request-info.md",
+			"children": []
+		},
+		"/docs/icehawk/request-data.html": {
+			"pageLevel": 4,
+			"navName": "Request data",
+			"pageTitle": "IceHawk data",
+			"description": "IceHawk request data - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [
+				"IceHawk",
+				"request",
+				"data",
+				"documentation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/request-data.md",
+			"children": []
+		},
+		"/docs/icehawk/events-and-subscribers.html": {
+			"pageLevel": 4,
+			"navName": "Events and subscribers",
+			"pageTitle": "Events and subscribers",
+			"description": "IceHawk events and subscribers - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [
+				"IceHawk",
+				"event",
+				"subscriber",
+				"documentation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/events-and-subscribers.md",
+			"children": []
+		},
+		"/docs/icehawk/final-responding.html": {
+			"pageLevel": 4,
+			"navName": "Final responding",
+			"pageTitle": "Final responding",
+			"description": "IceHawk final responding - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [
+				"IceHawk",
+				"final",
+				"responder",
+				"documentation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/final-responding.md",
 			"children": []
 		},
 		"/docs/session.html": {
