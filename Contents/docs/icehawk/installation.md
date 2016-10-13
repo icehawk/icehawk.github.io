@@ -124,7 +124,30 @@ $iceHawk->handleRequest();
 _— index.php_
 
 
-If the `index.php` is the bootstrap script of your domain you should see _Hello World!_ when visiting `http://your.domain/`.
+<hr class="blockspace">
+
+## Webserver config
+
+IceHawk is designed to have a bootstrap script (_index.php_) that receives all requests.
+So you should configure your webserver to pass all requests to that script. Here is how this is usually done:
+
+```apache
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* /index.php [L,QSA]
+```
+_— Apache (.htaccess)_
+
+
+```nginx
+location / {
+	try_files $uri $uri/ /index.php?$args;
+}
+```
+_— nginx_
+
+Now you can visit http://your.domain/ and should see _Hello World!_.
 
 **That's it.**
 
