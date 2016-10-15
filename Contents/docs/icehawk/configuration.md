@@ -450,3 +450,9 @@ class IceHawkConfig implements ConfiguresIceHawk
 Please see our [Exceptions](/docs/icehawk/exceptions.html) section for more information about the exceptions thrown by the IceHawk component itself.
  
 Please see our [Final responding](/docs/icehawk/final-responding.html) section for more information on how to implement a final responder.
+
+## Use of objects provides by the config
+
+Do not hesitate to provide new instances in all the configuration methods. 
+The IceHawk component makes sure that all methods of the config were called only once - even if an object is internally used multiple times.
+
