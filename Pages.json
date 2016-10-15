@@ -122,6 +122,7 @@
 				"/docs/icehawk/request-information.html",
 				"/docs/icehawk/request-data.html",
 				"/docs/icehawk/events-and-subscribers.html",
+				"/docs/icehawk/exceptions.html",
 				"/docs/icehawk/final-responding.html"
 			]
 		},
@@ -256,6 +257,26 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/icehawk/events-and-subscribers.md",
+			"children": []
+		},
+		"/docs/icehawk/exceptions.html": {
+			"pageLevel": 4,
+			"navName": "Exceptions",
+			"pageTitle": "Exceptions",
+			"description": "IceHawk exceptions - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [
+				"IceHawk",
+				"exception",
+				"throwable",
+				"error",
+				"documentation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/exceptions.md",
 			"children": []
 		},
 		"/docs/icehawk/final-responding.html": {
