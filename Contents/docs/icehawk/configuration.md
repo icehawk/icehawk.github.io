@@ -32,7 +32,7 @@ class IceHawkConfig implements ConfiguresIceHawk
 }
 ```
 
-By the way, this is (pretty much) the [_IceHawkConfig.php_](https://github.com/icehawk/icehawk/blob/v2.0.0/src/Defaults/IceHawkConfig.php) that the IceHawk component already ships.
+By the way, this is (pretty much) the [_IceHawkConfig.php_](https://github.com/icehawk/icehawk/blob/v2.0.1/src/Defaults/IceHawkConfig.php) that the IceHawk component already ships.
 
 Unpacking the traits, this is what the config class would look like:
 
@@ -275,7 +275,7 @@ Read more about how to implement an event subscriber in out [Events and subscrib
 The request information object is technically a wrapper for the super-global variable `$_SERVER` and provides important
 information to the IceHawk component like the request method, that is used to decide between read or write request handling.
 
-In most cases it should be absolutely fine to simply use the shipped default [RequestInfo](https://github.com/icehawk/icehawk/blob/v2.0.0/src/Defaults/RequestInfo.php) object.
+In most cases it should be absolutely fine to simply use the shipped default [RequestInfo](https://github.com/icehawk/icehawk/blob/v2.0.1/src/Defaults/RequestInfo.php) object.
 But in case you need to have own logic or your `$_SERVER` variable holds non-standard keys you also can provide a mapped array to the default request info object 
 or implement its interface `IceHawk\IceHawk\Interfaces\ProvidesRequestInfo` and provide an own object.
 
