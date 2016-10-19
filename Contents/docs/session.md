@@ -1,21 +1,19 @@
 # Session component
 
-## Intention
-
 This component is intended to wrap the super-global `$_SESSION` variable and give 
 access to values by explicitly user-defined keys and value/return types 
 and is therefor declared abstract.
 
 Furthermore it provides the registration and interfaces for data mappers on all, several or single keys, e.g. to reduce data overhead stored in session.
 
-## Usage
+<hr class="blockspace">
 
-### Extend the class
+## Extend the class
  
 ```php
 <?php declare(strict_types=1);
 
-namespace MyVendor\MyProject;
+namespace YourVendor\YourProject;
 
 use IceHawk\Session\AbstractSession;
 
@@ -45,12 +43,14 @@ final class Session extends AbstractSession
 }
 ```
 
-### Work with values
+<hr class="blockspace">
+
+## Work with values
 
 ```php
 <?php declare(strict_types=1);
 
-namespace MyVendor\MyProject;
+namespace YourVendor\YourProject;
 
 $session = new Session( $_SESSION );
 
@@ -70,12 +70,14 @@ if ( $session->isSomeStringValueSet() )
 $session->unsetSomeStringValue();
 ```
 
-### Data mapping
+<hr class="blockspace">
+
+## Data mapping
 
 ```php
 <?php declare(strict_types=1);
 
-namespace MyVendor\MyProject;
+namespace YourVendor\YourProject;
 
 use IceHawk\Session\Interfaces\MapsSessionData;
 
@@ -108,12 +110,14 @@ $session->addDataMapper( new MyDataMapper(), [Session::KEY_SOME_STRING_VALUE, Se
 - The data mapper's `toSessionData()` is called when the `AbstractSesion::set()` method gets invoked.
 - The data mapper's `fromSessionData()` is called when the `AbstractSesion::get()` method gets invoked.
 
-### Clear all session data
+<hr class="blockspace">
+
+## Clear all session data
 
 ```php
 <?php declare(strict_types=1);
 
-namespace MyVendor\MyProject;
+namespace YourVendor\YourProject;
 
 $session = new Session( $_SESSION );
 

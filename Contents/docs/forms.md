@@ -2,6 +2,8 @@
 
 Provides a convenient object to store form data and feedback with CSRF protection support.
 
+<hr class="blockspace">
+
 ### Usage
 
 ```php
@@ -44,6 +46,8 @@ sleep(3);
 $token->isExpired(); # true
 ```
 
+<hr class="blockspace">
+
 ## Feedback
 
 Simple value object for form feedback with severity.
@@ -70,6 +74,8 @@ $message = $feedback->getMessage();
 # Retrieve feedback severity
 $severity = $feedback->getSeverity();
 ```
+
+<hr class="blockspace">
 
 ## Form
 

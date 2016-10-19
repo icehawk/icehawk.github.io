@@ -45,8 +45,8 @@
 	<meta property="og:description" content="Session - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/session.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo.png"/>
-	<meta property="article:published_time" content="2016-10-20T00:38:06+02:00"/>
-	<meta property="article:modified_time" content="2016-10-20T00:38:06+02:00"/>
+	<meta property="article:published_time" content="2016-10-20T00:47:27+02:00"/>
+	<meta property="article:modified_time" content="2016-10-20T00:47:27+02:00"/>
 			<meta property="article:tag" content="session"/>
 			<meta property="article:tag" content="components"/>
 			<meta property="article:tag" content="applications"/>
@@ -73,8 +73,8 @@
     },
     "headline": "Session component | IceHawk | PHP micro framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/session.html",
-    "datePublished": "2016-10-20T00:38:06+02:00",
-    "dateModified": "2016-10-20T00:38:06+02:00",
+    "datePublished": "2016-10-20T00:47:27+02:00",
+    "dateModified": "2016-10-20T00:47:27+02:00",
     "image": "https://icehawk.github.io/images/logo.png",
     "keywords": "session, components, applications, routing, documentation",
     "description": "Session - components documentation"
@@ -209,16 +209,15 @@
 			<div class="col-xs-12 col-sm-9" id="mainstage">
 
 				<h1>Session component</h1>
-<h2>Intention</h2>
 <p>This component is intended to wrap the super-global <code>$_SESSION</code> variable and give
 access to values by explicitly user-defined keys and value/return types
 and is therefor declared abstract.</p>
 <p>Furthermore it provides the registration and interfaces for data mappers on all, several or single keys, e.g. to reduce data overhead stored in session.</p>
-<h2>Usage</h2>
-<h3>Extend the class</h3>
+<hr class="blockspace">
+<h2>Extend the class</h2>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
 
-namespace MyVendor\MyProject;
+namespace YourVendor\YourProject;
 
 use IceHawk\Session\AbstractSession;
 
@@ -246,10 +245,11 @@ final class Session extends AbstractSession
         $this-&gt;unset( self::KEY_SOME_STRING_VALUE );
     }
 }</code></pre>
-<h3>Work with values</h3>
+<hr class="blockspace">
+<h2>Work with values</h2>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
 
-namespace MyVendor\MyProject;
+namespace YourVendor\YourProject;
 
 $session = new Session( $_SESSION );
 
@@ -267,10 +267,11 @@ if ( $session-&gt;isSomeStringValueSet() )
 
 # Unset 
 $session-&gt;unsetSomeStringValue();</code></pre>
-<h3>Data mapping</h3>
+<hr class="blockspace">
+<h2>Data mapping</h2>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
 
-namespace MyVendor\MyProject;
+namespace YourVendor\YourProject;
 
 use IceHawk\Session\Interfaces\MapsSessionData;
 
@@ -302,10 +303,11 @@ $session-&gt;addDataMapper( new MyDataMapper(), [Session::KEY_SOME_STRING_VALUE,
 <li>The data mapper's <code>toSessionData()</code> is called when the <code>AbstractSesion::set()</code> method gets invoked.</li>
 <li>The data mapper's <code>fromSessionData()</code> is called when the <code>AbstractSesion::get()</code> method gets invoked.</li>
 </ul>
-<h3>Clear all session data</h3>
+<hr class="blockspace">
+<h2>Clear all session data</h2>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
 
-namespace MyVendor\MyProject;
+namespace YourVendor\YourProject;
 
 $session = new Session( $_SESSION );
 

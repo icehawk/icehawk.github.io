@@ -1,8 +1,10 @@
 # PubSub component
 
-## Usage
+Provides infrastructure for publishing messages to a channel and subscribing to a channel.
 
-### Create a message
+<hr class="blockspace">
+
+## Create a message
 
 **Please note:** 
 
@@ -30,13 +32,13 @@ So a message implementation could look like this:
 ```php
 <?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\Interfaces\CarriesInformation;
 use IceHawk\PubSub\Interfaces\IdentifiesMessage;
 use IceHawk\PubSub\Interfaces\NamesMessage;
 
-final class MyMessage implements CarriesInformation
+final class YourMessage implements CarriesInformation
 {
 	/** @var IdentifiesMessage */
 	private $messageId;
@@ -76,19 +78,21 @@ And a new instance of this message is created like this:
 ```php
 <?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\Types\MessageId;
 use IceHawk\PubSub\Types\MessageName;
 
-$myMessage = new MyMessage( 
+$yourMessage = new YourMessage( 
     new MessageId( '123456-ABC-789' ),
     new MessageName( 'Something had happened' ),
     'Hello World!' 
 );
 ```
 
-### Create a message subscriber
+<hr class="blockspace">
+
+## Create a message subscriber
 
 To implement a subscriber that gets notified about all messages published to the channel it is subscribing to, 
 you can extend the `AbstractMessageSubscriber` class that is shipped with IceHawk\PubSub.
@@ -121,32 +125,34 @@ A basic implementation of a subscriber, being notified about the previously crea
 ```php
 <?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\AbstractMessageSubscriber;
 use IceHawk\PubSub\Types\Channel;
 
-final class MySubscriber extends AbstractMessageSubscriber
+final class YourSubscriber extends AbstractMessageSubscriber
 {
-	protected function whenSomethingHadHappened( MyMessage $myMessage, Channel $channel )
+	protected function whenSomethingHadHappened( YourMessage $yourMessage, Channel $channel )
 	{
 		printf(
 		    'Message named "%s" with ID "%s" was published on channel "%" with content: "%s"',
-		    $myMessage->getMessageName(),
-		    $myMessage->getMessageId(),
+		    $yourMessage->getMessageName(),
+		    $yourMessage->getMessageId(),
 		    $channel,
-		    $myMessage->getContent()
+		    $yourMessage->getContent()
 		);
 	}
 }
 ```
 
-### Subscribe to a channel
+<hr class="blockspace">
+
+## Subscribe to a channel
 
 ```php
 <?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\MessageBus;
 use IceHawk\PubSub\Types\Channel;
@@ -154,27 +160,29 @@ use IceHawk\PubSub\Types\Channel;
 // ...
 
 $messageBus = new MessageBus();
-$messageBus->subscribe( new Channel( 'ListenToMe' ), new MySubscriber() );
+$messageBus->subscribe( new Channel( 'ListenToMe' ), new YourSubscriber() );
 
 ```
 
 **Note:** The `MessageBus` class automatically prevents subscribing of equal subscribers to the same channel. 
 But one subscriber can subscribe to multiple channels.
 
-### Publish a message
+<hr class="blockspace">
+
+## Publish a message
 
 In the same way you subscribe to a channel, you will publish a message to a channel like this:
 
 ```php
 <?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\Types\Channel;
 
 // ...
 
-$messageBus->publish( new Channel('ListenToMe'), $message );
+$messageBus->publish( new Channel('ListenToMe'), $yourMessage );
 
 ```
 

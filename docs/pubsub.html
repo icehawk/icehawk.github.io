@@ -45,8 +45,8 @@
 	<meta property="og:description" content="PubSub - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/pubsub.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo.png"/>
-	<meta property="article:published_time" content="2016-10-20T00:38:06+02:00"/>
-	<meta property="article:modified_time" content="2016-10-20T00:38:06+02:00"/>
+	<meta property="article:published_time" content="2016-10-20T00:47:27+02:00"/>
+	<meta property="article:modified_time" content="2016-10-20T00:47:27+02:00"/>
 			<meta property="article:tag" content="publish"/>
 			<meta property="article:tag" content="subscribe"/>
 			<meta property="article:tag" content="pubsub"/>
@@ -75,8 +75,8 @@
     },
     "headline": "PubSub component | IceHawk | PHP micro framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/pubsub.html",
-    "datePublished": "2016-10-20T00:38:06+02:00",
-    "dateModified": "2016-10-20T00:38:06+02:00",
+    "datePublished": "2016-10-20T00:47:27+02:00",
+    "dateModified": "2016-10-20T00:47:27+02:00",
     "image": "https://icehawk.github.io/images/logo.png",
     "keywords": "publish, subscribe, pubsub, components, applications, routing, documentation",
     "description": "PubSub - components documentation"
@@ -211,8 +211,9 @@
 			<div class="col-xs-12 col-sm-9" id="mainstage">
 
 				<h1>PubSub component</h1>
-<h2>Usage</h2>
-<h3>Create a message</h3>
+<p>Provides infrastructure for publishing messages to a channel and subscribing to a channel.</p>
+<hr class="blockspace">
+<h2>Create a message</h2>
 <p><strong>Please note:</strong> </p>
 <ul>
 <li>Messages should always be immutable.</li>
@@ -248,13 +249,13 @@ If you don't want / can't use them for any reason, you can alternativly implemen
 <p>So a message implementation could look like this:</p>
 <pre><code class="language-php">&lt;?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\Interfaces\CarriesInformation;
 use IceHawk\PubSub\Interfaces\IdentifiesMessage;
 use IceHawk\PubSub\Interfaces\NamesMessage;
 
-final class MyMessage implements CarriesInformation
+final class YourMessage implements CarriesInformation
 {
     /** @var IdentifiesMessage */
     private $messageId;
@@ -290,17 +291,18 @@ final class MyMessage implements CarriesInformation
 <p>And a new instance of this message is created like this:</p>
 <pre><code class="language-php">&lt;?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\Types\MessageId;
 use IceHawk\PubSub\Types\MessageName;
 
-$myMessage = new MyMessage( 
+$yourMessage = new YourMessage( 
     new MessageId( '123456-ABC-789' ),
     new MessageName( 'Something had happened' ),
     'Hello World!' 
 );</code></pre>
-<h3>Create a message subscriber</h3>
+<hr class="blockspace">
+<h2>Create a message subscriber</h2>
 <p>To implement a subscriber that gets notified about all messages published to the channel it is subscribing to,
 you can extend the <code>AbstractMessageSubscriber</code> class that is shipped with IceHawk\PubSub.</p>
 <p>The <code>AbstractMessageSubscriber</code> class automatically converts the message name to a handler method name by prefixing <code>when</code> to the message name,
@@ -334,28 +336,29 @@ If you don't want / can't use it for any reason, you can alternativly implement 
 <p>A basic implementation of a subscriber, being notified about the previously created message, could look like this:</p>
 <pre><code class="language-php">&lt;?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\AbstractMessageSubscriber;
 use IceHawk\PubSub\Types\Channel;
 
-final class MySubscriber extends AbstractMessageSubscriber
+final class YourSubscriber extends AbstractMessageSubscriber
 {
-    protected function whenSomethingHadHappened( MyMessage $myMessage, Channel $channel )
+    protected function whenSomethingHadHappened( YourMessage $yourMessage, Channel $channel )
     {
         printf(
             'Message named "%s" with ID "%s" was published on channel "%" with content: "%s"',
-            $myMessage-&gt;getMessageName(),
-            $myMessage-&gt;getMessageId(),
+            $yourMessage-&gt;getMessageName(),
+            $yourMessage-&gt;getMessageId(),
             $channel,
-            $myMessage-&gt;getContent()
+            $yourMessage-&gt;getContent()
         );
     }
 }</code></pre>
-<h3>Subscribe to a channel</h3>
+<hr class="blockspace">
+<h2>Subscribe to a channel</h2>
 <pre><code class="language-php">&lt;?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\MessageBus;
 use IceHawk\PubSub\Types\Channel;
@@ -363,21 +366,22 @@ use IceHawk\PubSub\Types\Channel;
 // ...
 
 $messageBus = new MessageBus();
-$messageBus-&gt;subscribe( new Channel( 'ListenToMe' ), new MySubscriber() );
+$messageBus-&gt;subscribe( new Channel( 'ListenToMe' ), new YourSubscriber() );
 </code></pre>
 <p><strong>Note:</strong> The <code>MessageBus</code> class automatically prevents subscribing of equal subscribers to the same channel.
 But one subscriber can subscribe to multiple channels.</p>
-<h3>Publish a message</h3>
+<hr class="blockspace">
+<h2>Publish a message</h2>
 <p>In the same way you subscribe to a channel, you will publish a message to a channel like this:</p>
 <pre><code class="language-php">&lt;?php
 
-namespace MyVendor\MyNamespace;
+namespace YourVendor\YourProject;
 
 use IceHawk\PubSub\Types\Channel;
 
 // ...
 
-$messageBus-&gt;publish( new Channel('ListenToMe'), $message );
+$messageBus-&gt;publish( new Channel('ListenToMe'), $yourMessage );
 </code></pre>
 <p><strong>Prints:</strong></p>
 <pre><code>Message named "Something had happened" with ID "123456-ABC-789" was published on channel "ListenToMe" with content: "Hello World!"'</code></pre>

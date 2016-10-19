@@ -232,7 +232,7 @@ hr.blockspace {
 	border: 0;
 	border-bottom: 1px solid #f6f6f6;
 	padding: 0;
-	margin: 50px 15%;
+	margin: 30px 15%;
 }
 
 .spacer {
@@ -356,7 +356,7 @@ table td {
 	}
 
 	hr.blockspace {
-		margin: 30px 10%;
+		margin: 20px 10%;
 	}
 
 	.spacer {
