@@ -8,7 +8,7 @@ body {
 	font-weight: 100;
 }
 
-pre{
+pre {
 	background: transparent;
 	border: 3px solid #ddeaf7;
 	border-radius: 5px;
@@ -297,6 +297,13 @@ hr.blockspace {
 .author-image {
 	border: 1px solid #c4c4c4;
 	margin-top: 20px;
+}
+
+table,
+table th,
+table td {
+	border: 2px solid #f6f6f6;
+	padding: 5px;
 }
 
 /* collapsed sidebar styles */

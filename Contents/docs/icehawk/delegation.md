@@ -9,7 +9,7 @@ This documentation shows you how to use this delegate object.
 
 ## Defaults
 
-The IceHawk component ships with a default delegate class ([_IceHawkDelegate.php_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Defaults/IceHawkDelegate.php)) you can use.
+The IceHawk component ships with a default delegate class ([_IceHawkDelegate.php_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Defaults/IceHawkDelegate.php)) you can use if you don't need any set up.
 
 The required interface of the delegate object is: `IceHawk\IceHawk\Interfaces\SetsUpEnvironment`
  
@@ -43,6 +43,8 @@ As you can see, the default delegate just does nothing. That means your default 
 
 You can decide to whether implement the delegate interface or extend the default delegate class.
 
+The call order of the delegate methods is as shown above in the default class. 
+
 <hr class="blockspace">
 
 ## Set up global vars
@@ -53,7 +55,7 @@ A typical use-case is to map the client IP address when your server acts as a ba
 **Please note:** This method is called before the request info object is pulled from the config, so you are able to manipulate the `$_SERVER` variable 
 here that is used by the default request info object.
 
-This is an example how to map the client IP address populated by a load balancer as _HTTP_X_FORWARDED_FOR_:
+This is an example how to map the client IP address populated by a load balancer as `HTTP_X_FORWARDED_FOR`:
  
 ```php
 <?php declare(strict_types=1);
@@ -66,7 +68,7 @@ class IceHawkDelegate implements SetsUpEnvironment
 {
 	public function setUpGlobalVars()
 	{
-		$clientIpAddress = $_SERVER['HTTP_X_FORWARDED_FOR'] ? : $_SERVER['REMOTE_ADDR'];
+		$clientIpAddress = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'];
 		
 		$_SERVER['REMOTE_ADDR'] = $clientIpAddress;
 	}
@@ -84,6 +86,8 @@ Please see our [Request information](/docs/icehawk/request-information.html) sec
 The `setUpErrorHandling` method is your place to configure your application's error handling, e.g. by 
 [registering an own error handler](http://php.net/manual/en/function.set-error-handler.php) or 
 simply change the error reporting level.
+
+**Please note:** This method is called after pulling the request info object from the config, so we can serve it here.
 
 ```php
 <?php declare(strict_types=1);
@@ -124,6 +128,8 @@ class IceHawkDelegate implements SetsUpEnvironment
 The `setUpErrorHandling` method is your place to configure your application's session handling, e.g. by 
 [registering an own session handler](http://php.net/manual/en/function.session-set-save-handler.php) or 
 simply set up ini and cookie values.
+
+**Please note:** This method is called after pulling the request info object from the config, so we can serve it here.
 
 ```php
 <?php declare(strict_types=1);
