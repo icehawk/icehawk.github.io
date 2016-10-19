@@ -3,6 +3,12 @@
 	"baseUrl": "https://icehawk.github.io",
 	"outputDir": "./",
 	"contentsDir": "Contents/",
+	"replacements": {
+		"@icehawk/icehawk-version@": "v2.0.1",
+		"@icehawk/session-version@": "v1.1.1",
+		"@icehawk/forms-version@": "v1.0.0",
+		"@icehawk/pubsub-version@": "v1.0.1"
+	},
 	"pages": {
 		"/index.html": {
 			"pageLevel": 1,

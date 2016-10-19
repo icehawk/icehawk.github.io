@@ -5,9 +5,11 @@ This is the concern of the delegate object that IceHawk requires at construction
 
 This documentation shows you how to use this delegate object.
 
+<hr class="blockspace">
+
 ## Defaults
 
-The IceHawk component ships with a default delegate class ([_IceHawkDelegate.php_](https://github.com/icehawk/icehawk/blob/v2.0.1/src/Defaults/IceHawkDelegate.php)) you can use.
+The IceHawk component ships with a default delegate class ([_IceHawkDelegate.php_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Defaults/IceHawkDelegate.php)) you can use.
 
 The required interface of the delegate object is: `IceHawk\IceHawk\Interfaces\SetsUpEnvironment`
  
@@ -40,6 +42,8 @@ class IceHawkDelegate implements SetsUpEnvironment
 As you can see, the default delegate just does nothing. That means your default PHP environment is used.
 
 You can decide to whether implement the delegate interface or extend the default delegate class.
+
+<hr class="blockspace">
 
 ## Set up global vars
 
@@ -77,6 +81,84 @@ Please see our [Request information](/docs/icehawk/request-information.html) sec
 
 ## Set up error handling
 
+The `setUpErrorHandling` method is your place to configure your application's error handling, e.g. by 
+[registering an own error handler](http://php.net/manual/en/function.set-error-handler.php) or 
+simply change the error reporting level.
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\SetsUpEnvironment;
+
+class IceHawkDelegate implements SetsUpEnvironment
+{
+	# ...
+	
+	public function setUpErrorHandling( ProvidesRequestInfo $requestInfo )
+	{
+		# simply turn on PHP error reporting and display errors
+		error_reporting( E_ALL );
+		ini_set( 'display_errors', 'On' );
+		
+		# or register an own error handler
+		set_error_handler([YourErrorHandler::class, 'handleError']);
+		
+		# or conditionally enable/disable error handling based on current request information
+		if ( $requestInfo->getQueryString() == 'reportErrors=yes' )
+		{
+			error_reporting( E_ALL );
+            ini_set( 'display_errors', 'On' );
+		}
+	}
+	
+	# ...
+}
+```
+
 <hr class="blockspace">
 
 ## Set up session handling
+
+The `setUpErrorHandling` method is your place to configure your application's session handling, e.g. by 
+[registering an own session handler](http://php.net/manual/en/function.session-set-save-handler.php) or 
+simply set up ini and cookie values.
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\SetsUpEnvironment;
+
+class IceHawkDelegate implements SetsUpEnvironment
+{
+	# ...
+	
+	# ...
+	
+	public function setUpSessionHandling( ProvidesRequestInfo $requestInfo )
+	{
+		# simply setup ini and cookie settings
+		ini_set( 'session.name', 'yourSID' );
+		ini_set( 'session.save_handler', 'redis' );
+		ini_set( 'session.save_path', 'tcp://127.0.0.1:6379?weight=1&database=0' );
+		ini_set( 'session.gc_maxlifetime', (60 * 60 * 24) );
+        
+		session_set_cookie_params( (60 * 60 * 24), '/', '.your-domain.com', true, true );
+		
+		# or register an own session handler
+		session_set_save_handler(new YourSessionhandler());
+		
+		# or conditionally set up session handling based on current request information
+		if ( strpos( $requestInfo->getUri(), '/long-life/') === 0 )
+		{
+			ini_set( 'session.name', 'yourLongSID' );
+			ini_set( 'session.gc_maxlifetime', (60 * 60 * 24 * 365) );
+            
+            session_set_cookie_params( (60 * 60 * 24 * 365), '/', '.your-domain.com', true, true );
+		}
+	}
+}
+```
