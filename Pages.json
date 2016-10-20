@@ -33,7 +33,8 @@
 				"/components.html",
 				"/docs.html",
 				"/coverage.html",
-				"/metrics.html"
+				"/metrics.html",
+				"/media.html"
 			]
 		},
 		"/404.html": {
@@ -401,6 +402,20 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "metrics.md",
+			"children": []
+		},
+		"/media.html": {
+			"pageLevel": 2,
+			"navName": "Media",
+			"pageTitle": "Media",
+			"description": "Publications and media around the IceHawk framework",
+			"language": "en",
+			"imageUrl": "/images/logo.png",
+			"tags": [],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "media.md",
 			"children": []
 		}
 	}
