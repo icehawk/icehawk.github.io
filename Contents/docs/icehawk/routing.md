@@ -80,6 +80,10 @@ We also ship the following ready-to-use classes for URI patterns:
 
 We will discuss them later in this documentation.
 
+<hr class="blockspace">
+
+## What is the most simple route?
+
 So the most simple route would look like this:
 
 ```php
@@ -105,3 +109,242 @@ $mostSimpleRoute = new ReadRoute( $uriPattern, $requestHandler );
 ```
 
 **Please note:** The request handler is implemented as an anonymous class here for better readability of the implemented interface. In most cases you would implement a real class of course. 
+
+<hr class="blockspace">
+
+## Where to place routes?
+
+As shown in the [configuration section](@baseUrl@/docs/icehawk/configuration.html) you need to configure and return your routes in 
+the `getReadRoutes()` / `getWriteRoutes()` methods of the IceHawk config class.
+
+Here is an example:
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\ConfiguresIceHawk;
+use IceHawk\IceHawk\Interfaces\RoutesToReadHandler;
+use IceHawk\IceHawk\Routing\ReadRoute;
+use IceHawk\IceHawk\Routing\Patterns\Literal;
+use IceHawk\IceHawk\Defaults;
+
+class IceHawkConfig implements ConfiguresIceHawk
+{
+	use Defaults\Traits\DefaultRequestProviding;
+	use Defaults\Traits\DefaultWriteRouting;
+	use Defaults\Traits\DefaultEventSubscribing;
+	use Defaults\Traits\DefaultFinalReadResponding;
+	use Defaults\Traits\DefaultFinalWriteResponding;
+	
+	/**
+	 * @return array|\Traversable|RoutesToReadHandler[]
+	 */
+	public function getReadRoutes()
+	{
+		return [
+			
+			# Simple route with a fixed URI for the home page
+			new ReadRoute( new Literal( '/' ), new ShowHomeRequestHandler() ),
+			
+		];
+	}
+}
+```
+
+This simple example shows how to provide routes by simply returning an array of route instances.
+This is pretty OK for small applications with a small number of routes. In case you have a large number of routes you can source them out to 
+a config file and only `yield` the current loop instance. Thats why we didn't add a return type to the `getReadRoutes()` / `getWriteRoutes()` methods.
+
+The following example shows how to `yield` route instances, defined in a config file:
+
+### 1. The routes config file
+
+```php
+<?php declare(strict_types=1);
+
+return [
+	'/'         => YourVendor\YourProject\Application\Endpoints\ShowHomeRequestHandler::class,
+	'/product'  => YourVendor\YourProject\Application\Endpoints\ShowProductRequestHandler::class,
+	'/gallery'  => YourVendor\YourProject\Application\Endpoints\ShowGalleryRequestHandler::class,
+	'/imprint'  => YourVendor\YourProject\Application\Endpoints\ShowImprintRequestHandler::class,
+	'/privacy'  => YourVendor\YourProject\Application\Endpoints\ShowPrivacyRequestHandler::class,
+];
+```
+
+### 2. The IceHawk Config
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+# ...
+
+class IceHawkConfig implements ConfiguresIceHawk
+{
+	# ...
+	
+	/**
+	 * @return array|\Traversable|RoutesToReadHandler[]
+	 */
+	public function getReadRoutes()
+	{
+		$routeDefinitions = require( 'ReadRoutes.php' );
+		
+		foreach ( $routeDefinitions as $uriPattern => $requestHandlerClass )
+		{
+			yield new ReadRoute( new Literal( $uriPattern ), new $requestHandlerClass() );
+		}
+	}
+}
+```
+
+The advantage of this approach is that not all routes, patterns and request handlers will be instantiated on bootstrap and that only the matching route instance will remain.
+
+<hr class="blockspace">
+
+## What patterns to use for matching?
+
+As already mentioned above, the IceHawk component ships with 3 ready-to-use pattern classes. We'd like to show you examples for each of them.
+
+A pattern class needs to implement the interface `IceHawk\IceHawk\Routing\Interfaces\ProvidesMatchResult`, that looks like this:
+
+```php
+<?php declare(strict_types=1);
+
+namespace IceHawk\IceHawk\Routing\Interfaces;
+
+interface ProvidesMatchResult
+{
+	public function matches( string $other ) : bool;
+	
+	public function getMatches() : array;
+}
+```
+
+The `matches()` method is called with the current URI as the only parameter and shall return whether the URI matches or not.
+ 
+The `getMatches()` method shall return any values extracted from the URI as an array, if any. These values will then be merged with the current request values.
+
+So it is pretty simply to implement an own pattern class. This example shows how the `Literal` pattern class would be implemented as an anonymous class:
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Routing\Interfaces\ProvidesMatchingResult;
+
+$literalPattern = new class implements ProvidesMatchingResult
+{
+	private $uri;
+
+	public function __construct( string $uri ) 
+	{
+		$this->uri = $uri;
+	}
+
+	public function matches( string $other ) : bool
+	{
+		return ($other == $this->uri);		
+	}
+	
+	public function getMatches() : array
+	{
+		return [];
+	}
+};
+```
+
+### 1. The Literal pattern
+
+The `Literal` pattern matches - like the name says - an URI literally. So you have no option for placeholders or regular expressions here.
+
+```php
+<?php declare(strict_types=1);
+
+$uri = '/product';
+
+$pattern = new Literal( '/product' );
+
+echo $pattern->matches( $uri ) ? 'Pattern matched' : 'Pattern not matched';
+
+# Prints: Pattern matched
+
+# Note: The Literal pattern compares case sensitive!
+
+echo $pattern->matches( '/Product' ) ? 'Pattern matched' : 'Pattern matched not';
+
+# Prints: Pattern matched not
+```
+
+### 2. The RegExp pattern
+
+The `RegExp` pattern matches against the URI with a user-provided full regular expression and enables the user to map the regular expression matches to names.
+ 
+```php
+<?php declare(strict_types=1);
+
+$uri = '/product/98361723';
+
+$pattern = new RegExp( '#^/product/([0-9]+)$#', [ 'productId' ] );
+
+echo $pattern->matches( $uri ) ? 'Pattern matched' : 'Pattern not matched';
+print_r( $pattern->getMatches() );
+
+# Prints:
+# Pattern matched
+# array( productId => 98361723 )
+```
+
+**Please note:** 
+
+* The first match of the regular expression (at index 0) is always the full URI, which is useless and therefor is removed before the mapping takes place.
+* The names are mapped in the order of matches from the regular expression (from left to right).
+* You can have fewer names than matches in the regular expression.
+* Only mapped values will be merged with the current request data.
+* You can use any regular expression that can be interpreted as a pattern by [preg_match()](https://php.net/preg_match).
+* The `RegExp` class makes sure the match is executed only once.
+
+### 3. The NamedRegExp pattern
+ 
+To avoid some redundant stuff when working with regular expression patterns for your routes, we also offer the `NamedRegExp` pattern class.
+This one allows you to put the names for your variable values directly in the pattern string and you can omit the delimiters.
+
+
+```php
+<?php declare(strict_types=1);
+
+$uri = '/product/98361723';
+
+$pattern = new NamedRegExp( '^/product/(?<productId>[0-9]+)$' );
+
+echo $pattern->matches( $uri ) ? 'Pattern matched' : 'Pattern not matched';
+print_r( $pattern->getMatches() );
+
+# Prints:
+# Pattern matched
+# array( productId => 98361723 )
+
+# Note: You can add pattern string flags as the second parameter
+
+$uri = '/Product/98361723';
+
+$pattern = new NamedRegExp( '^/product/(?<productId>[0-9]+)$', 'i' ); # match case-insensitive!
+
+echo $pattern->matches( $uri ) ? 'Pattern matched' : 'Pattern not matched';
+print_r( $pattern->getMatches() );
+
+# Prints:
+# Pattern matched
+# array( productId => 98361723 )
+```
+
+**Please note:**
+
+* The `NamedRegExp` class uses the `!` (exclamation mark) as the delimiter for the pattern string. So the last example would be concatenated to the following string: 
+`"!^/product/(?<productId>[0-9]+)$i!"`.
+* The `NamedRegExp` class makes sure the match is executed only once.
+

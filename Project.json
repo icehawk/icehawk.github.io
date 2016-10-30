@@ -1,9 +1,10 @@
 {
-	"projectName": "IceHawk | PHP micro framework respecting CQRS",
+	"name": "IceHawk | PHP micro framework respecting CQRS",
 	"baseUrl": "https://icehawk.github.io",
 	"outputDir": "./",
 	"contentsDir": "Contents/",
 	"replacements": {
+		"@website_version@": "v0.1.0",
 		"@icehawk/icehawk-version@": "v2.0.1",
 		"@icehawk/session-version@": "v1.1.1",
 		"@icehawk/forms-version@": "v1.0.0",

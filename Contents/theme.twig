@@ -1,13 +1,13 @@
 {% block frontmatter %}{% endblock %}
-{% macro subTree(loopPage, pages, breadCrumb) %}
+{% macro subTree(loopPage, project, breadCrumb) %}
 	{% set isActive = (loopPage.getUri in breadCrumb|keys) %}
 	<li{% if isActive %} class="active"{% endif %}>
-		<a href="{{ loopPage.getUri }}">{{ loopPage.getNavName }}</a>
+		<a href="{{ project.getUrl(loopPage.getUri) }}">{{ loopPage.getNavName }}</a>
 		{% if loopPage.hasChildren and isActive %}
 			<ul class="nav">
 				{% import _self as nav %}
-				{% for child in pages.getChildrenOf(loopPage) %}
-					{{ nav.subTree(child, pages, breadCrumb) }}
+				{% for child in project.getChildrenOf(loopPage) %}
+					{{ nav.subTree(child, project, breadCrumb) }}
 				{% endfor %}
 			</ul>
 		{% endif %}
@@ -17,12 +17,11 @@
 <!doctype html>
 <html lang="en">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-	{#<base href="{{ pages.getBaseUrl }}">#}
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<title>{{ page.getPageTitle }} | {{ pages.getProjectName }}</title>
+	<title>{{ page.getPageTitle }} | {{ project.getName }}</title>
 	<meta name="description" content="{{ page.getDescription }}">
 	<meta name="keywords" content="{{ page.getTags|join(', ') }}">
 	<meta name="HandheldFriendly" content="True"/>
@@ -30,15 +29,15 @@
 	<meta name="geo.placename" content="Dresden"/>
 	<meta name="geo.position" content="51.052088;13.741672"/>
 	<meta name="ICBM" content="51.052088, 13.741672"/>
-	<meta name="twitter:site" content="@hollodotme">
+	<meta name="twitter:site" content="https://twitter.com/hollodotme">
 	<meta name="twitter:creator" content="@hollodotme">
-	<script type="application/ld+json">
+	<script type="application/ld+json">{% spaceless %}
 {
   "@context" : "http://schema.org",
   "@type": "Person",
   "name": "IceHawk framework",
-  "image": "{{ pages.getBaseUrl ~ '/images/logo.png' }}",
-  "url": "{{ pages.getBaseUrl }}",
+  "image": "{{ project.getUrl('/images/logo.png') }}",
+  "url": "{{ project.getBaseUrl }}",
   "sameAs" : [
       "https://twitter.com/hollodotme",
       "https://www.xing.com/profile/Holger_Woltersdorf",
@@ -46,34 +45,33 @@
     ]
   }
 }
-
-	</script>
+{% endspaceless %}</script>
 	<meta property="article:author" content="https://www.xing.com/profile/Holger_Woltersdorf"/>
 	<meta property="article:publisher" content="https://www.xing.com/profile/Holger_Woltersdorf"/>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" href="/images/logo.png"/>
-	<link rel="canonical" href="{{ pages.getBaseUrl ~ page.getUri }}"/>
+	<link rel="canonical" href="{{ project.getUrl(page.getUri) }}"/>
 	<meta name="referrer" content="origin"/>
 
-	<meta property="og:site_name" content="{{ pages.getProjectName }}"/>
+	<meta property="og:site_name" content="{{ project.getName }}"/>
 	<meta property="og:type" content="article"/>
-	<meta property="og:title" content="{{ page.getPageTitle }} | {{ pages.getProjectName }}"/>
+	<meta property="og:title" content="{{ page.getPageTitle }} | {{ project.getName }}"/>
 	<meta property="og:description" content="{{ page.getDescription }}"/>
-	<meta property="og:url" content="{{ pages.getBaseUrl ~ page.getUri }}"/>
-	<meta property="og:image" content="{{ pages.getBaseUrl ~ page.getImageUrl }}"/>
+	<meta property="og:url" content="{{ project.getUrl(page.getUri) }}"/>
+	<meta property="og:image" content="{{ project.getUrl(page.getImageUrl) }}"/>
 	<meta property="article:published_time" content="{{ "now"|date("c") }}"/>
 	<meta property="article:modified_time" content="{{ "now"|date("c") }}"/>
 	{% for pageTag in page.getTags %}
 		<meta property="article:tag" content="{{ pageTag }}"/>
 	{% endfor %}
 	<meta name="twitter:card" content="summary_large_image"/>
-	<meta name="twitter:title" content="{{ page.getPageTitle }} | {{ pages.getProjectName }}"/>
+	<meta name="twitter:title" content="{{ page.getPageTitle }} | {{ project.getName }}"/>
 	<meta name="twitter:description" content="{{ page.getDescription }}"/>
-	<meta name="twitter:url" content="{{ pages.getBaseUrl ~ page.getUri }}"/>
-	<meta name="twitter:image:src" content="{{ pages.getBaseUrl ~ page.getImageUrl }}"/>
+	<meta name="twitter:url" content="{{ project.getUrl(page.getUri) }}"/>
+	<meta name="twitter:image:src" content="{{ project.getUrl(page.getImageUrl) }}"/>
 
-	<script type="application/ld+json">
+	<script type="application/ld+json">{% spaceless %}
 {
     "@context": "http://schema.org",
     "@type": "Article",
@@ -81,30 +79,27 @@
     "author": {
         "@type": "Person",
         "name": "Holger Woltersdorf",
-        "image": "{{ pages.getBaseUrl ~ '/images/hwoltersdorf.png' }}",
+        "image": "{{ project.getUrl('/images/hwoltersdorf.png') }}",
         "url": "https://github.com/hollodotme",
         "sameAs": "https://twitter.com/hollodotme",
         "description": "CIO at Fortuneglobe GmbH, Head of Fortune Solutions, Husband, Father, PHP Dev with heart, board member of PHP USERGROUP DRESDEN e.V."
     },
-    "headline": "{{ page.getPageTitle }} | {{ pages.getProjectName }}",
-    "url": "{{ pages.getBaseUrl ~ page.getUri }}",
+    "headline": "{{ page.getPageTitle }} | {{ project.getName }}",
+    "url": "{{ project.getUrl(page.getUri) }}",
     "datePublished": "{{ "now"|date("c") }}",
     "dateModified": "{{ "now"|date("c") }}",
-    "image": "{{ pages.getBaseUrl ~ page.getImageUrl }}",
+    "image": "{{ project.getUrl(page.getImageUrl) }}",
     "keywords": "{{ page.getTags|join(', ') }}",
     "description": "{{ page.getDescription }}"
-}
-
-	</script>
+}{% endspaceless %}</script>
 
 	<meta name="generator" content="IceHawk Static Page Generator"/>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="/css/webfont.css">
-	<link rel="stylesheet" href="/css/monokai-sublime.css">
-	<link rel="stylesheet" href="/css/main.css">
-	<script src="https://use.fontawesome.com/12e03fffec.js" async="async"></script>
+	<link rel="stylesheet" href="{{ project.getUrl('/css/webfont.css') }}">
+	<link rel="stylesheet" href="{{ project.getUrl('/css/hljs/tomorrow-night-bright.css') }}">
+	<link rel="stylesheet" href="{{ project.getUrl('/css/main.css') }}">
 </head>
 <body>
 
@@ -112,7 +107,7 @@
 
 	<!-- top navbar -->
 	<a class="navbar-brand" href="/">
-		<img alt="IceHawk" src="https://icehawk.github.io/images/logo_121x100.png">
+		<img alt="IceHawk" src="{{ project.getUrl('/images/logo_121x100.png') }}">
 	</a>
 	<div id="top-navigation" role="navigation">
 		<div class="container">
@@ -158,7 +153,7 @@
 				<ul class="breadcrumb hidden-xs hidden-sm">
 					{% for uri, title in breadCrumb %}
 						<li{% if loop.last %} class="active"{% endif %}>
-							<a href="{{ uri }}">{{ title }}</a>
+							<a href="{{ project.getUrl(uri) }}">{{ title }}</a>
 						</li>
 					{% endfor %}
 				</ul>
@@ -171,9 +166,9 @@
 			<!-- sidebar -->
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
 				<ul class="nav">
-					{% for loopPage in pages.getPageConfigsAtLevel(2) %}
+					{% for loopPage in project.getPageConfigsAtLevel(2) %}
 
-						{{ nav.subTree(loopPage, pages, breadCrumb) }}
+						{{ nav.subTree(loopPage, project, breadCrumb) }}
 
 					{% endfor %}
 				</ul>
@@ -210,13 +205,13 @@
 		</div><!--/.row-->
 	</div><!--/.container-->
 
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/2add9a8fb5.js" async="async"></script>
+	<script type="text/javascript" src="{{ project.getUrl('/js/highlight.pack.js') }}" async="async"></script>
+	<script type="text/javascript" src="{{ project.getUrl('/js/main.js') }}" async="async"></script>
+	{% block javascripts %}{% endblock %}
 
 </div><!--/.page-container-->
-
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/highlight.pack.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
-{% block javascripts %}{% endblock %}
 </body>
 </html>
