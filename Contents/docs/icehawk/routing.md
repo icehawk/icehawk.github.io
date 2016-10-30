@@ -62,7 +62,7 @@ A request handler is expressed as an object implementing one of the following in
 _&dash; request method interfaces_ 
 
 
-A route then is expressed as an object implementing on of the following interfaces: 
+A route then is expressed as an object implementing one of the following interfaces: 
 
 * For read rouutes: `IceHawk\IceHawk\Routing\Interfaces\RoutesToReadHandler` 
 * For write routes: `IceHawk\IceHawk\Routing\Interfaces\RoutesToWriteHandler`
@@ -78,7 +78,7 @@ We also ship the following ready-to-use classes for URI patterns:
 * [_RegExp_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/Patterns/RegExp.php)
 * [_NamedRegExp_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/Patterns/NamedRegExp.php)
 
-We will discuss them later in this documentation.
+We will discuss them later in this section.
 
 <hr class="blockspace">
 
