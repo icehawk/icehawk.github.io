@@ -19,7 +19,7 @@ That means you can not (directly) match against the server/host name or a query 
 
 <hr class="blockspace">
 
-## How the URI is provided
+## How is the URI provided?
 
 Almost every application has a "Home(page)" represented by a root URI like `/`. 
 The IceHawk component makes sure that you'll always get at least a `/` (slash) 
