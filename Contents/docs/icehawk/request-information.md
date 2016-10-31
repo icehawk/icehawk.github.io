@@ -249,3 +249,14 @@ public function getContentLength() : string
 ```
 
 This method returns the provided content length header on a POST or PUT request. (Key: `CONTENT_LENGTH`)
+
+<hr class="blockspace">
+
+## Annotation
+
+We are aware, that not all `$_SERVER` indices were considered in the current release. 
+And we also know that there is a method missing to access custom indices in the $_SERVER variable. 
+We will fix this with the `v2.1.0` milestone release.
+
+* [Issue: Support ALL $_SERVER indices in RequestInfo](https://github.com/icehawk/icehawk/issues/17)
+* [Issue: Provide a getter to allow access to custom keys in RequestInfo / $_SERVER](https://github.com/icehawk/icehawk/issues/15)
