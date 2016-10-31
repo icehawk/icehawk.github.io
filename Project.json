@@ -17,7 +17,7 @@
 			"pageTitle": "Home",
 			"description": "IceHawk components for building fast, reliable CQRS web applications and APIs",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"PHP",
 				"CQRS",
@@ -44,7 +44,7 @@
 			"pageTitle": "404 - Not Found",
 			"description": "The page you requested was not found.",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [],
 			"contentType": "html",
 			"renderer": "twig",
@@ -58,7 +58,7 @@
 			"pageTitle": "Components",
 			"description": "IceHawk components for building fast, reliable CQRS web applications and APIs",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"components",
 				"applications",
@@ -82,7 +82,7 @@
 			"pageTitle": "Documentation",
 			"description": "IceHawk components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"CQRS",
 				"IceHawk",
@@ -110,7 +110,7 @@
 			"pageTitle": "IceHawk component",
 			"description": "IceHawk - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"components",
@@ -140,7 +140,7 @@
 			"pageTitle": "IceHawk installation",
 			"description": "IceHawk installation - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"routing",
@@ -159,7 +159,7 @@
 			"pageTitle": "IceHawk configuration",
 			"description": "IceHawk installation - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"routing",
@@ -178,7 +178,7 @@
 			"pageTitle": "IceHawk delegation",
 			"description": "IceHawk delegation - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"routing",
@@ -197,7 +197,7 @@
 			"pageTitle": "IceHawk routing",
 			"description": "IceHawk routing - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"routing",
@@ -216,7 +216,7 @@
 			"pageTitle": "IceHawk information",
 			"description": "IceHawk request information - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"request",
@@ -235,7 +235,7 @@
 			"pageTitle": "IceHawk data",
 			"description": "IceHawk request data - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"request",
@@ -254,7 +254,7 @@
 			"pageTitle": "Events and subscribers",
 			"description": "IceHawk events and subscribers - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"event",
@@ -273,7 +273,7 @@
 			"pageTitle": "Exceptions",
 			"description": "IceHawk exceptions - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"exception",
@@ -293,7 +293,7 @@
 			"pageTitle": "Final responding",
 			"description": "IceHawk final responding - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"IceHawk",
 				"final",
@@ -312,7 +312,7 @@
 			"pageTitle": "Session component",
 			"description": "Session - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"session",
 				"components",
@@ -332,7 +332,7 @@
 			"pageTitle": "Forms component",
 			"description": "Forms - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"forms",
 				"components",
@@ -352,7 +352,7 @@
 			"pageTitle": "PubSub component",
 			"description": "PubSub - components documentation",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"publish",
 				"subscribe",
@@ -374,7 +374,7 @@
 			"pageTitle": "Code coverage",
 			"description": "IceHawk components code coverage reports",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
 				"CQRS",
 				"IceHawk",
@@ -397,7 +397,7 @@
 			"pageTitle": "Metrics",
 			"description": "IceHawk components static code analysis metrics",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [],
 			"contentType": "markdown",
 			"renderer": "twig",
@@ -411,7 +411,7 @@
 			"pageTitle": "Media",
 			"description": "Publications and media around the IceHawk framework",
 			"language": "en",
-			"imageUrl": "/images/logo.png",
+			"imageUrl": "/images/logo_121x100.png",
 			"tags": [],
 			"contentType": "markdown",
 			"renderer": "twig",
