@@ -348,3 +348,92 @@ print_r( $pattern->getMatches() );
 `"!^/product/(?<productId>[0-9]+)$i!"`.
 * The `NamedRegExp` class makes sure the match is executed only once.
 
+<hr class="blockspace">
+
+## Grouping routes
+
+If you have a large number of routes in your project, it meight be useful to group them by base paths.
+
+The IceHawk component ships with 2 ready-to-use classes to accomplish this approach:
+
+* [ReadRouteGroup](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/ReadRouteGroup.php)
+* [WriteRouteGroup](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/WriteRouteGroup.php)
+
+Like `ReadRoute` and `WriteRoute` these classes also implement the interfaces `IceHawk\IceHawk\Routing\Interfaces\RoutesToReadHandler` / `IceHawk\IceHawk\Routing\Interfaces\RoutesToWriteHandler`.
+So they can simply replace a normal route instance.
+
+This example shows how to group multiple read routes:
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+# ...
+
+class IceHawkConfig implements ConfiguresIceHawk
+{
+	# ...
+	
+	/**
+	 * @return array|\Traversable|RoutesToReadHandler[]
+	 */
+	public function getReadRoutes()
+	{
+		return [
+			new ReadRouteGroup(
+				new RegExp('#^/product#'),
+				[
+					new ReadRoute( 
+						new RegExp('#/advisor$#'), 
+						new ShowProductAdvisorRequestHandler()
+					),
+					new ReadRoute( 
+						new NamedRegExp('/(?<productId>[0-9]+)$'), 
+						new ShowProductRequestHandler()
+					),
+					new ReadRoute( 
+						new NamedRegExp('/(?<productId>[0-9]+)/(?<ean>[0-9]{13})$'), 
+						new ShowProductDetailsRequestHandler()
+					),
+				]
+			),
+		];
+	}
+}
+```
+
+**Please note:** The pattern strings in the subsequent read routes are relative to the group's pattern string, to avoid redundancy.
+
+### Get matches out of a route group
+
+Depending on the pattern you use to match the base path of a group, you can also get values out of this base path.
+
+This example shows how these values get merged:
+
+```php
+<?php declare(strict_types=1):
+
+# We want to read the file "profile.png" of user with ID "4711"
+
+$uri = '/user/4711/files/profile.png';
+
+$userRouteGroup = new ReadRouteGroup(
+	new NamedRegExp( '^/user/(?<userId>[0-9]+)' ),
+	[
+		new ReadRoute(
+			new NamedRegExp( '/files/(?<fileName>[^/]+)$' ),
+			new ShowUserFileRequestHandler()
+		),
+		
+		# ...
+	]
+);
+
+echo $userRouteGroup->matches( $uri ) ? 'Pattern matched' : 'Pattern matched not';
+print_r( $userRouteGroup->getUriParams() );
+
+# Prints:
+# Pattern matched
+# array( userId => 4711, fileName => profile.png )
+```
