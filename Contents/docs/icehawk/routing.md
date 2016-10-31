@@ -350,7 +350,7 @@ print_r( $pattern->getMatches() );
 
 <hr class="blockspace">
 
-## Grouping routes
+## Route groups
 
 If you have a large number of routes in your project, it meight be useful to group them by base paths.
 
@@ -436,4 +436,64 @@ print_r( $userRouteGroup->getUriParams() );
 # Prints:
 # Pattern matched
 # array( userId => 4711, fileName => profile.png )
+```
+
+<hr class="blockspace">
+
+## Generate route groups
+
+The approach of `yield`ing route instances also works for route groups. The following example shows how. 
+To make the configuration as easy as possible we'll use always the `NamedRegExp` pattern class.
+
+### 1. The routes config file
+
+```php
+<?php declare(strict_types=1);
+
+return [
+	'^/user/(?<userId>[0-9]+)'  => [
+		'/files/(?<fileName>[^/]+)$' => YourVendor\YourProject\ShowUserFileRequestHandler::class,
+		'/orders/(?<orderId>[0-9]+)$' => YourVendor\YourProject\ShowUserOrderRequestHandler::class,
+	],
+];
+```
+
+### 2. The IceHawk Config
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+# ...
+
+class IceHawkConfig implements ConfiguresIceHawk
+{
+	# ...
+	
+	/**
+	 * @return array|\Traversable|RoutesToReadHandler[]
+	 */
+	public function getReadRoutes()
+	{
+		$routeGroups = require( 'ReadRoutes.php' );
+		
+		foreach ( $routeGroups as $groupPattern => $routeDefinitions )
+		{
+			$routeGroup = new ReadRouteGroup( new NamedRegExp( $groupPattern ) );
+			
+			foreach ($routeDefinitions as $routePattern => $requestHandlerClass )
+			{
+				$routeGroup->addRoute( 
+					new ReadRoute(
+						new NamedRegExp( $routePattern ),
+						new $requestHandlerClass()
+					)
+				);
+			}
+			
+			yield $routeGroup;
+		}
+	}
+}
 ```
