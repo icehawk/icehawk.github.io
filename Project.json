@@ -226,7 +226,7 @@
 			"contentType": "markdown",
 			"renderer": "twig",
 			"template": "page.twig",
-			"contentFile": "docs/icehawk/request-info.md",
+			"contentFile": "docs/icehawk/request-information.md",
 			"children": []
 		},
 		"/docs/icehawk/request-data.html": {
