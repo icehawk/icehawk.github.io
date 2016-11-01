@@ -129,6 +129,7 @@
 				"/docs/icehawk/routing.html",
 				"/docs/icehawk/request-information.html",
 				"/docs/icehawk/request-data.html",
+				"/docs/icehawk/request-handlers.html",
 				"/docs/icehawk/events-and-subscribers.html",
 				"/docs/icehawk/exceptions.html",
 				"/docs/icehawk/final-responding.html"
@@ -194,7 +195,7 @@
 		"/docs/icehawk/routing.html": {
 			"pageLevel": 4,
 			"navName": "Routing",
-			"pageTitle": "IceHawk routing",
+			"pageTitle": "Routing",
 			"description": "IceHawk routing - components documentation",
 			"language": "en",
 			"imageUrl": "/images/logo_121x100.png",
@@ -213,7 +214,7 @@
 		"/docs/icehawk/request-information.html": {
 			"pageLevel": 4,
 			"navName": "Request information",
-			"pageTitle": "IceHawk information",
+			"pageTitle": "Request information",
 			"description": "IceHawk request information - components documentation",
 			"language": "en",
 			"imageUrl": "/images/logo_121x100.png",
@@ -232,7 +233,7 @@
 		"/docs/icehawk/request-data.html": {
 			"pageLevel": 4,
 			"navName": "Request data",
-			"pageTitle": "IceHawk data",
+			"pageTitle": "Request data",
 			"description": "IceHawk request data - components documentation",
 			"language": "en",
 			"imageUrl": "/images/logo_121x100.png",
@@ -246,6 +247,25 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/icehawk/request-data.md",
+			"children": []
+		},
+		"/docs/icehawk/request-handlers.html": {
+			"pageLevel": 4,
+			"navName": "Request handlers",
+			"pageTitle": "IceHawk handlers",
+			"description": "IceHawk request handlers - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"IceHawk",
+				"request",
+				"handler",
+				"documentation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/request-handlers.md",
 			"children": []
 		},
 		"/docs/icehawk/events-and-subscribers.html": {
