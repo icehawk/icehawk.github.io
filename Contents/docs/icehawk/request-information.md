@@ -83,6 +83,118 @@ As shown in the [configuration section](@baseUrl@/docs/icehawk/configuration.htm
 
 <hr class="blockspace">
 
+## Where can I use the RequestInfo object?
+
+The `RequestInfo` object is injected to all relevant objects where you can place your code. In Detail:
+  
+### IceHawk delegate
+
+As you can see in the [delegation section](@baseUrl@/docs/icehawk/delegation.html) the IceHawk component provides places to set up your error and/or session handling.
+
+The request info object is directly passed to these delegate methods:
+
+```php
+class IceHawkDelegate implements SetsUpEnvironment
+{
+	public function setUpErrorHandling( ProvidesRequestInfo $requestInfo )
+	{
+		
+	}
+	
+	public function setUpSessionHandling( ProvidesRequestInfo $requestInfo )
+	{
+		
+	}
+}
+```
+  
+### RequestHandlers
+
+Every IceHawk request handler, regardless of read or write side, needs to implement one method:
+
+```php
+# Read side
+public function handle( ProvidesReadRequestData $request );
+
+# Write side
+public function handle( ProvidesReadRequestData $request );
+```
+
+These methods are defined by the two base interfaces for request handlers: 
+
+* `IceHawk\IceHawk\Interfaces\HandlesReadRequest`
+* `IceHawk\IceHawk\Interfaces\HandlesWriteRequest`
+
+The provided `$request` object gives you access to a) the request info object and b) to the request input data as follows:
+
+```php
+# Read side
+public function handle( ProvidesReadRequestData $request )
+{
+	# Get the request info object
+	$requestInfo = $request->getInfo();
+	
+	# Get the request input data object
+	$requestInput = $request->getInput();
+}
+
+# Write side
+public function handle( ProvidesWriteRequestData $request )
+{
+	# Get the request info object
+	$requestInfo = $request->getInfo();
+	
+	# Get the request input data object
+	$requestInput = $request->getInput();
+}
+```
+
+### IceHawk Events
+
+As you can read in the [events and subscribers section](@baseUrl@/docs/icehawk/events-and-subscribers.html) the IceHawk component publishes some events you can subscribe to.
+The following events will also carry the `RequestInfo` object:
+
+* [InitializingIceHawkEvent](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Events/InitializingIceHawkEvent.php)
+* [IceHawkWasInitializedEvent](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Events/IceHawkWasInitializedEvent.php)
+* [HandlingReadRequestEvent](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Events/HandlingReadRequestEvent.php)
+* [HandlingWriteRequestEvent](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Events/HandlingWriteRequestEvent.php)
+* [ReadRequestWasHandledEvent](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Events/ReadRequestWasHandledEvent.php)
+* [WriteRequestWasHandledEvent](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Events/WriteRequestWasHandledEvent.php)
+
+The following example shows how to access the `RequestInfo` object inside an event subscriber:
+
+```php
+class YourReadHandlingEventSubscriber extends AbstractEventSubscriber
+{
+	protected function whenHandlingReadRequest( HandlingReadRequestEvent $event )
+	{
+		# Get request info object
+		$requestInfo = $event->getRequestInfo();
+	}
+}
+```
+
+This is the same for all other subscribers / events.
+
+### Final responders
+
+As you can read in the [final responding section](@baseUrl@/docs/icehawk/final-responding.html) the IceHawk component lets you finally respond to requests that caused an error.
+
+The final responder object gets passed the same `$request` object as a request handler would get. This example shows how to access the request info object in a final responder:
+  
+```php
+class YourFinalReadResponder implements RespondsFinallyToReadRequest
+{
+	public function handleUncaughtException( \Throwable $throwable, ProvidesReadRequestData $request )
+	{
+		# Get the request info object
+		$requestInfo = $request->getInfo();
+	}
+}
+```
+
+<hr class="blockspace">
+
 ## What array keys does the default RequestInfo expect?
 
 **Please note:**

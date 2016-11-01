@@ -56,8 +56,8 @@
 	<meta property="og:description" content="IceHawk request information - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/icehawk/request-information.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-	<meta property="article:published_time" content="2016-10-31T22:48:27+01:00"/>
-	<meta property="article:modified_time" content="2016-10-31T22:48:27+01:00"/>
+	<meta property="article:published_time" content="2016-11-01T22:47:40+01:00"/>
+	<meta property="article:modified_time" content="2016-11-01T22:47:40+01:00"/>
 			<meta property="article:tag" content="IceHawk"/>
 			<meta property="article:tag" content="request"/>
 			<meta property="article:tag" content="information"/>
@@ -82,8 +82,8 @@
     },
     "headline": "IceHawk information | IceHawk | PHP micro framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/icehawk/request-information.html",
-    "datePublished": "2016-10-31T22:48:27+01:00",
-    "dateModified": "2016-10-31T22:48:27+01:00",
+    "datePublished": "2016-11-01T22:47:40+01:00",
+    "dateModified": "2016-11-01T22:47:40+01:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, request, information, documentation",
     "description": "IceHawk request information - components documentation"
@@ -327,6 +327,88 @@ $requestInfo = new RequestInfo( $_SERVER );</code></pre>
 <h2>Where to intantiate the object?</h2>
 <p>As shown in the <a href="https://icehawk.github.io/docs/icehawk/configuration.html">configuration section</a> you need to provide an instance of the <code>RequestInfo</code> class
 (or an implementation of the <code>ProvidesRequestInfo</code> interface) once in the <code>getRequestInfo()</code> method. IceHawk will then inject it to all subsequent objects. </p>
+<hr class="blockspace">
+<h2>Where can I use the RequestInfo object?</h2>
+<p>The <code>RequestInfo</code> object is injected to all relevant objects where you can place your code. In Detail:</p>
+<h3>IceHawk delegate</h3>
+<p>As you can see in the <a href="https://icehawk.github.io/docs/icehawk/delegation.html">delegation section</a> the IceHawk component provides places to set up your error and/or session handling.</p>
+<p>The request info object is directly passed to these delegate methods:</p>
+<pre><code class="language-php">class IceHawkDelegate implements SetsUpEnvironment
+{
+    public function setUpErrorHandling( ProvidesRequestInfo $requestInfo )
+    {
+
+    }
+
+    public function setUpSessionHandling( ProvidesRequestInfo $requestInfo )
+    {
+
+    }
+}</code></pre>
+<h3>RequestHandlers</h3>
+<p>Every IceHawk request handler, regardless of read or write side, needs to implement one method:</p>
+<pre><code class="language-php"># Read side
+public function handle( ProvidesReadRequestData $request );
+
+# Write side
+public function handle( ProvidesReadRequestData $request );</code></pre>
+<p>These methods are defined by the two base interfaces for request handlers: </p>
+<ul>
+<li><code>IceHawk\IceHawk\Interfaces\HandlesReadRequest</code></li>
+<li><code>IceHawk\IceHawk\Interfaces\HandlesWriteRequest</code></li>
+</ul>
+<p>The provided <code>$request</code> object gives you access to a) the request info object and b) to the request input data as follows:</p>
+<pre><code class="language-php"># Read side
+public function handle( ProvidesReadRequestData $request )
+{
+    # Get the request info object
+    $requestInfo = $request-&gt;getInfo();
+
+    # Get the request input data object
+    $requestInput = $request-&gt;getInput();
+}
+
+# Write side
+public function handle( ProvidesWriteRequestData $request )
+{
+    # Get the request info object
+    $requestInfo = $request-&gt;getInfo();
+
+    # Get the request input data object
+    $requestInput = $request-&gt;getInput();
+}</code></pre>
+<h3>IceHawk Events</h3>
+<p>As you can read in the <a href="https://icehawk.github.io/docs/icehawk/events-and-subscribers.html">events and subscribers section</a> the IceHawk component publishes some events you can subscribe to.
+The following events will also carry the <code>RequestInfo</code> object:</p>
+<ul>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Events/InitializingIceHawkEvent.php">InitializingIceHawkEvent</a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Events/IceHawkWasInitializedEvent.php">IceHawkWasInitializedEvent</a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Events/HandlingReadRequestEvent.php">HandlingReadRequestEvent</a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Events/HandlingWriteRequestEvent.php">HandlingWriteRequestEvent</a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Events/ReadRequestWasHandledEvent.php">ReadRequestWasHandledEvent</a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Events/WriteRequestWasHandledEvent.php">WriteRequestWasHandledEvent</a></li>
+</ul>
+<p>The following example shows how to access the <code>RequestInfo</code> object inside an event subscriber:</p>
+<pre><code class="language-php">class YourReadHandlingEventSubscriber extends AbstractEventSubscriber
+{
+    protected function whenHandlingReadRequest( HandlingReadRequestEvent $event )
+    {
+        # Get request info object
+        $requestInfo = $event-&gt;getRequestInfo();
+    }
+}</code></pre>
+<p>This is the same for all other subscribers / events.</p>
+<h3>Final responders</h3>
+<p>As you can read in the <a href="https://icehawk.github.io/docs/icehawk/final-responding.html">final responding section</a> the IceHawk component lets you finally respond to requests that caused an error.</p>
+<p>The final responder object gets passed the same <code>$request</code> object as a request handler would get. This example shows how to access the request info object in a final responder:</p>
+<pre><code class="language-php">class YourFinalReadResponder implements RespondsFinallyToReadRequest
+{
+    public function handleUncaughtException( \Throwable $throwable, ProvidesReadRequestData $request )
+    {
+        # Get the request info object
+        $requestInfo = $request-&gt;getInfo();
+    }
+}</code></pre>
 <hr class="blockspace">
 <h2>What array keys does the default RequestInfo expect?</h2>
 <p><strong>Please note:</strong></p>
