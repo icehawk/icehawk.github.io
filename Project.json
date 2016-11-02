@@ -128,7 +128,8 @@
 				"/docs/icehawk/delegation.html",
 				"/docs/icehawk/routing.html",
 				"/docs/icehawk/request-information.html",
-				"/docs/icehawk/request-data.html",
+				"/docs/icehawk/request-input-data.html",
+				"/docs/icehawk/uploaded-files.html",
 				"/docs/icehawk/request-handlers.html",
 				"/docs/icehawk/events-and-subscribers.html",
 				"/docs/icehawk/exceptions.html",
@@ -230,11 +231,11 @@
 			"contentFile": "docs/icehawk/request-information.md",
 			"children": []
 		},
-		"/docs/icehawk/request-data.html": {
+		"/docs/icehawk/request-input-data.html": {
 			"pageLevel": 4,
-			"navName": "Request data",
-			"pageTitle": "Request data",
-			"description": "IceHawk request data - components documentation",
+			"navName": "Request input data",
+			"pageTitle": "Request input data",
+			"description": "IceHawk request input data - components documentation",
 			"language": "en",
 			"imageUrl": "/images/logo_121x100.png",
 			"tags": [
@@ -246,7 +247,28 @@
 			"contentType": "markdown",
 			"renderer": "twig",
 			"template": "page.twig",
-			"contentFile": "docs/icehawk/request-data.md",
+			"contentFile": "docs/icehawk/request-input-data.md",
+			"children": []
+		},
+		"/docs/icehawk/uploaded-files.html": {
+			"pageLevel": 4,
+			"navName": "Uploaded files",
+			"pageTitle": "Uploaded files",
+			"description": "IceHawk uploaded files - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"IceHawk",
+				"request",
+				"data",
+				"documentation",
+				"uploaded",
+				"files"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/uploaded-files.md",
 			"children": []
 		},
 		"/docs/icehawk/request-handlers.html": {
