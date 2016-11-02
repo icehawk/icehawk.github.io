@@ -31,7 +31,6 @@
 			"template": "home.twig",
 			"contentFile": "",
 			"children": [
-				"/components.html",
 				"/docs.html",
 				"/coverage.html",
 				"/metrics.html",
@@ -50,30 +49,6 @@
 			"renderer": "twig",
 			"template": "404.twig",
 			"contentFile": "",
-			"children": []
-		},
-		"/components.html": {
-			"pageLevel": 2,
-			"navName": "Components",
-			"pageTitle": "Components",
-			"description": "IceHawk components for building fast, reliable CQRS web applications and APIs",
-			"language": "en",
-			"imageUrl": "/images/logo_121x100.png",
-			"tags": [
-				"components",
-				"applications",
-				"pubsub",
-				"session",
-				"forms",
-				"IceHawk",
-				"routing",
-				"publish",
-				"subscribe"
-			],
-			"contentType": "markdown",
-			"renderer": "twig",
-			"template": "page.twig",
-			"contentFile": "components.md",
 			"children": []
 		},
 		"/docs.html": {
