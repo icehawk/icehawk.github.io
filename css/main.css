@@ -311,6 +311,16 @@ table td {
 	padding: 5px;
 }
 
+.component-list > li {
+	font-size: larger;
+	margin: 15px 0;
+}
+
+.component-list .topic-list > li {
+	font-size: medium;
+	margin: 10px 0;
+}
+
 /* collapsed sidebar styles */
 @media screen and (max-width: 767px) {
 

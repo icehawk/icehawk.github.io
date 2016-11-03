@@ -1,0 +1,87 @@
+{% extends "page.twig" %}
+
+{% block content %}
+	<h1>Documentation</h1>
+
+	<hr class="blockspace">
+
+	<h2>Component docs</h2>
+
+	<ul class="component-list">
+		<li>
+			<a href="{{ project.getUrl('/docs/icehawk.html') }}" title="IceHawk component documentation">
+				<b>IceHawk</b> - the main routing component
+			</a>
+			<ol class="topic-list">
+
+				{% for child in project.getChildrenOf(project.getPageConfigForUri('/docs/icehawk.html')) %}
+					<li>
+						<a href="{{ project.getUrl(child.getUri) }}" title="{{ child.getPageTitle }}">
+							{{ child.getNavName }}
+						</a>
+					</li>
+				{% endfor %}
+			</ol>
+		</li>
+		<li>
+			<a href="{{ project.getUrl('/docs/session.html') }}" title="Session component documentation">
+				<b>Session</b> - a registry component for accessing session data
+			</a>
+			<ol class="topic-list">
+				{% for child in project.getChildrenOf(project.getPageConfigForUri('/docs/session.html')) %}
+					<li>
+						<a href="{{ project.getUrl(child.getUri) }}" title="{{ child.getPageTitle }}">
+							{{ child.getNavName }}
+						</a>
+					</li>
+				{% endfor %}
+			</ol>
+		</li>
+		<li>
+			<a href="{{ project.getUrl('/docs/forms.html') }}" title="Forms component documentation">
+				<b>Forms</b> - a form data component with feedback and CSRF protection support
+			</a>
+			<ol class="topic-list">
+				{% for child in project.getChildrenOf(project.getPageConfigForUri('/docs/forms.html')) %}
+					<li>
+						<a href="{{ project.getUrl(child.getUri) }}" title="{{ child.getPageTitle }}">
+							{{ child.getNavName }}
+						</a>
+					</li>
+				{% endfor %}
+			</ol>
+		</li>
+		<li>
+			<a href="{{ project.getUrl('/docs/pubsub.html') }}" title="PubSub component documentation">
+				<b>PubSub</b> - a publish-subscribe component for messaging
+			</a>
+			<ol class="topic-list">
+				{% for child in project.getChildrenOf(project.getPageConfigForUri('/docs/pubsub.html')) %}
+					<li>
+						<a href="{{ project.getUrl(child.getUri) }}" title="{{ child.getPageTitle }}">
+							{{ child.getNavName }}
+						</a>
+					</li>
+				{% endfor %}
+			</ol>
+		</li>
+	</ul>
+
+	<hr class="blockspace">
+
+	<h2>Docs by tag</h2>
+
+	{% for tag, pages in project.getPageConfigsGroupedByTag %}
+		<h3>{{ tag }}</h3>
+		<ul class="row topic-list">
+			{% for child in pages %}
+				<li class="col-xs-2 col-sm-2 col-md-4 col-lg-3">
+					<a href="{{ project.getUrl(child.getUri) }}" title="{{ child.getPageTitle }}">
+						{{ child.getNavName }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+
+{% endblock %}

@@ -68,10 +68,10 @@
 				"routing",
 				"documentation"
 			],
-			"contentType": "markdown",
+			"contentType": "html",
 			"renderer": "twig",
-			"template": "page.twig",
-			"contentFile": "documentation.md",
+			"template": "documentation.twig",
+			"contentFile": "",
 			"children": [
 				"/docs/icehawk.html",
 				"/docs/session.html",

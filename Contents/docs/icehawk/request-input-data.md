@@ -290,31 +290,6 @@ The IceHawk component offers a comfortable way to access uploaded files, especia
 IceHawk transforms the confusing structured `$_FILES` array that PHP unpacks to a normalized array containing an object for each uploaded file.
   
 An uploaded file is represented by the [UploadedFile class](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Requests/UploadedFile.php) with
-its interface `IceHawk\IceHawk\Interfaces\ProvidesUploadedFileData`:
-
-```php
-<?php declare(strict_types=1);
-
-interface ProvidesUploadedFileData
-{
-	public function getError() : int;
-	
-	public function getName() : string;
-	
-	public function getSize() : int;
-	
-	public function getTmpName() : string;
-	
-	public function getType() : string;
-	
-	public function getRealType() : string;
-	
-	public function getEncoding() : string;
-	
-	public function didUploadSucceed() : bool;
-	
-	public function getErrorMessage() : string;
-}
-```
+its interface `IceHawk\IceHawk\Interfaces\ProvidesUploadedFileData`.
 
 You can read more about this in the [uploaded files section](@baseUrl@/docs/icehawk/uploaded-files.html).
