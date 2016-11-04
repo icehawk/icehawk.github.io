@@ -153,6 +153,9 @@ class IceHawkConfig implements ConfiguresIceHawk
 }
 ```
 
+As you may noticed, we omitted the return type for this method, because we wanted to allow building a `\Generator` and `yield`ing the routes.  
+In the next major release targeting PHP 7.1 we'll add the [iterable](https://github.com/php/php-src/pull/1941) return type.
+
 This simple example shows how to provide routes by simply returning an array of route instances.
 This is pretty OK for small applications with a small number of routes. In case you have a large number of routes you can source them out to 
 a config file and only `yield` the current loop instance. Thats why we didn't add a return type to the `getReadRoutes()` / `getWriteRoutes()` methods.

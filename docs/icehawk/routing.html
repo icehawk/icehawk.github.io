@@ -56,8 +56,8 @@
 	<meta property="og:description" content="IceHawk routing - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/icehawk/routing.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-	<meta property="article:published_time" content="2016-11-03T01:03:33+01:00"/>
-	<meta property="article:modified_time" content="2016-11-03T01:03:33+01:00"/>
+	<meta property="article:published_time" content="2016-11-05T00:13:15+01:00"/>
+	<meta property="article:modified_time" content="2016-11-05T00:13:15+01:00"/>
 			<meta property="article:tag" content="IceHawk"/>
 			<meta property="article:tag" content="routing"/>
 			<meta property="article:tag" content="documentation"/>
@@ -82,8 +82,8 @@
     },
     "headline": "Routing | IceHawk | PHP micro framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/icehawk/routing.html",
-    "datePublished": "2016-11-03T01:03:33+01:00",
-    "dateModified": "2016-11-03T01:03:33+01:00",
+    "datePublished": "2016-11-05T00:13:15+01:00",
+    "dateModified": "2016-11-05T00:13:15+01:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, routing, documentation, delegation",
     "description": "IceHawk routing - components documentation"
@@ -343,14 +343,14 @@ for all your URIs like <code>/shop/</code> IceHawk will give you the URI as is.<
 </ul>
 <p>The IceHawk component ships with two appropriate ready-to-use classes: </p>
 <ul>
-<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Routing/ReadRoute.php"><em>ReadRoute</em></a> </li>
-<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Routing/WriteRoute.php"><em>WriteRoute</em></a> </li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.3/src/Routing/ReadRoute.php"><em>ReadRoute</em></a> </li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.3/src/Routing/WriteRoute.php"><em>WriteRoute</em></a> </li>
 </ul>
 <p>We also ship the following ready-to-use classes for URI patterns:</p>
 <ul>
-<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Routing/Patterns/Literal.php"><em>Literal</em></a></li>
-<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Routing/Patterns/RegExp.php"><em>RegExp</em></a></li>
-<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Routing/Patterns/NamedRegExp.php"><em>NamedRegExp</em></a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.3/src/Routing/Patterns/Literal.php"><em>Literal</em></a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.3/src/Routing/Patterns/RegExp.php"><em>RegExp</em></a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.3/src/Routing/Patterns/NamedRegExp.php"><em>NamedRegExp</em></a></li>
 </ul>
 <p>We will discuss them later in this section.</p>
 <hr class="blockspace">
@@ -412,6 +412,8 @@ class IceHawkConfig implements ConfiguresIceHawk
         ];
     }
 }</code></pre>
+<p>As you may noticed, we omitted the return type for this method, because we wanted to allow building a <code>\Generator</code> and <code>yield</code>ing the routes.<br />
+In the next major release targeting PHP 7.1 we'll add the <a href="https://github.com/php/php-src/pull/1941">iterable</a> return type.</p>
 <p>This simple example shows how to provide routes by simply returning an array of route instances.
 This is pretty OK for small applications with a small number of routes. In case you have a large number of routes you can source them out to
 a config file and only <code>yield</code> the current loop instance. Thats why we didn't add a return type to the <code>getReadRoutes()</code> / <code>getWriteRoutes()</code> methods.</p>
@@ -572,8 +574,8 @@ print_r( $pattern-&gt;getMatches() );
 <p>If you have a large number of routes in your project, it meight be useful to group them by base paths.</p>
 <p>The IceHawk component ships with 2 ready-to-use classes to accomplish this approach:</p>
 <ul>
-<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Routing/ReadRouteGroup.php">ReadRouteGroup</a></li>
-<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.1/src/Routing/WriteRouteGroup.php">WriteRouteGroup</a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.3/src/Routing/ReadRouteGroup.php">ReadRouteGroup</a></li>
+<li><a href="https://github.com/icehawk/icehawk/blob/v2.0.3/src/Routing/WriteRouteGroup.php">WriteRouteGroup</a></li>
 </ul>
 <p>Like <code>ReadRoute</code> and <code>WriteRoute</code> these classes also implement the interfaces <code>IceHawk\IceHawk\Routing\Interfaces\RoutesToReadHandler</code> / <code>IceHawk\IceHawk\Routing\Interfaces\RoutesToWriteHandler</code>.
 So they can simply replace a normal route instance.</p>

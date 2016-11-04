@@ -156,6 +156,7 @@ class IceHawkConfig implements ConfiguresIceHawk
 ```
 
 As you may noticed, we omitted the return type for this method, because we wanted to allow building a `\Generator` and `yield`ing the routes.  
+In the next major release targeting PHP 7.1 we'll add the [iterable](https://github.com/php/php-src/pull/1941) return type.
 
 Please see our [routing section](/docs/icehawk/routing.html) for more details and examples. 
 
@@ -215,7 +216,8 @@ class IceHawkConfig implements ConfiguresIceHawk
 }
 ```
 
-As you may noticed, we omitted the return type for this method, because we wanted to allow building a `\Generator` and `yield`ing the routes.  
+As you may noticed, we omitted the return type for this method, because we wanted to allow building a `\Generator` and `yield`ing the routes.
+In the next major release targeting PHP 7.1 we'll add the [iterable](https://github.com/php/php-src/pull/1941) return type.
 
 Please see our [routing section](/docs/icehawk/routing.html) for more details and examples. 
 
@@ -451,7 +453,7 @@ Please see our [Exceptions](/docs/icehawk/exceptions.html) section for more info
  
 Please see our [Final responding](/docs/icehawk/final-responding.html) section for more information on how to implement a final responder.
 
-## Use of objects provides by the config
+## Use of objects provided by the config
 
 Do not hesitate to provide new instances in all the configuration methods. 
 The IceHawk component makes sure that all methods of the config were called only once - even if an object is internally used multiple times.

@@ -293,3 +293,136 @@ An uploaded file is represented by the [UploadedFile class](https://github.com/i
 its interface `IceHawk\IceHawk\Interfaces\ProvidesUploadedFileData`.
 
 You can read more about this in the [uploaded files section](@baseUrl@/docs/icehawk/uploaded-files.html).
+
+In the following example, we'll explain how to access the files that were uploaded by this form:
+
+```html
+<form action="/upload/to/server" method="post" enctype="multipart/form-data">
+	<input type="file" name="file1">
+	<input type="file" name="files[]">
+	<input type="file" name="files[]">
+	<input type="file" name="files[file4]">
+	<input type="submit" value="upload">
+</form>
+```
+
+<hr class="blockspace">
+
+#### 3.1 Get all uploaded files
+
+```php
+$allUploadedFiles = $requestInput->getAllFiles();
+var_dump( $allUploadedFiles );
+```
+
+This prints:
+
+```php
+array (size=2)
+  'file1' => 
+    array (size=1)
+      0 => 
+        object(IceHawk\IceHawk\Requests\UploadedFile)[15]
+          private 'name' => string '...' (length=24)
+          private 'tmpName' => string '...' (length=66)
+          private 'error' => int 0
+          private 'size' => int 40506
+          private 'type' => string 'image/png' (length=9)
+  'files' => 
+    array (size=3)
+      0 => 
+        object(IceHawk\IceHawk\Requests\UploadedFile)[17]
+          private 'name' => string '...' (length=24)
+		  private 'tmpName' => string '...' (length=66)
+		  private 'error' => int 0
+		  private 'size' => int 40506
+		  private 'type' => string 'image/png' (length=9)
+      1 => 
+        object(IceHawk\IceHawk\Requests\UploadedFile)[18]
+          private 'name' => string '...' (length=24)
+		  private 'tmpName' => string '...' (length=66)
+		  private 'error' => int 0
+		  private 'size' => int 40506
+		  private 'type' => string 'image/png' (length=9)
+      'file4' => 
+        object(IceHawk\IceHawk\Requests\UploadedFile)[19]
+          private 'name' => string '...' (length=24)
+		  private 'tmpName' => string '...' (length=66)
+		  private 'error' => int 0
+		  private 'size' => int 40506
+		  private 'type' => string 'image/png' (length=9)
+```
+
+<hr class="blockspace">
+
+#### 3.2 Get specific uploaded files
+
+```php
+$specificFiles = $requestInput->getFiles( 'files' );
+var_dump( $specificFiles );
+```
+
+This prints:
+
+```php
+array (size=3)
+  0 => 
+	object(IceHawk\IceHawk\Requests\UploadedFile)[17]
+	  private 'name' => string '...' (length=24)
+	  private 'tmpName' => string '...' (length=66)
+	  private 'error' => int 0
+	  private 'size' => int 40506
+	  private 'type' => string 'image/png' (length=9)
+  1 => 
+	object(IceHawk\IceHawk\Requests\UploadedFile)[18]
+	  private 'name' => string '...' (length=24)
+	  private 'tmpName' => string '...' (length=66)
+	  private 'error' => int 0
+	  private 'size' => int 40506
+	  private 'type' => string 'image/png' (length=9)
+  'file4' => 
+	object(IceHawk\IceHawk\Requests\UploadedFile)[19]
+	  private 'name' => string '...' (length=24)
+	  private 'tmpName' => string '...' (length=66)
+	  private 'error' => int 0
+	  private 'size' => int 40506
+	  private 'type' => string 'image/png' (length=9)
+```
+
+<hr class="blockspace">
+
+#### 3.3 Get one uploaded file
+
+```php
+# access a file using default index 0
+$uploadedFile0 = $requestInput->getOneFile( 'files' );
+var_dump( $uploadedFile0 );
+
+# access a file at a string index
+$uploadedFile4 = $requestInput->getOneFile( 'files', 'file4' );
+var_dump( $uploadedFile4 );
+
+# access a not existing file index
+$notUploadedFile = $requestInput->getOneFile( 'files', 'not-existing' );
+var_dump( $notUploadedFile );
+```
+
+This prints:
+
+```php
+object(IceHawk\IceHawk\Requests\UploadedFile)[17]
+  private 'name' => string '...' (length=24)
+  private 'tmpName' => string '...' (length=66)
+  private 'error' => int 0
+  private 'size' => int 40506
+  private 'type' => string 'image/png' (length=9)
+
+object(IceHawk\IceHawk\Requests\UploadedFile)[19]
+  private 'name' => string '...' (length=24)
+  private 'tmpName' => string '...' (length=66)
+  private 'error' => int 0
+  private 'size' => int 40506
+  private 'type' => string 'image/png' (length=9)
+
+NULL
+```

@@ -5,7 +5,7 @@
 	"contentsDir": "Contents/",
 	"replacements": {
 		"@website_version@": "v0.1.0",
-		"@icehawk/icehawk-version@": "v2.0.1",
+		"@icehawk/icehawk-version@": "v2.0.3",
 		"@icehawk/session-version@": "v1.1.1",
 		"@icehawk/forms-version@": "v1.0.0",
 		"@icehawk/pubsub-version@": "v1.0.1"
