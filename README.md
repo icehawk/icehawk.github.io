@@ -59,9 +59,14 @@ Now you should be able to view the pages in your browser when visiting http://12
 
 ### 6. Make changes
 
-* You can edit the content files located in the `./Contents` folder.
+* You can edit the content files located in the `./Contents` directory.
 * Please **do not edit** the `.html` files, those changes will be gone when generating the pages.
 * You can add new pages in the `./Project.json` file. Please refer to the already existing page configs there.
+
+**Pro-Tip:**
+
+If you're using PhpStorm, you can set up a [FileWatcher](https://www.jetbrains.com/help/phpstorm/2016.2/using-file-watchers.html) for the `./Contents` directory and let the page generator 
+automatically be executed as soon as you saved changes. You won't need to trigger the generator every time yourself. 
 
 ### 7. Commit & push your changes
 
