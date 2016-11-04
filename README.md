@@ -46,7 +46,7 @@ Press Ctrl-C to quit.
 
 ### 4. Generate the pages for your locale base URL
 
-In order to generate the pages for your local URL (http://127.0.0.1:8088 or whatever your webservers URL is), you need 
+In order to generate the pages for your local URL (http://127.0.0.1:8088 or whatever your webserver's URL is), you need 
 to run the static page generator with the option `--baseUrl="http://127.0.0.1:8088"`.
 
 ```bash
@@ -63,7 +63,7 @@ Now you should be able to view the pages in your browser when visiting http://12
 * Please **do not edit** the `.html` files, those changes will be gone when generating the pages.
 * You can add new pages in the `./Project.json` file. Please refer to the already existing page configs there.
 
-### 6. Commit & push your changes
+### 7. Commit & push your changes
 
 **THIS IS IMPORTANT!**
 
@@ -77,7 +77,7 @@ $ git commit -m '...'
 $ git push
 ```
 
-### 7. Create a pull request
+### 8. Create a pull request
 
 Please create a pull request to the origin repository. We'll then check your changes and merge them.
 
