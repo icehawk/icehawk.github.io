@@ -110,7 +110,8 @@
 				"/docs/icehawk/events-and-subscribers.html",
 				"/docs/icehawk/exceptions.html",
 				"/docs/icehawk/final-responding.html",
-				"/docs/icehawk/dependency-injection.html"
+				"/docs/icehawk/dependency-injection.html",
+				"/docs/icehawk/constants.html"
 			]
 		},
 		"/docs/icehawk/installation.html": {
@@ -361,6 +362,25 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/icehawk/dependency-injection.md",
+			"children": []
+		},
+		"/docs/icehawk/constants.html": {
+			"pageLevel": 4,
+			"navName": "Constants",
+			"pageTitle": "Constants",
+			"description": "IceHawk constants - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"IceHawk",
+				"constants",
+				"HTTP method",
+				"HTTP code"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/constants.md",
 			"children": []
 		},
 		"/docs/session.html": {
