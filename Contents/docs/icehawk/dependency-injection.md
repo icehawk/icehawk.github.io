@@ -1,0 +1,1 @@
+# Dependency injection (a proposal)

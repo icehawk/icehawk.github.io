@@ -56,8 +56,8 @@
 	<meta property="og:description" content="IceHawk request handlers - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/icehawk/request-handlers.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-	<meta property="article:published_time" content="2016-11-09T00:11:46+01:00"/>
-	<meta property="article:modified_time" content="2016-11-09T00:11:46+01:00"/>
+	<meta property="article:published_time" content="2016-11-09T21:48:46+01:00"/>
+	<meta property="article:modified_time" content="2016-11-09T21:48:46+01:00"/>
 			<meta property="article:tag" content="IceHawk"/>
 			<meta property="article:tag" content="request"/>
 			<meta property="article:tag" content="handler"/>
@@ -82,8 +82,8 @@
     },
     "headline": "IceHawk handlers | IceHawk | PHP micro framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/icehawk/request-handlers.html",
-    "datePublished": "2016-11-09T00:11:46+01:00",
-    "dateModified": "2016-11-09T00:11:46+01:00",
+    "datePublished": "2016-11-09T21:48:46+01:00",
+    "dateModified": "2016-11-09T21:48:46+01:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, request, handler, documentation",
     "description": "IceHawk request handlers - components documentation"
@@ -209,6 +209,10 @@
 			</li>
 
 											<li>
+		<a href="https://icehawk.github.io/docs/icehawk/auto-responding.html">Auto responding</a>
+			</li>
+
+											<li>
 		<a href="https://icehawk.github.io/docs/icehawk/events-and-subscribers.html">Events and subscribers</a>
 			</li>
 
@@ -218,6 +222,10 @@
 
 											<li>
 		<a href="https://icehawk.github.io/docs/icehawk/final-responding.html">Final responding</a>
+			</li>
+
+											<li>
+		<a href="https://icehawk.github.io/docs/icehawk/dependency-injection.html">Dependency injection</a>
 			</li>
 
 							</ul>
@@ -264,6 +272,141 @@
 			<div class="col-xs-12 col-sm-9" id="mainstage">
 
 				<h1>IceHawk request handlers</h1>
+<p>This section covers how to implement request handlers for the read and the write side.</p>
+<hr class="blockspace">
+<h2>Request handler interfaces</h2>
+<p>In order to implement a request handler for the IceHawk component you need to implement one or more of
+the following interfaces in your request handler class. These interfaces are more or less marker interfaces, all extending the base interfaces for
+handling a read or a write request.</p>
+<p>Every marker interface defines what request method(s) are allowed for the implementing request handler class.
+So there is no need to add a request method string or constant to every defined route.</p>
+<p>This is the full inheritance listing of the request handler interfaces:</p>
+<pre><code>- HandlesRequest (empty interface, may contain declarations in future releases)
+  |
+  |- HandlesReadRequest (defines the handle() method for read request handlers)
+  |  |
+  |  `- HandlesHeadRequest (marks a request handler to handle a HEAD request)
+  |     |
+  |     `- HandlesGetRequest (marks a request handler to handle a GET and a HEAD request)
+  |
+  `- HandlesWriteRequest (defines the handle() method for write request handlers)
+     |
+     |- HandlesPostRequest (marks a request handler to handle a POST request)
+     |
+     |- HandlesPutRequest (marks a request handler to handle a PUT request)
+     |
+     |- HandlesPatchRequest (marks a request handler to handle a PATCH request)
+     |
+     `- HandlesDeleteRequest (marks a request handler to handle a DELETE request)</code></pre>
+<p>These marker interfaces also allow the IceHawk component to respond automatically to an <code>OPTIONS</code> request, as it just needs
+to check for the implemented interfaces of the request handlers the requested URI was mapped to. Note that both, read and write side, are considered before responding an <code>OPTIONS</code> request.
+So you can have the same URL allowing for example a <code>GET</code> request on the read side and a <code>POST</code> request on the write side. </p>
+<p>You can read more about this in our <a href="https://icehawk.github.io/docs/icehawk/auto-responding.html">auto repsonding section</a>.</p>
+<hr class="blockspace">
+<h2>Read side request handlers</h2>
+<p>For the read side HTTP offers only to verbs: <code>GET</code> and <code>HEAD</code>.
+Where the <code>HEAD</code> request should be handled and responded to exectly the same as a <code>GET</code> request, except that the body is omitted in the response.</p>
+<p>For this reason we decided to let <code>HandlesGetRequest</code> inherit from the <code>HandlesHeadRequest</code> interface. So if your request handler implements
+<code>HandlesGetRequest</code> it can respond to both, <code>GET</code> and <code>HEAD</code> requests.</p>
+<p>Implenenting a handler for <code>GET</code> requests is pretty easy though:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\HandlesGetRequest;
+use IceHawk\IceHawk\Interfaces\ProvidesReadRequestData;
+
+final class ShowHomepageRequestHandler implements HandlesGetRequest
+{
+    public function handle( ProvidesReadRequestData $request )
+    {
+        # Read some data and respond
+    }
+}</code></pre>
+<p>As you can see the only contract for your request handler is to implement a handle method that gets passed the read request object. So the rest is up to you.</p>
+<p>Another advantage of only implementing an interface instead of extending an abstract or base class is to have no dependencies to
+base logic or any other framework-tied implementation. So you can easily write own abstract/base classes, if needed, without to worry about
+inheritance / overwriting of framework code. <a href="https://icehawk.github.io/docs/icehawk/dependency-injection.html">We discuss a use-case for abstract classes here.</a></p>
+<p>For the sake of completeness, this is how a <code>HEAD</code>-only request handler is implemented:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\HandlesHeadRequest;
+use IceHawk\IceHawk\Interfaces\ProvidesReadRequestData;
+
+final class RessourceAvailableRequestHandler implements HandlesHeadRequest
+{
+    public function handle( ProvidesReadRequestData $request )
+    {
+        # Check for ressource existence and respond
+    }
+}</code></pre>
+<hr class="blockspace">
+<h2>Write side request handlers</h2>
+<p>For the write side HTTP offers 4 verbs: <code>POST</code>, <code>PUT</code>, <code>PATCH</code> and <code>DELETE</code>. The most web applications use <code>PUT</code>/<code>PATCH</code>/<code>DELETE</code> very rarely or don't use them at all.
+In most cases a remote write operation is represented by a <code>POST</code> request. Some webservers don't even support <code>PUT</code>, <code>PATCH</code> and <code>DELETE</code>.</p>
+<p>Implementing a handler for each of the request methods is equal and as easy as the previous example for a <code>GET</code> request handler.</p>
+<p>A <code>POST</code> request handler:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\HandlesPostRequest;
+use IceHawk\IceHawk\Interfaces\ProvidesWriteRequestData;
+
+final class PostNewCommentRequestHandler implements HandlesPostRequest
+{
+    public function handle( ProvidesWriteRequestData $request )
+    {
+        # Do some write actions here and respond
+    }
+}</code></pre>
+<p>A <code>PUT</code> request handler:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\HandlesPutRequest;
+use IceHawk\IceHawk\Interfaces\ProvidesWriteRequestData;
+
+final class AddRessourceRequestHandler implements HandlesPutRequest
+{
+    public function handle( ProvidesWriteRequestData $request )
+    {
+        # Do some write actions here and respond
+    }
+}</code></pre>
+<p>A <code>PATCH</code> request handler:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\HandlesPatchRequest;
+use IceHawk\IceHawk\Interfaces\ProvidesWriteRequestData;
+
+final class UpdateProfileRequestHandler implements HandlesPatchRequest
+{
+    public function handle( ProvidesWriteRequestData $request )
+    {
+        # Do some write actions here and respond
+    }
+}</code></pre>
+<p>A <code>DELETE</code> request handler:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\HandlesDeleteRequest;
+use IceHawk\IceHawk\Interfaces\ProvidesWriteRequestData;
+
+final class UnsubscribeNewsletterRequestHandler implements HandlesDeleteRequest
+{
+    public function handle( ProvidesWriteRequestData $request )
+    {
+        # Do some write actions here and respond
+    }
+}</code></pre>
 				<div id="footer" class="row small">
 					<div class="col-xs-12 col-sm-12 col-md-3 text-center">
 						<span class="text-muted">
