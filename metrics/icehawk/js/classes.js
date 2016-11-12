@@ -1109,13 +1109,12 @@ var classes = [
         "nbMethodsSetters": 0,
         "ccn": 1,
         "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\HandlesReadRequest",
             "IceHawk\\IceHawk\\Interfaces\\HandlesHeadRequest"
         ],
         "kanDefect": 0.15,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 2,
+        "efferentCoupling": 1,
         "instability": 1,
         "violations": {}
     },
@@ -1221,10 +1220,10 @@ var classes = [
             "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData"
         ],
         "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 4,
+        "pageRank": 0.02,
+        "afferentCoupling": 3,
         "efferentCoupling": 2,
-        "instability": 0.33,
+        "instability": 0.4,
         "violations": {}
     },
     {
