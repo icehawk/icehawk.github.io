@@ -1,6 +1,6 @@
 # IceHawk events and subscribers 
 
-This section describes how to subscribe to and handle events the IceHawk component emits.
+This section describes how to subscribe to and handle events that were emitted by the IceHawk component.
  
 <hr class="blockspace">
 
