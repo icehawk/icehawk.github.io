@@ -80,12 +80,14 @@ catch ( InvalidEventSubscriberCollection $e )
 
 ## EventSubscriberMethodNotCallable
 
-This exception is throws when you [configured an event subscriber](@baseUrl@/docs/icehawk/events-and-subscribers.html) to accept a specific event, 
+This exception is thrown when you [configured an event subscriber](@baseUrl@/docs/icehawk/configuration.html) to accept a specific event, 
 but forgot to implement the appropriate event handler method or used `private` as the visibility level of that method.
  
 This exceptions provides information about the expected method name, that could not be found:
 
 **Please note:** This exception is only thrown if you inherit from our abstract class `AbstractEventSubscriber`. 
+
+[Read more about events and subscribers.](@baseUrl@/docs/icehawk/events-and-subscribers.html)
 
 ```php
 <?php declare(strict_types=1);
