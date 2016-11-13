@@ -105,11 +105,63 @@ final class YourEventSubscriber extends AbstractEventSubscriber
 ```
 
 As you can see the abstract event subscriber drills down the `acceptsEvent()` method to a simple question for event class names (`getAcceptedEvents()`).
-Furthermore it tries to call a method named after the event class on the event subscriber - the event handler method.
+Furthermore it tries to call a method named after the event class on the event subscriber - the event handler method. (when `notify()` is called)
 
-The name of the event handler method has the prefix "when" to describe that it is called _when_ the subscriber is notified about the event.
-In addition the suffix "Event" is omitted in the method name. Furthermore the concrete event class name is used as the parameter type declaration, 
-to make clear that this handler method is only responsible for this particular event.
+The name of the event handler method has the prefix "when" to describe that it is called _when_ the subscriber is notified about the event, while the 
+"Event" suffix is omitted in the method name. Furthermore the concrete event class name is used as the parameter type declaration 
+to express that this handler method is only responsible for this particular event.
+
+Using the `AbstractEventSubscriber` class lets you easily implement one subscriber for multiple events.
+The following example shows how to measure the time your request handler needs to handle the current request by implementing one subscriber for two events.
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\PubSub\AbstractEventSubscriber;
+use IceHawk\IceHawk\Events\HandlingReadRequestEvent;
+use IceHawk\IceHawk\Events\ReadRequestWasHandled;
+
+final class YourEventSubscriber extends AbstractEventSubscriber
+{
+	/** @var float */
+	private $startTime;
+
+	public function getAcceptedEvents() : array
+	{
+		return [
+			HandlingReadRequestEvent::class,
+			ReadRequestWasHandledEvent::class,
+		];
+	}
+	
+	protected function whenHandlingReadRequest( HandlingReadRequestEvent $event )
+	{
+		$this->startTime = microtime(true);
+	}
+	
+	protected function whenReadRequestWasHandled( ReadRequestWasHandledEvent $event )
+	{
+		# Print the duration your request handler took to handle the request
+		printf( 
+			"Your request handler took %f seconds to handle the request on URI: %s",
+			(microtime(true) - $this->startTime),
+			$event->getRequestInfo()->getUri()
+		);
+		
+		# Print the overall duration since the request hit the server
+		printf(
+			"IceHawk handled the request in %f seconds.",
+			(microtime(true) - $event->getRequestInfo()->getRequestTimeFloat())
+		);
+	}
+}
+```
+
+**Please note:** If your subscriber claims to accept a particular event, but does not implement its accordingly event handler method, 
+the abstract event subscriber will [throw an `EventHandlerMethodNotImplemented` exception](@baseUrl@/docs/icehawk/exceptions.html). 
+This is of course not the case, if you only implement the `SubscribesToEvents` interface.
 
 <hr class="blockspace">
 

@@ -56,8 +56,8 @@
 	<meta property="og:description" content="IceHawk events and subscribers - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/icehawk/events-and-subscribers.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-	<meta property="article:published_time" content="2016-11-13T13:08:34+01:00"/>
-	<meta property="article:modified_time" content="2016-11-13T13:08:34+01:00"/>
+	<meta property="article:published_time" content="2016-11-13T13:58:33+01:00"/>
+	<meta property="article:modified_time" content="2016-11-13T13:58:33+01:00"/>
 			<meta property="article:tag" content="IceHawk"/>
 			<meta property="article:tag" content="event"/>
 			<meta property="article:tag" content="subscriber"/>
@@ -82,8 +82,8 @@
     },
     "headline": "Events and subscribers | IceHawk | PHP micro framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/icehawk/events-and-subscribers.html",
-    "datePublished": "2016-11-13T13:08:34+01:00",
-    "dateModified": "2016-11-13T13:08:34+01:00",
+    "datePublished": "2016-11-13T13:58:33+01:00",
+    "dateModified": "2016-11-13T13:58:33+01:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, event, subscriber, documentation",
     "description": "IceHawk events and subscribers - components documentation"
@@ -342,10 +342,57 @@ final class YourEventSubscriber extends AbstractEventSubscriber
     }
 }</code></pre>
 <p>As you can see the abstract event subscriber drills down the <code>acceptsEvent()</code> method to a simple question for event class names (<code>getAcceptedEvents()</code>).
-Furthermore it tries to call a method named after the event class on the event subscriber - the event handler method.</p>
-<p>The name of the event handler method has the prefix &quot;when&quot; to describe that it is called <em>when</em> the subscriber is notified about the event.
-In addition the suffix &quot;Event&quot; is omitted in the method name. Furthermore the concrete event class name is used as the parameter type declaration,
-to make clear that this handler method is only responsible for this particular event.</p>
+Furthermore it tries to call a method named after the event class on the event subscriber - the event handler method. (when <code>notify()</code> is called)</p>
+<p>The name of the event handler method has the prefix &quot;when&quot; to describe that it is called <em>when</em> the subscriber is notified about the event, while the
+&quot;Event&quot; suffix is omitted in the method name. Furthermore the concrete event class name is used as the parameter type declaration
+to express that this handler method is only responsible for this particular event.</p>
+<p>Using the <code>AbstractEventSubscriber</code> class lets you easily implement one subscriber for multiple events.
+The following example shows how to measure the time your request handler needs to handle the current request by implementing one subscriber for two events.</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\PubSub\AbstractEventSubscriber;
+use IceHawk\IceHawk\Events\HandlingReadRequestEvent;
+use IceHawk\IceHawk\Events\ReadRequestWasHandled;
+
+final class YourEventSubscriber extends AbstractEventSubscriber
+{
+    /** @var float */
+    private $startTime;
+
+    public function getAcceptedEvents() : array
+    {
+        return [
+            HandlingReadRequestEvent::class,
+            ReadRequestWasHandledEvent::class,
+        ];
+    }
+
+    protected function whenHandlingReadRequest( HandlingReadRequestEvent $event )
+    {
+        $this-&gt;startTime = microtime(true);
+    }
+
+    protected function whenReadRequestWasHandled( ReadRequestWasHandledEvent $event )
+    {
+        # Print the duration your request handler took to handle the request
+        printf( 
+            "Your request handler took %f seconds to handle the request on URI: %s",
+            (microtime(true) - $this-&gt;startTime),
+            $event-&gt;getRequestInfo()-&gt;getUri()
+        );
+
+        # Print the overall duration since the request hit the server
+        printf(
+            "IceHawk handled the request in %f seconds.",
+            (microtime(true) - $event-&gt;getRequestInfo()-&gt;getRequestTimeFloat())
+        );
+    }
+}</code></pre>
+<p><strong>Please note:</strong> If your subscriber claims to accept a particular event, but does not implement its accordingly event handler method,
+the abstract event subscriber will <a href="https://icehawk.github.io/docs/icehawk/exceptions.html">throw an <code>EventHandlerMethodNotImplemented</code> exception</a>.
+This is of course not the case, if you only implement the <code>SubscribesToEvents</code> interface.</p>
 <hr class="blockspace">
 <h2>Registering event subscribers</h2>
 <p>You can register your event subscribers in the <a href="https://icehawk.github.io/docs/icehawk/configuration.html">IceHawk config's <code>getEventSubscribers()</code> method</a> by simply
