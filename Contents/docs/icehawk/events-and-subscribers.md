@@ -173,6 +173,9 @@ It therefor needs to be declared `protected` or `public`.
 You can register your event subscribers in the [IceHawk config's `getEventSubscribers()` method](@baseUrl@/docs/icehawk/configuration.html) by simply 
 returning an array of event subscriber instances.
 
+You can of course register multiple event subscribers for one event. The order in which the subscribers will be notified about the event is the same 
+as the registration order.
+
 ```php
 <?php declare(strict_types=1);
 
