@@ -56,8 +56,8 @@
 	<meta property="og:description" content="Forms - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/forms.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-	<meta property="article:published_time" content="2016-11-13T15:31:54+01:00"/>
-	<meta property="article:modified_time" content="2016-11-13T15:31:54+01:00"/>
+	<meta property="article:published_time" content="2016-11-13T18:41:39+01:00"/>
+	<meta property="article:modified_time" content="2016-11-13T18:41:39+01:00"/>
 			<meta property="article:tag" content="forms"/>
 			<meta property="article:tag" content="components"/>
 			<meta property="article:tag" content="applications"/>
@@ -83,8 +83,8 @@
     },
     "headline": "Forms component | IceHawk | PHP micro framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/forms.html",
-    "datePublished": "2016-11-13T15:31:54+01:00",
-    "dateModified": "2016-11-13T15:31:54+01:00",
+    "datePublished": "2016-11-13T18:41:39+01:00",
+    "dateModified": "2016-11-13T18:41:39+01:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "forms, components, applications, routing, documentation",
     "description": "Forms - components documentation"
@@ -181,6 +181,16 @@
 
 											<li class="active">
 		<a href="https://icehawk.github.io/docs/forms.html">Forms</a>
+					<ul class="nav">
+															<li>
+		<a href="https://icehawk.github.io/docs/forms/installation.html">Installation</a>
+			</li>
+
+											<li>
+		<a href="https://icehawk.github.io/docs/forms/usage.html">Usage</a>
+			</li>
+
+							</ul>
 			</li>
 
 											<li>
@@ -209,6 +219,12 @@
 			</li>
 
 
+					
+								<li>
+		<a href="https://icehawk.github.io/imprint.html">Imprint</a>
+			</li>
+
+
 									</ul>
 			</div>
 
@@ -216,195 +232,17 @@
 			<div class="col-xs-12 col-sm-9" id="mainstage">
 
 				<h1>Forms component</h1>
-<p>Provides a convenient object to store form data and feedback with CSRF protection support.</p>
 <hr class="blockspace">
-<h3>Usage</h3>
-<pre><code class="language-php">&lt;?php declare(strict_types=1);
-
-namespace MyVendor\MyProject;
-
-use IceHawk\Forms\Security\Token;
-
-# Create a new token (without expiry)
-$token = new Token();
-
-echo $token-&gt;toString(); # or echo $token;
-
-# Create a new token (with expiry in 50 seconds)
-$token = (new Token())-&gt;expiresIn( 50 );
-
-# Create a token from string (i.e. when sent through a post form)
-$token = Token::fromString( '...' );
-
-# Compare tokens
-$token   = new Token();
-$other   = new Token();
-$another = Token::fromString($token-&gt;toString());
-
-$token-&gt;equals($other);   # false
-$other-&gt;equals($token);   # false
-
-$token-&gt;equals($another); # true
-$other-&gt;equals($another); # true
-# ...
-
-# Check token expiry
-$token = (new Token())-&gt;expiresIn( 2 );
-
-$token-&gt;isExpired(); # false
-
-sleep(3);
-
-$token-&gt;isExpired(); # true</code></pre>
+<h2>Abstract</h2>
+<p>The Forms component is intended to carry form data and feedback from the write side to the read side.
+It also offers <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">cross-site request-forgery (CSRF)</a> protection.</p>
 <hr class="blockspace">
-<h2>Feedback</h2>
-<p>Simple value object for form feedback with severity.</p>
-<h3>Usage</h3>
-<pre><code class="language-php">&lt;?php declare(strict_types=1);
-
-namespace MyVendor\MyProject;
-
-use IceHawk\Forms\Feedback;
-
-# Create a new feedback with default severity (Feedback::ERROR)
-$feedback = new Feedback( 'message' );
-
-# Create a new feedback with explicit severity
-# Available severities: Feedback::ERROR (default), Feedback::WARNING, Feedback::NOTICE, Feedback::SUCCESS, Feedback::NONE 
-$feedback = new Feedback( 'message', Feedback::WARNING );
-
-# Retrieve feedback message
-$message = $feedback-&gt;getMessage();
-
-# Retrieve feedback severity
-$severity = $feedback-&gt;getSeverity();</code></pre>
-<hr class="blockspace">
-<h2>Form</h2>
-<p>Aggregating object to be stored in session for securely exchanging form data and feedback between read and write side of a web application.  </p>
-<h3>Usage</h3>
-<pre><code class="language-php">&lt;?php declare(strict_types=1);
-
-namespace MyVendor\MyProject;
-
-use IceHawk\Forms\Form;
-use IceHawk\Forms\FormId;
-use IceHawk\Forms\Feedback;
-use IceHawk\Forms\Security\Token;
-
-# Create a new instance identified by a form ID
-$form = new Form( new FormId( 'myForm' ) );
-
-# Check if form has already data set
-if ( $form-&gt;wasDataSet() )
-{
-    # Set up some default data (single)
-    $form-&gt;set( 'username', 'johndoe' );
-
-    # Set up some default data (multiple)
-    $form-&gt;setData(
-        [
-            'firstname' =&gt; 'John',
-            'lastname'  =&gt; 'Doe',
-        ]
-    );
-}
-
-# Retrieve the initially set CSRF token
-$token = $form-&gt;getToken();
-
-# Renew the CSRF token (Default Token class is used, see above)
-$form-&gt;renewToken();
-
-# Renew the CSRF token with expiry in 10 minutes
-$form-&gt;renewToken( (new Token())-&gt;expiresIn( 600 ) );
-
-# Renew the CSRF token with own token implementation
-# Token implementation must follow the \IceHawk\Forms\Interfaces\IdentifiesFormRequestSource interface
-$form-&gt;renewToken( new MyToken() );
-
-# Check if CSRF token is valid (boolean)
-# Checks token string and expiry
-$token = Token::fromString( $_POST['token'] );
-$form-&gt;isTokenValid( $token );
-
-# Check if CSRF token is valid (throws exceptions)
-# Checks token string and expiry
-# Throws \IceHawk\Forms\Excpetion\TokenMismatch, if token string does not match
-# Throws \IceHawk\Forms\Excpetion\TokenHasExpired, if token has expired
-$token = Token::fromString( $_POST['token'] );
-$form-&gt;guardTokenIsValid( $token );
-
-# Check if token is expired
-$form-&gt;hasTokenExpired();
-
-# Check if a key isset
-$form-&gt;isset( 'username' );
-
-# Retrieve single value
-# Returns NULL, if the key was not set
-$username = $form-&gt;get( 'username' );
-
-# Retrieve all values incl. keys (assoc. array)
-$formData = $form-&gt;getData();
-
-# Unset a value
-$form-&gt;unset( 'username' );
-
-# Add single feedback (using default \IceHawk\Forms\Feedback class)
-# Feedback can but must not be bound to data keys
-# Feedback::ERROR is the default severity
-$form-&gt;addFeedback( 'username', new Feedback( 'Username is invalid', Feedback::ERROR );
-
-# Add multiple feedbacks (using default \IceHawk\Forms\Feedback class)
-$form-&gt;addFeedbacks(
-    [
-        'general'  =&gt; new Feedback( 'Some errors occurred.', Feedback::WARNING ),
-        'username' =&gt; new Feedback( 'Username is invalid.', Feedback::ERROR ),
-    ]
-);
-
-# Add feedback with own feedback implementation
-# Feedback implementation must follow the \IceHawk\Forms\Interfaces\ProvidesFeedback interface
-$form-&gt;addFeedback( 'firstname', new MyFeedback( 'Firstname is invalid.' ) );
-
-# Check for feedbacks
-$form-&gt;hasFeedbacks(); # true
-
-# Check for single feedback
-if ( $form-&gt;hasFeedback( 'username' ) )
-{
-    # Retrieve single feedback
-    $usernameFeedback = $form-&gt;getFeedback( 'username' );
-}
-
-# Retrieve all feedbacks
-$feedbacks = $form-&gt;getFeedbacks();
-
-# Retrive feedbacks filtered by keys
-$filteredFeedbacks = $form-&gt;getFeedbacks(
-    function( ProvidesFeedback $feedback, string $key )
-    {
-        return ($key == 'general');  
-    }
-);
-
-# Retrive feedbacks filtered by severity
-$filteredFeedbacks = $form-&gt;getFeedbacks(
-    function( ProvidesFeedback $feedback )
-    {
-        return ($feedback-&gt;getSeverity() == Feedback::ERROR);
-    }
-);
-
-# Retrieve an empty feedback for a key that was not set
-# Returns new Feedback( '', Feedback::NONE );
-$emptyFeedback = $form-&gt;getFeedback( 'email' );
-
-# Reset all feedbacks
-$form-&gt;resetFeedbacks();
-
-# Reset the form to initial state and renew CSRF token
-$form-&gt;reset();</code></pre>
+<h2>Topics</h2>
+<p>In the following chapters you can find detailed documentation about the single topics covered by this component.</p>
+<ul>
+<li><a href="/docs/forms/installation.html">Installation</a></li>
+<li><a href="/docs/forms/usage.html">Usage</a></li>
+</ul>
 				<div id="footer" class="row small">
 					<div class="col-xs-12 col-sm-12 col-md-3 text-center">
 						<span class="text-muted">

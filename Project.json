@@ -34,7 +34,8 @@
 				"/docs.html",
 				"/coverage.html",
 				"/metrics.html",
-				"/media.html"
+				"/media.html",
+				"/imprint.html"
 			]
 		},
 		"/404.html": {
@@ -401,6 +402,45 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/session.md",
+			"children": [
+				"/docs/session/installation.html",
+				"/docs/session/usage.html"
+			]
+		},
+		"/docs/session/installation.html": {
+			"pageLevel": 4,
+			"navName": "Installation",
+			"pageTitle": "Installation",
+			"description": "Session installation - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"session",
+				"installation",
+				"composer"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/session/installation.md",
+			"children": []
+		},
+		"/docs/session/usage.html": {
+			"pageLevel": 4,
+			"navName": "Usage",
+			"pageTitle": "Usage",
+			"description": "Session usage - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"session",
+				"usage",
+				"data mapper"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/session/usage.md",
 			"children": []
 		},
 		"/docs/forms.html": {
@@ -421,6 +461,46 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/forms.md",
+			"children": [
+				"/docs/forms/installation.html",
+				"/docs/forms/usage.html"
+			]
+		},
+		"/docs/forms/installation.html": {
+			"pageLevel": 4,
+			"navName": "Installation",
+			"pageTitle": "Installation",
+			"description": "Forms installation - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"forms",
+				"installation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/forms/installation.md",
+			"children": []
+		},
+		"/docs/forms/usage.html": {
+			"pageLevel": 4,
+			"navName": "Usage",
+			"pageTitle": "Usage",
+			"description": "Forms usage - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"forms",
+				"usage",
+				"CSRF",
+				"Token",
+				"Feedback"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/forms/usage.md",
 			"children": []
 		},
 		"/docs/pubsub.html": {
@@ -443,6 +523,47 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/pubsub.md",
+			"children": [
+				"/docs/pubsub/installation.html",
+				"/docs/pubsub/usage.html"
+			]
+		},
+		"/docs/pubsub/installation.html": {
+			"pageLevel": 4,
+			"navName": "Installation",
+			"pageTitle": "Installation",
+			"description": "PubSub installation - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"publish",
+				"subscribe",
+				"pubsub",
+				"installation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/pubsub/installation.md",
+			"children": []
+		},
+		"/docs/pubsub/usage.html": {
+			"pageLevel": 4,
+			"navName": "Usage",
+			"pageTitle": "Usage",
+			"description": "PubSub usage - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"publish",
+				"subscribe",
+				"pubsub",
+				"installation"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/pubsub/usage.md",
 			"children": []
 		},
 		"/coverage.html": {
@@ -494,6 +615,20 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "media.md",
+			"children": []
+		},
+		"/imprint.html": {
+			"pageLevel": 2,
+			"navName": "Imprint",
+			"pageTitle": "Imprint",
+			"description": "Imprint / Impressum",
+			"language": "de",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "imprint.md",
 			"children": []
 		}
 	}

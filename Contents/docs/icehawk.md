@@ -1,12 +1,14 @@
 # IceHawk component
 
+<hr class="blockspace">
+
 ## Abstract
 
 The IceHawk component is the heart of the framework as it actually realizes the CQRS approach by offering
 a user defined application setup, a routing mechanism for handling read and write requests separately, several "hooks" 
 into the request handling flow and final responding.
- 
-The following image illustrates the covered topics and the basic control flow of this component:
+
+<hr class="blockspace">
 
 ## Topics
 
