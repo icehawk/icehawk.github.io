@@ -76,7 +76,7 @@ One way to implement an event subscriber is of course to write a class that impl
 all on your own.
 
 To help you out with the handling the IceHawk ships with an [abstract event subscriber](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/PubSub/AbstractEventSubscriber.php) 
-class, that requires you to return the accepted event class names an to implement a protected/public event handler method. 
+class, that requires you to simply return the accepted event class names and to implement a protected/public event handler method. 
 
 An example implementation for an event subscriber for the `IceHawkWasInitializedEvent` would look like this:
   
@@ -162,6 +162,9 @@ final class YourEventSubscriber extends AbstractEventSubscriber
 **Please note:** If your subscriber claims to accept a particular event, but does not implement its accordingly event handler method, 
 the abstract event subscriber will [throw an `EventHandlerMethodNotImplemented` exception](@baseUrl@/docs/icehawk/exceptions.html). 
 This is of course not the case, if you only implement the `SubscribesToEvents` interface.
+
+When using the abstract event subscriber class the event handler method must be _callable_ from its scope. 
+It therefor needs to be declared `protected` or `public`.
 
 <hr class="blockspace">
 
