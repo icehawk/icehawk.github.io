@@ -74,7 +74,7 @@ As you can see the only contract for your request handler is to implement a hand
 
 Another advantage of only implementing an interface instead of extending an abstract or base class is to have no dependencies to 
 base logic or any other framework-tied implementation. So you can easily write own abstract/base classes, if needed, without to worry about 
-inheritance / overwriting of framework code. [We discuss a use-case for abstract classes here.](@baseUrl@/docs/icehawk/dependency-injection.html)
+inheritance / overwriting of framework code. [We discuss a use-case for abstract classes here.](@baseUrl@/guides/dependency-injection.html)
   
 For the sake of completeness, this is how a `HEAD`-only request handler is implemented:
 

@@ -8,7 +8,7 @@ Holger Woltersdorf 
 Fetscherstr. 36  
 D-01307 Dresden 
 
-Das IceHawk Framework ist ein Open Source Projekt unter der MIT License.
+Das IceHawk Framework ist ein Open Source Projekt unter der [MIT License](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/LICENSE).
 
 <hr class="blockspace">
 

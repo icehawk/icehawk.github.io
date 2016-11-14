@@ -1,5 +1,11 @@
 # Forms usage
 
+This section covers the features of the Forms component.
+
+<hr class="blockspace">
+
+## Using the Token class for CSRF protection
+
 ```php
 <?php declare(strict_types=1);
 
@@ -42,11 +48,7 @@ $token->isExpired(); # true
 
 <hr class="blockspace">
 
-## Feedback
-
-Simple value object for form feedback with severity.
-
-### Usage
+## Using the Feedback class for form messages
 
 ```php
 <?php declare(strict_types=1);
@@ -71,11 +73,9 @@ $severity = $feedback->getSeverity();
 
 <hr class="blockspace">
 
-## Form
+## Using the Form class
 
-Aggregating object to be stored in session for securely exchanging form data and feedback between read and write side of a web application.  
-
-### Usage
+The Form is an aggregating object to be stored in session for securely exchanging form data and feedback between read and write side of a web application.  
 
 ```php
 <?php declare(strict_types=1);

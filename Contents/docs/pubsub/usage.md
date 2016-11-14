@@ -15,8 +15,8 @@ This section describes how to use the PubSub component.
   
 ... and of course user-defined content, so called payload. 
 
-IceHawk/PubSub shipps with 2 types/value objects for the message ID and message name.
-If you don't want / can't use them for any reason, you can alternativly implement their interfaces.
+IceHawk/PubSub ships with two types/value objects for the message ID and message name.
+If you don't want or can't use them for any reason, you can alternativly implement their interfaces.
  
 | Shipped type / value object          | Interface                                     |
 |--------------------------------------|-----------------------------------------------|

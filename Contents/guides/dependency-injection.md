@@ -19,7 +19,7 @@ project-specific infrastructure container. The application then can access the n
 The container is designed as a variant of an object pool offering the ability to create shared instances without using singleton objects.
 
 The names for such containers vary a lot nowadays: Dependency injection container, Service locator, Interop container and so on.
-We tried to find a short name and simply called it `Env`, because from a business domain view that's what we do - we inject infrastructure from the environment.
+We tried to find a short name and simply called it `Env`, because from a business domain perspective that's what we do - we inject infrastructure from the environment.
 
 As we don't want to confuse you about `Env` and `$_ENV` or whatever you think the word "Env" means, we'll simply use "container" in the following paragraphs.
 
@@ -117,7 +117,7 @@ $iceHawk->init();
 $iceHawk->handleRequest();
 ```
 
-Therefor we need to add the container object as a custructor parameter to the IceHawk config. Since the IceHawk config or its interface does 
+Therefor we need to add the container object as a constructor parameter to the IceHawk config. Since the IceHawk config or its interface does 
 not define a constructor, we don't have to care about overwriting a base constructor.
  
 The altered IceHawk config class  could then look like this:
@@ -174,3 +174,167 @@ final class IceHawkConfig implements ConfiguresIceHawk
 	}
 }
 ```
+
+<hr class="blockspace">
+
+## Request handler base class(es)
+
+Depending on your choice how you want to access the container inside a request handler, there are at least three ways of implementation.
+
+### 1. Add container injection to every request handler
+
+The easiest variant is obviously to give each request handler a contructor that gets passed the container object and the usage via private member access.
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\HandlesGetRequest;
+use IceHawk\IceHawk\Interfaces\ProvidesReadRequestData;
+
+final class ListUsersRequestHandler implements HandlesGetRequest
+{
+	/** @var Container */
+	private $container;
+	
+	public function __construct( Container $container )
+	{
+		$this->container = $container;
+	}
+	
+	public function handle( ProvidesReadRequestData $request )
+	{
+		$dbManager = $this->container->getDbManager();
+		$userList  = $dbManager->query( "SELECT * FROM users WHERE 1" );
+		 
+		echo json_encode( $userList->fetchAll( \PDO::FETCH_ASSOC ), JSON_PRETTY_PRINT );
+		flush();
+	}
+}
+```
+
+Adding a constructor like this to every request handler is a lot of code redundancy and definitely a violation of 
+[DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). We wouldn't recommend to do this.
+
+### 2. Let the request handlers inherit from _one_ abstract class
+
+The following second variant uses one abstract class to implement the container injection only once for all request handlers and 
+gives access to the container via a final and protected getter.
+ 
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+abstract class AbstractRequestHandler
+{
+	/** @var Container */
+	private $container;
+	
+	public function __construct( Container $container )
+	{
+		$this->container = $container;
+	}
+	
+	final protected function getContainer() : Container
+	{
+		return $this->container;
+	}
+}
+```
+
+Now you can let all your request handlers extend this `AbstractRequestHandler`. 
+**Note:** This variant works for both types of request handlers - read and write.
+  
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\HandlesGetRequest;
+use IceHawk\IceHawk\Interfaces\ProvidesReadRequestData;
+
+final class ListUsersRequestHandler extends AbstractRequestHandler implements HandlesGetRequest
+{
+	public function handle( ProvidesReadRequestData $request )
+	{
+		$dbManager = $this->getContainer()->getDbManager();
+		$userList  = $dbManager->query( "SELECT * FROM users WHERE 1" );
+		 
+		echo json_encode( $userList->fetchAll( \PDO::FETCH_ASSOC ), JSON_PRETTY_PRINT );
+		flush();
+	}
+}
+```
+
+So all you need to add to your request handler is an `extends AbstractRequestHandler`.
+
+<hr class="blockspace">
+
+### 3. Add abstract request handlers for each side
+
+This third variant adds an abstract request handler for read and the write request handlers and passes the container object to a `handleRequest()` method.
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\ProvidesReadRequestData;
+
+abstract class AbstractReadRequestHandler implements HandlesReadRequest
+{
+	/** @var Container */
+	private $container;
+	
+	public function __construct( Container $container )
+	{
+		$this->container = $container;
+	}
+	
+	public function handle( ProvidesReadRequestData $request )
+	{
+		$this->handleRequest( $request, $this->container );
+	}
+	
+	abstract public function handleRequest( ProvidesReadRequestData $request, Container $container );
+}
+```
+
+Now the request handler would look like this:
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\HandlesGetRequest;
+use IceHawk\IceHawk\Interfaces\ProvidesReadRequestData;
+
+final class ListUsersRequestHandler extends AbstractReadRequestHandler implements HandlesGetRequest
+{
+	public function handleRequest( ProvidesReadRequestData $request, Container $container )
+	{
+		$dbManager = $container->getDbManager();
+		$userList  = $dbManager->query( "SELECT * FROM users WHERE 1" );
+		 
+		echo json_encode( $userList->fetchAll( \PDO::FETCH_ASSOC ), JSON_PRETTY_PRINT );
+		flush();
+	}
+}
+```
+
+Even though this variant probably offers the best readability, it has some downsides:
+ 
+* You need to add two abstract classes containing almost the same code
+* The previous intended interface of the request handlers change: `handle()` vs. `handleRequest()`. 
+
+You choose! ;)
+
+<hr class="blockspace">
+
+## Further injection
+
+In the same way you brought the container into the request handlers, you now can inject it to all the other application specific objects 
+in the [IceHawk config](@baseUrl@/docs/icehawk/configuration.html), such as event subscribers and final responders. If you need it.
