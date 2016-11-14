@@ -32,6 +32,7 @@
 			"contentFile": "",
 			"children": [
 				"/docs.html",
+				"/guides.html",
 				"/coverage.html",
 				"/metrics.html",
 				"/media.html",
@@ -111,7 +112,6 @@
 				"/docs/icehawk/events-and-subscribers.html",
 				"/docs/icehawk/exceptions.html",
 				"/docs/icehawk/final-responding.html",
-				"/docs/icehawk/dependency-injection.html",
 				"/docs/icehawk/constants.html"
 			]
 		},
@@ -345,26 +345,6 @@
 			"contentFile": "docs/icehawk/final-responding.md",
 			"children": []
 		},
-		"/docs/icehawk/dependency-injection.html": {
-			"pageLevel": 4,
-			"navName": "Dependency injection",
-			"pageTitle": "Dependency injection",
-			"description": "IceHawk dependency injection - components documentation",
-			"language": "en",
-			"imageUrl": "/images/logo_121x100.png",
-			"tags": [
-				"IceHawk",
-				"dependency injection",
-				"container",
-				"object pool",
-				"service locator"
-			],
-			"contentType": "markdown",
-			"renderer": "twig",
-			"template": "page.twig",
-			"contentFile": "docs/icehawk/dependency-injection.md",
-			"children": []
-		},
 		"/docs/icehawk/constants.html": {
 			"pageLevel": 4,
 			"navName": "Constants",
@@ -564,6 +544,46 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/pubsub/usage.md",
+			"children": []
+		},
+		"/guides.html": {
+			"pageLevel": 2,
+			"navName": "Guides",
+			"pageTitle": "Guides",
+			"description": "IceHawk guides",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"IceHawk",
+				"guides",
+				"tutorials"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "guides.md",
+			"children": [
+				"/guides/dependency-injection.html"
+			]
+		},
+		"/guides/dependency-injection.html": {
+			"pageLevel": 3,
+			"navName": "Dependency injection",
+			"pageTitle": "Dependency injection",
+			"description": "IceHawk dependency injection - guide",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"IceHawk",
+				"dependency injection",
+				"container",
+				"object pool",
+				"service locator"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "guides/dependency-injection.md",
 			"children": []
 		},
 		"/coverage.html": {
