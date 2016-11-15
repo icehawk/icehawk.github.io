@@ -55,12 +55,11 @@ A request handler is expressed as an object implementing one of the following in
 | Request type | Request method(s)   | Interface                                          |
 |--------------|---------------------|----------------------------------------------------|
 | read         | GET **incl.** HEAD  | `IceHawk\IceHawk\Interfaces\HandlesGetRequest`     |
+| read         | HEAD                | `IceHawk\IceHawk\Interfaces\HandlesHeadRequest`    |
 | write        | POST                | `IceHawk\IceHawk\Interfaces\HandlesPostRequest`    |
 | write        | PUT                 | `IceHawk\IceHawk\Interfaces\HandlesPutRequest`     |
 | write        | PATCH               | `IceHawk\IceHawk\Interfaces\HandlesPatchRequest`   |
 | write        | DELETE              | `IceHawk\IceHawk\Interfaces\HandlesDeleteRequest`  |
-_&dash; request method interfaces_ 
-
 
 A route then is expressed as an object implementing one of the following interfaces: 
 
