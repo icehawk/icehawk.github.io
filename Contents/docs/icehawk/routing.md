@@ -347,7 +347,8 @@ print_r( $pattern->getMatches() );
 **Please note:**
 
 * The `NamedRegExp` class uses the `!` (exclamation mark) as the delimiter for the pattern string. So the last example would be concatenated to the following string: 
-`"!^/product/(?<productId>[0-9]+)$i!"`.
+`"!^/product/(?<productId>[0-9]+)$!i"`.
+* You can provide the regular expression flags as the second argument.
 * The `NamedRegExp` class makes sure the match is executed only once.
 
 <hr class="blockspace">
