@@ -339,7 +339,8 @@ The method uses the PHP extension [fileinfo](http://php.net/fileinfo) to determi
 public function getEncoding() : string
 ```
 
-This method uses the PHP extension [fileinfo](http://php.net/fileinfo) to determine the mime encoding of the uploaded file and returns it. For example: `UTF-8`.
+This method uses the PHP extension [fileinfo](http://php.net/fileinfo) to determine the mime encoding of the uploaded file and returns it. 
+For example: `utf-8`.
 
 ```php
 public function didUploadSucceed() : bool
