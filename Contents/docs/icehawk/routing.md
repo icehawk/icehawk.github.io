@@ -66,12 +66,12 @@ A route then is expressed as an object implementing one of the following interfa
 * For read rouutes: `IceHawk\IceHawk\Routing\Interfaces\RoutesToReadHandler` 
 * For write routes: `IceHawk\IceHawk\Routing\Interfaces\RoutesToWriteHandler`
 
-The IceHawk component ships with two appropriate ready-to-use classes: 
+The IceHawk component provides two appropriate ready-to-use classes: 
 
 * [_ReadRoute_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/ReadRoute.php) 
 * [_WriteRoute_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/WriteRoute.php) 
 
-We also ship the following ready-to-use classes for URI patterns:
+We also provide the following ready-to-use classes for URI patterns:
 
 * [_Literal_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/Patterns/Literal.php)
 * [_RegExp_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/Patterns/RegExp.php)
