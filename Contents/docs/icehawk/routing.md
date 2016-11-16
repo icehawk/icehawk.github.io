@@ -46,7 +46,7 @@ If you always want trailing slashes in your URI you need to take care of that yo
 
 ## What is a route?
 
-A route basically consists of an URI pattern instance and an request handler instance.
+A route basically consists of a URI pattern instance and a request handler instance.
 
 A pattern is expressed as an object implementing the interface `IceHawk\IceHawk\Routing\Interfaces\ProvidesMatchResult`.
 
@@ -66,12 +66,12 @@ A route then is expressed as an object implementing one of the following interfa
 * For read rouutes: `IceHawk\IceHawk\Routing\Interfaces\RoutesToReadHandler` 
 * For write routes: `IceHawk\IceHawk\Routing\Interfaces\RoutesToWriteHandler`
 
-The IceHawk component ships with two appropriate ready-to-use classes: 
+The IceHawk component provides two appropriate ready-to-use classes: 
 
 * [_ReadRoute_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/ReadRoute.php) 
 * [_WriteRoute_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/WriteRoute.php) 
 
-We also ship the following ready-to-use classes for URI patterns:
+We also provide the following ready-to-use classes for URI patterns:
 
 * [_Literal_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/Patterns/Literal.php)
 * [_RegExp_](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/Patterns/RegExp.php)
@@ -157,7 +157,7 @@ In the next major release targeting PHP 7.1 we'll add the [iterable](https://git
 
 This simple example shows how to provide routes by simply returning an array of route instances.
 This is pretty OK for small applications with a small number of routes. In case you have a large number of routes you can source them out to 
-a config file and only `yield` the current loop instance. Thats why we didn't add a return type to the `getReadRoutes()` / `getWriteRoutes()` methods.
+a config file and only `yield` the current loop instance. That's why we didn't add a return type to the `getReadRoutes()` / `getWriteRoutes()` methods.
 
 The following example shows how to `yield` route instances, defined in a config file:
 
@@ -209,7 +209,7 @@ The advantage of this approach is that not all routes, patterns and request hand
 
 ## What patterns to use for matching?
 
-As already mentioned above, the IceHawk component ships with 3 ready-to-use pattern classes. We'd like to show you examples for each of them.
+As already mentioned above, the IceHawk component provides 3 ready-to-use pattern classes. We'd like to show you examples for each of them.
 
 A pattern class needs to implement the interface `IceHawk\IceHawk\Routing\Interfaces\ProvidesMatchResult`, that looks like this:
 
@@ -230,7 +230,7 @@ The `matches()` method is called with the current URI as the only parameter and 
  
 The `getMatches()` method shall return any values extracted from the URI as an array, if any. These values will then be merged with the current request values.
 
-So it is pretty simply to implement an own pattern class. This example shows how the `Literal` pattern class would be implemented as an anonymous class:
+So it is pretty simple to implement an own pattern class. This example shows how the `Literal` pattern class would be implemented as an anonymous class:
 
 ```php
 <?php declare(strict_types=1);
@@ -262,7 +262,7 @@ $literalPattern = new class implements ProvidesMatchingResult
 
 ### 1. The Literal pattern
 
-The `Literal` pattern matches - like the name says - an URI literally. So you have no option for placeholders or regular expressions here.
+The `Literal` pattern matches - like the name says - a URI literally. So you have no option for placeholders or regular expressions here.
 
 ```php
 <?php declare(strict_types=1);
@@ -355,9 +355,9 @@ print_r( $pattern->getMatches() );
 
 ## Route groups
 
-If you have a large number of routes in your project, it meight be useful to group them by base paths.
+If you have a large number of routes in your project, it might be useful to group them by base paths.
 
-The IceHawk component ships with 2 ready-to-use classes to accomplish this approach:
+The IceHawk component provides 2 ready-to-use classes to accomplish this approach:
 
 * [ReadRouteGroup](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/ReadRouteGroup.php)
 * [WriteRouteGroup](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Routing/WriteRouteGroup.php)

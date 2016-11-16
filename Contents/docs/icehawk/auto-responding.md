@@ -6,7 +6,7 @@ This section shows the auto responding behaviour of the IceHawk component.
 
 ## OPTIONS requests
 
-As described in the [request handlers section](@baseUrl@/docs/icehawk/request-handlers.html) the IceHawk component checks all implented interfaces of 
+As described in the [request handlers section](@baseUrl@/docs/icehawk/request-handlers.html) the IceHawk component checks all implemented interfaces of 
 request handlers mapped to the requested URI to determine the allowed request methods for this URI. The IceHawk component will then automatically 
 serve an appropriate response.
 

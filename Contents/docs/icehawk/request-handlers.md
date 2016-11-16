@@ -39,14 +39,14 @@ These marker interfaces also allow the IceHawk component to respond automaticall
 to check for the implemented interfaces of the request handlers the requested URI was mapped to. Note that both, read and write side, are considered before responding an `OPTIONS` request.
 So you can have the same URL allowing for example a `GET` request on the read side and a `POST` request on the write side. 
 
-You can read more about this in our [auto repsonding section](@baseUrl@/docs/icehawk/auto-responding.html).
+You can read more about this in our [auto responding section](@baseUrl@/docs/icehawk/auto-responding.html).
 
 <hr class="blockspace">
 
 ## Read side request handlers
 
 For the read side HTTP offers only to verbs: `GET` and `HEAD`.
-Where the `HEAD` request should be handled and responded to exectly the same as a `GET` request, except that the body is omitted in the response.
+Where the `HEAD` request should be handled and responded to exactly the same as a `GET` request, except that the body is omitted in the response.
 
 For this reason we decided to let `HandlesGetRequest` inherit from the `HandlesHeadRequest` interface. So if your request handler implements 
 `HandlesGetRequest` it can respond to both, `GET` and `HEAD` requests.

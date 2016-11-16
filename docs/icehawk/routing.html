@@ -56,8 +56,8 @@
 	<meta property="og:description" content="IceHawk routing - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/icehawk/routing.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-	<meta property="article:published_time" content="2016-11-15T12:11:34+01:00"/>
-	<meta property="article:modified_time" content="2016-11-15T12:11:34+01:00"/>
+	<meta property="article:published_time" content="2016-11-16T15:17:23+01:00"/>
+	<meta property="article:modified_time" content="2016-11-16T15:17:23+01:00"/>
 			<meta property="article:tag" content="IceHawk"/>
 			<meta property="article:tag" content="routing"/>
 			<meta property="article:tag" content="documentation"/>
@@ -82,8 +82,8 @@
     },
     "headline": "Routing | IceHawk | PHP micro-framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/icehawk/routing.html",
-    "datePublished": "2016-11-15T12:11:34+01:00",
-    "dateModified": "2016-11-15T12:11:34+01:00",
+    "datePublished": "2016-11-16T15:17:23+01:00",
+    "dateModified": "2016-11-16T15:17:23+01:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, routing, documentation, delegation",
     "description": "IceHawk routing - components documentation"
@@ -316,7 +316,7 @@ for all your URIs like <code>/shop/</code> IceHawk will give you the URI as is.<
 <p>If you always want trailing slashes in your URI you need to take care of that yourself, e.g. by adding an appropriate rewrite rule in your webserver's host config or <code>.htaccess</code> file.</p>
 <hr class="blockspace">
 <h2>What is a route?</h2>
-<p>A route basically consists of an URI pattern instance and an request handler instance.</p>
+<p>A route basically consists of a URI pattern instance and a request handler instance.</p>
 <p>A pattern is expressed as an object implementing the interface <code>IceHawk\IceHawk\Routing\Interfaces\ProvidesMatchResult</code>.</p>
 <p>A request handler is expressed as an object implementing one of the following interfaces, each representing the allowed request method(s):</p>
 <table>
@@ -365,12 +365,12 @@ for all your URIs like <code>/shop/</code> IceHawk will give you the URI as is.<
 <li>For read rouutes: <code>IceHawk\IceHawk\Routing\Interfaces\RoutesToReadHandler</code> </li>
 <li>For write routes: <code>IceHawk\IceHawk\Routing\Interfaces\RoutesToWriteHandler</code></li>
 </ul>
-<p>The IceHawk component ships with two appropriate ready-to-use classes: </p>
+<p>The IceHawk component provides two appropriate ready-to-use classes: </p>
 <ul>
 <li><a href="https://github.com/icehawk/icehawk/blob/v2.0.4/src/Routing/ReadRoute.php"><em>ReadRoute</em></a> </li>
 <li><a href="https://github.com/icehawk/icehawk/blob/v2.0.4/src/Routing/WriteRoute.php"><em>WriteRoute</em></a> </li>
 </ul>
-<p>We also ship the following ready-to-use classes for URI patterns:</p>
+<p>We also provide the following ready-to-use classes for URI patterns:</p>
 <ul>
 <li><a href="https://github.com/icehawk/icehawk/blob/v2.0.4/src/Routing/Patterns/Literal.php"><em>Literal</em></a></li>
 <li><a href="https://github.com/icehawk/icehawk/blob/v2.0.4/src/Routing/Patterns/RegExp.php"><em>RegExp</em></a></li>
@@ -440,7 +440,7 @@ class IceHawkConfig implements ConfiguresIceHawk
 In the next major release targeting PHP 7.1 we'll add the <a href="https://github.com/php/php-src/pull/1941">iterable</a> return type.</p>
 <p>This simple example shows how to provide routes by simply returning an array of route instances.
 This is pretty OK for small applications with a small number of routes. In case you have a large number of routes you can source them out to
-a config file and only <code>yield</code> the current loop instance. Thats why we didn't add a return type to the <code>getReadRoutes()</code> / <code>getWriteRoutes()</code> methods.</p>
+a config file and only <code>yield</code> the current loop instance. That's why we didn't add a return type to the <code>getReadRoutes()</code> / <code>getWriteRoutes()</code> methods.</p>
 <p>The following example shows how to <code>yield</code> route instances, defined in a config file:</p>
 <h3>1. The routes config file</h3>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
@@ -479,7 +479,7 @@ class IceHawkConfig implements ConfiguresIceHawk
 <p>The advantage of this approach is that not all routes, patterns and request handlers will be instantiated on bootstrap and that only the matching route instance will remain.</p>
 <hr class="blockspace">
 <h2>What patterns to use for matching?</h2>
-<p>As already mentioned above, the IceHawk component ships with 3 ready-to-use pattern classes. We'd like to show you examples for each of them.</p>
+<p>As already mentioned above, the IceHawk component provides 3 ready-to-use pattern classes. We'd like to show you examples for each of them.</p>
 <p>A pattern class needs to implement the interface <code>IceHawk\IceHawk\Routing\Interfaces\ProvidesMatchResult</code>, that looks like this:</p>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
 
@@ -493,7 +493,7 @@ interface ProvidesMatchResult
 }</code></pre>
 <p>The <code>matches()</code> method is called with the current URI as the only parameter and shall return whether the URI matches or not.</p>
 <p>The <code>getMatches()</code> method shall return any values extracted from the URI as an array, if any. These values will then be merged with the current request values.</p>
-<p>So it is pretty simply to implement an own pattern class. This example shows how the <code>Literal</code> pattern class would be implemented as an anonymous class:</p>
+<p>So it is pretty simple to implement an own pattern class. This example shows how the <code>Literal</code> pattern class would be implemented as an anonymous class:</p>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
 
 namespace YourVendor\YourProject;
@@ -520,7 +520,7 @@ $literalPattern = new class implements ProvidesMatchingResult
     }
 };</code></pre>
 <h3>1. The Literal pattern</h3>
-<p>The <code>Literal</code> pattern matches - like the name says - an URI literally. So you have no option for placeholders or regular expressions here.</p>
+<p>The <code>Literal</code> pattern matches - like the name says - a URI literally. So you have no option for placeholders or regular expressions here.</p>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
 
 $uri = '/product';
@@ -596,8 +596,8 @@ print_r( $pattern-&gt;getMatches() );
 </ul>
 <hr class="blockspace">
 <h2>Route groups</h2>
-<p>If you have a large number of routes in your project, it meight be useful to group them by base paths.</p>
-<p>The IceHawk component ships with 2 ready-to-use classes to accomplish this approach:</p>
+<p>If you have a large number of routes in your project, it might be useful to group them by base paths.</p>
+<p>The IceHawk component provides 2 ready-to-use classes to accomplish this approach:</p>
 <ul>
 <li><a href="https://github.com/icehawk/icehawk/blob/v2.0.4/src/Routing/ReadRouteGroup.php">ReadRouteGroup</a></li>
 <li><a href="https://github.com/icehawk/icehawk/blob/v2.0.4/src/Routing/WriteRouteGroup.php">WriteRouteGroup</a></li>

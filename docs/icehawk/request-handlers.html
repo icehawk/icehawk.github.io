@@ -56,8 +56,8 @@
 	<meta property="og:description" content="IceHawk request handlers - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/icehawk/request-handlers.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-	<meta property="article:published_time" content="2016-11-15T12:11:34+01:00"/>
-	<meta property="article:modified_time" content="2016-11-15T12:11:34+01:00"/>
+	<meta property="article:published_time" content="2016-11-16T15:17:23+01:00"/>
+	<meta property="article:modified_time" content="2016-11-16T15:17:23+01:00"/>
 			<meta property="article:tag" content="IceHawk"/>
 			<meta property="article:tag" content="request"/>
 			<meta property="article:tag" content="handler"/>
@@ -82,8 +82,8 @@
     },
     "headline": "IceHawk handlers | IceHawk | PHP micro-framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/icehawk/request-handlers.html",
-    "datePublished": "2016-11-15T12:11:34+01:00",
-    "dateModified": "2016-11-15T12:11:34+01:00",
+    "datePublished": "2016-11-16T15:17:23+01:00",
+    "dateModified": "2016-11-16T15:17:23+01:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, request, handler, documentation",
     "description": "IceHawk request handlers - components documentation"
@@ -313,11 +313,11 @@ So there is no need to add a request method string or constant to every defined 
 <p>These marker interfaces also allow the IceHawk component to respond automatically to an <code>OPTIONS</code> request, as it just needs
 to check for the implemented interfaces of the request handlers the requested URI was mapped to. Note that both, read and write side, are considered before responding an <code>OPTIONS</code> request.
 So you can have the same URL allowing for example a <code>GET</code> request on the read side and a <code>POST</code> request on the write side. </p>
-<p>You can read more about this in our <a href="https://icehawk.github.io/docs/icehawk/auto-responding.html">auto repsonding section</a>.</p>
+<p>You can read more about this in our <a href="https://icehawk.github.io/docs/icehawk/auto-responding.html">auto responding section</a>.</p>
 <hr class="blockspace">
 <h2>Read side request handlers</h2>
 <p>For the read side HTTP offers only to verbs: <code>GET</code> and <code>HEAD</code>.
-Where the <code>HEAD</code> request should be handled and responded to exectly the same as a <code>GET</code> request, except that the body is omitted in the response.</p>
+Where the <code>HEAD</code> request should be handled and responded to exactly the same as a <code>GET</code> request, except that the body is omitted in the response.</p>
 <p>For this reason we decided to let <code>HandlesGetRequest</code> inherit from the <code>HandlesHeadRequest</code> interface. So if your request handler implements
 <code>HandlesGetRequest</code> it can respond to both, <code>GET</code> and <code>HEAD</code> requests.</p>
 <p>Implenenting a handler for <code>GET</code> requests is pretty easy though:</p>

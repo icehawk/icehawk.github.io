@@ -75,7 +75,7 @@ The intention of the `notify()` method is to call your business logic for the pa
 One way to implement an event subscriber is of course to write a class that implements the `SubscribesToEvents` interface and do the handling
 all on your own.
 
-To help you out with the handling the IceHawk ships with an [abstract event subscriber](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/PubSub/AbstractEventSubscriber.php) 
+To help you out with the handling the IceHawk provides an [abstract event subscriber](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/PubSub/AbstractEventSubscriber.php) 
 class, that requires you to simply return the accepted event class names and to implement a protected/public event handler method. 
 
 An example implementation for an event subscriber for the `IceHawkWasInitializedEvent` would look like this:
