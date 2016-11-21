@@ -335,18 +335,12 @@ public function getRealType() : string
 
 The method uses the PHP extension [fileinfo](http://php.net/fileinfo) to determine a more precise mime type of the uploaded file on the server side.
 
-**Please note:** Currently the fileinfo extension is a mandatory dependency of the IceHawk component. 
-[We will make this dependency optional from `v2.1.0` onwards.](https://github.com/icehawk/icehawk/issues/21)
-
 ```php
 public function getEncoding() : string
 ```
 
-This method uses the PHP extension [fileinfo](http://php.net/fileinfo) to determine the mime encoding of the uploaded file and returns it. For example: `UTF-8`.
-
-**Please note:** Currently the fileinfo extension is a mandatory dependency of the IceHawk component. 
-[We will make this dependency optional from `v2.1.0` onwards.](https://github.com/icehawk/icehawk/issues/21)
-This method will then return an empty string, because neither the Browser nor PHP does provide this information.
+This method uses the PHP extension [fileinfo](http://php.net/fileinfo) to determine the mime encoding of the uploaded file and returns it. 
+For example: `utf-8`.
 
 ```php
 public function didUploadSucceed() : bool
