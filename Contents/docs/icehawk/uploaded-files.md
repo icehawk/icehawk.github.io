@@ -323,7 +323,7 @@ This method returns the temporary filepath on the server of the uploaded file.
 public function getType() : string
 ```
 
-This method retuns the mime type of the uploaded file, _if the browser provided this information._
+This method returns the mime type of the uploaded file, _if the browser provided this information._
 An example would be `image/gif`.
 
 **Note from the PHP docs:**

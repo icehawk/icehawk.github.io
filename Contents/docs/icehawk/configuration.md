@@ -312,7 +312,7 @@ class IceHawkConfig implements ConfiguresIceHawk
 }
 ```
 
-When using the shipped default request info object with construction from enviromnent (using `$_SERVER`), you also can simply use the default trait, instead of implementing the method.
+When using the provided default request info object with construction from environment (using `$_SERVER`), you also can simply use the default trait, instead of implementing the method.
  
 
 ```php
@@ -338,12 +338,12 @@ Please see our [Request information](/docs/icehawk/request-information.html) sec
 
 ## Configure final responding
 
-The IceHawk component lets you configure a custom final responding behaviour. The final responder is called when an uncaught exception (`\Throwable` to be accurate) occurres while your request handling.
+The IceHawk component lets you configure a custom final responding behaviour. The final responder is called when an uncaught exception (`\Throwable` to be accurate) occurs while your request handling.
 This gives you the chance to still provide a valid answer to the user or request caller. Typically you would use this to provide a valid _404 Not Found_ or _500 Internal Server Error_ page.
   
-As the final responding for read requests can differ from the final respoding for write requests you need to provide a final responders for each case.
+As the final responding for read requests can differ from the final responding for write requests you need to provide a final responders for each case.
  
-The component ships two default final responders that do nothing but throwing the occurred excetion (`\Throwable`), which is fine for development.
+The component provides two default final responders that do nothing but throwing the occurred exception (`\Throwable`), which is fine for development.
 For production you should provide own final responders.
 
 Final responders must implement the following interfaces:

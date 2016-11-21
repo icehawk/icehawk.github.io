@@ -56,8 +56,8 @@
 	<meta property="og:description" content="IceHawk installation - components documentation"/>
 	<meta property="og:url" content="https://icehawk.github.io/docs/icehawk/configuration.html"/>
 	<meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-	<meta property="article:published_time" content="2016-11-16T14:01:20+01:00"/>
-	<meta property="article:modified_time" content="2016-11-16T14:01:20+01:00"/>
+	<meta property="article:published_time" content="2016-11-21T09:43:39+01:00"/>
+	<meta property="article:modified_time" content="2016-11-21T09:43:39+01:00"/>
 			<meta property="article:tag" content="IceHawk"/>
 			<meta property="article:tag" content="routing"/>
 			<meta property="article:tag" content="documentation"/>
@@ -82,8 +82,8 @@
     },
     "headline": "IceHawk configuration | IceHawk | PHP micro-framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/icehawk/configuration.html",
-    "datePublished": "2016-11-16T14:01:20+01:00",
-    "dateModified": "2016-11-16T14:01:20+01:00",
+    "datePublished": "2016-11-21T09:43:39+01:00",
+    "dateModified": "2016-11-21T09:43:39+01:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, routing, documentation, configuration",
     "description": "IceHawk installation - components documentation"
@@ -547,7 +547,7 @@ class IceHawkConfig implements ConfiguresIceHawk
         return new YourOwnRequestInfo( $_SERVER );
     }
 }</code></pre>
-<p>When using the shipped default request info object with construction from enviromnent (using <code>$_SERVER</code>), you also can simply use the default trait, instead of implementing the method.</p>
+<p>When using the provided default request info object with construction from environment (using <code>$_SERVER</code>), you also can simply use the default trait, instead of implementing the method.</p>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
 
 namespace YourVendor\YourProject;
@@ -565,10 +565,10 @@ class IceHawkConfig implements ConfiguresIceHawk
 <p>Please see our <a href="/docs/icehawk/request-information.html">Request information</a> section for more detailed information about the request object.</p>
 <hr class="blockspace">
 <h2>Configure final responding</h2>
-<p>The IceHawk component lets you configure a custom final responding behaviour. The final responder is called when an uncaught exception (<code>\Throwable</code> to be accurate) occurres while your request handling.
+<p>The IceHawk component lets you configure a custom final responding behaviour. The final responder is called when an uncaught exception (<code>\Throwable</code> to be accurate) occurs while your request handling.
 This gives you the chance to still provide a valid answer to the user or request caller. Typically you would use this to provide a valid <em>404 Not Found</em> or <em>500 Internal Server Error</em> page.</p>
-<p>As the final responding for read requests can differ from the final respoding for write requests you need to provide a final responders for each case.</p>
-<p>The component ships two default final responders that do nothing but throwing the occurred excetion (<code>\Throwable</code>), which is fine for development.
+<p>As the final responding for read requests can differ from the final responding for write requests you need to provide a final responders for each case.</p>
+<p>The component provides two default final responders that do nothing but throwing the occurred exception (<code>\Throwable</code>), which is fine for development.
 For production you should provide own final responders.</p>
 <p>Final responders must implement the following interfaces:</p>
 <ul>

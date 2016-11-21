@@ -1,13 +1,13 @@
 # IceHawk constants
 
-The IceHawk component ships with two handy abstract classes which provide public constants you can use:
+The IceHawk component provides two handy abstract classes which contains public constants you can use:
 
 <hr class="blockspace">
  
 ## HTTP methods
 
 If you want to check what HTTP method was used for the current request, you can ask the [request info object](@baseUrl@/docs/icehawk/request-information.html) 
-and can use the following class constants to compare it against:
+and use the following class constants to compare it against:
 
 ```php
 use IceHawk\IceHawk\Constants\HttpMethod;
