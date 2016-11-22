@@ -33,7 +33,7 @@ $token->equals($other);   # false
 $other->equals($token);   # false
 
 $token->equals($another); # true
-$other->equals($another); # true
+$other->equals($another); # false
 # ...
 
 # Check token expiry
