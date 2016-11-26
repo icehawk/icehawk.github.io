@@ -125,7 +125,7 @@ class IceHawkDelegate implements SetsUpEnvironment
 
 ## Set up session handling
 
-The `setUpErrorHandling` method is your place to configure your application's session handling, e.g. by 
+The `setUpSessionHandling` method is your place to configure your application's session handling, e.g. by 
 [registering an own session handler](http://php.net/manual/en/function.session-set-save-handler.php) or 
 simply set up ini and cookie values.
 
