@@ -13,5 +13,5 @@ business logic based on received messages.
 
 In the following chapters you can find detailed documentation about the single topics covered by this component.
 
-* [Installation](/docs/pubsub/installation.html)
-* [Usage](/docs/pubsub/usage.html)
+* [Installation](@baseUrl@/docs/pubsub/installation.html)
+* [Usage](@baseUrl@/docs/pubsub/usage.html)

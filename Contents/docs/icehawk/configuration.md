@@ -23,10 +23,12 @@ use IceHawk\IceHawk\Defaults;
 
 class IceHawkConfig implements ConfiguresIceHawk
 {
-	use Defaults\Traits\DefaultRequestProviding;
+	use Defaults\Traits\DefaultRequestInfoProviding;
 	use Defaults\Traits\DefaultReadRouting;
 	use Defaults\Traits\DefaultWriteRouting;
+	use Defaults\Traits\DefaultRequestBypassing;
 	use Defaults\Traits\DefaultEventSubscribing;
+	use Defaults\Traits\DefaultCookieProviding;
 	use Defaults\Traits\DefaultFinalReadResponding;
 	use Defaults\Traits\DefaultFinalWriteResponding;
 }
@@ -45,7 +47,9 @@ namespace YourVendor\YourProject;
 use IceHawk\IceHawk\Interfaces\ConfiguresIceHawk;
 use IceHawk\IceHawk\Interfaces\RoutesToReadHandler;
 use IceHawk\IceHawk\Interfaces\RoutesToWriteHandler;
+use IceHawk\IceHawk\Interfaces\BypassesRequest;
 use IceHawk\IceHawk\Interfaces\ProvidesRequestInfo;
+use IceHawk\IceHawk\Interfaces\ProvidesCookieData;
 use IceHawk\IceHawk\Interfaces\RespondsFinallyToReadRequest;
 use IceHawk\IceHawk\Interfaces\RespondsFinallyToWriteRequest;
 use IceHawk\IceHawk\Defaults\RequestInfo;
@@ -71,6 +75,14 @@ class IceHawkConfig implements ConfiguresIceHawk
 	}
 	
 	/**
+	 * @return array|\Traversable|BypassesRequest[]
+	 */
+	public function getRequestBypasses()
+	{
+		return [];
+	}
+	
+	/**
 	 * @return array|SubscribesToEvents[]
 	 */
 	public function getEventSubscribers() : array
@@ -81,6 +93,11 @@ class IceHawkConfig implements ConfiguresIceHawk
 	public function getRequestInfo() : ProvidesRequestInfo
 	{
 		return RequestInfo::fromEnv();	
+	}
+	
+	public function getCookies() : ProvidesCookieData
+	{
+		return Cookies::fromEnv();
 	}
 	
 	public function getFinalReadResponder() : RespondsFinallyToReadRequest
@@ -123,6 +140,8 @@ class IceHawkConfig implements ConfiguresIceHawk
 	use Defaults\Traits\DefaultRequestProviding;
 	use Defaults\Traits\DefaultWriteRouting;
 	use Defaults\Traits\DefaultEventSubscribing;
+	use Defaults\Traits\DefaultRequestBypassing;
+	use Defaults\Traits\DefaultCookieProviding;
 	use Defaults\Traits\DefaultFinalReadResponding;
 	use Defaults\Traits\DefaultFinalWriteResponding;
 	
@@ -158,7 +177,7 @@ class IceHawkConfig implements ConfiguresIceHawk
 As you may noticed, we omitted the return type for this method, because we wanted to allow building a `\Generator` and `yield`ing the routes.  
 In the next major release targeting PHP 7.1 we'll add the [iterable](https://github.com/php/php-src/pull/1941) return type.
 
-Please see our [routing section](/docs/icehawk/routing.html) for more details and examples. 
+Please see our [routing section](@baseUrl@/docs/icehawk/routing.html) for more details and examples. 
 
 <hr class="blockspace">
 
@@ -184,6 +203,8 @@ class IceHawkConfig implements ConfiguresIceHawk
 	use Defaults\Traits\DefaultRequestProviding;
 	use Defaults\Traits\DefaultReadRouting;
 	use Defaults\Traits\DefaultEventSubscribing;
+	use Defaults\Traits\DefaultRequestBypassing;
+	use Defaults\Traits\DefaultCookieProviding;
 	use Defaults\Traits\DefaultFinalReadResponding;
 	use Defaults\Traits\DefaultFinalWriteResponding;
 	
@@ -219,7 +240,7 @@ class IceHawkConfig implements ConfiguresIceHawk
 As you may noticed, we omitted the return type for this method, because we wanted to allow building a `\Generator` and `yield`ing the routes.
 In the next major release targeting PHP 7.1 we'll add the [iterable](https://github.com/php/php-src/pull/1941) return type.
 
-Please see our [routing section](/docs/icehawk/routing.html) for more details and examples. 
+Please see our [routing section](@baseUrl@/docs/icehawk/routing.html) for more details and examples. 
 
 <hr class="blockspace">
 
@@ -241,6 +262,8 @@ class IceHawkConfig implements ConfiguresIceHawk
 	use Defaults\Traits\DefaultRequestProviding;
 	use Defaults\Traits\DefaultReadRouting;
 	use Defaults\Traits\DefaultWriteRouting;
+	use Defaults\Traits\DefaultRequestBypassing;
+	use Defaults\Traits\DefaultCookieProviding;
 	use Defaults\Traits\DefaultFinalReadResponding;
 	use Defaults\Traits\DefaultFinalWriteResponding;
 	
@@ -268,7 +291,7 @@ So you simply need to return an array of subscriber instances.
 To create an event subscriber, you can either implement the subscriber interface `IceHawk\IceHawk\Interfaces\SubscribesToEvents`
 or simply extend the abstract event subscriber that the IceHawks component ships: `IceHawk\IceHawk\PubSub\AbstractEventSubscriber`.
  
-Read more about how to implement an event subscriber in out [Events and subscribers section](/docs/icehawk/events-and-subscribers.html).
+Read more about how to implement an event subscriber in out [Events and subscribers section](@baseUrl@/docs/icehawk/events-and-subscribers.html).
 
 <hr class="blockspace">
 
@@ -287,14 +310,16 @@ or implement its interface `IceHawk\IceHawk\Interfaces\ProvidesRequestInfo` and 
 namespace YourVendor\YourProject;
 
 use IceHawk\IceHawk\Interfaces\ConfiguresIceHawk;
-use IceHawk\IceHawk\Interfaces\SubscribesToEvents;
+use IceHawk\IceHawk\Interfaces\ProvidesRequestInfo;
 use IceHawk\IceHawk\Defaults;
 
 class IceHawkConfig implements ConfiguresIceHawk
 {
 	use Defaults\Traits\DefaultReadRouting;
 	use Defaults\Traits\DefaultWriteRouting;
+	use Defaults\Traits\DefaultRequestBypassing;
 	use Defaults\Traits\DefaultEventSubscribing;
+	use Defaults\Traits\DefaultCookieProviding;
 	use Defaults\Traits\DefaultFinalReadResponding;
 	use Defaults\Traits\DefaultFinalWriteResponding;
 	
@@ -312,8 +337,8 @@ class IceHawkConfig implements ConfiguresIceHawk
 }
 ```
 
-When using the provided default request info object with construction from environment (using `$_SERVER`), you also can simply use the default trait, instead of implementing the method.
- 
+When using the provided default request info object with construction from environment (using `$_SERVER`), 
+you also can simply use the default trait, instead of implementing the method.
 
 ```php
 <?php declare(strict_types=1);
@@ -332,7 +357,72 @@ class IceHawkConfig implements ConfiguresIceHawk
 }
 ```
 
-Please see our [Request information](/docs/icehawk/request-information.html) section for more detailed information about the request object.
+Please see our [Request information](@baseUrl@/docs/icehawk/request-information.html) section for more detailed information about the request info object.
+
+<hr class="blockspace">
+
+## Configure the cookie data object
+
+The cookie data object is technically a wrapper for the super-global variable `$_COOKIE` and provides data set to cookies.
+
+In most cases it should be absolutely fine to simply use the shipped default [Cookies](https://github.com/icehawk/icehawk/blob/@icehawk/icehawk-version@/src/Defaults/Cookies.php) object.
+But in case you need to have an own implementation you also can provide a mapped array to the default cookie data object 
+or implement its interface `IceHawk\IceHawk\Interfaces\ProvidesCookieData` and provide an own object.
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\ConfiguresIceHawk;
+use IceHawk\IceHawk\Interfaces\ProvidesCookieData;
+use IceHawk\IceHawk\Defaults;
+
+class IceHawkConfig implements ConfiguresIceHawk
+{
+	use Defaults\Traits\DefaultRequestInfoProviding;
+	use Defaults\Traits\DefaultReadRouting;
+	use Defaults\Traits\DefaultWriteRouting;
+	use Defaults\Traits\DefaultRequestBypassing;
+	use Defaults\Traits\DefaultEventSubscribing;
+	use Defaults\Traits\DefaultFinalReadResponding;
+	use Defaults\Traits\DefaultFinalWriteResponding;
+	
+	public function getCookies() : ProvidesCookieData
+	{
+		# Return the default cookie data object constructed from the current environment (using `$_COOKIE`)
+		return Defaults\Cookies::fromEnv();
+		
+		# Return the default cookie data object with own data array
+		return new Defaults\Cookies( $yourOwnData );
+		
+		# Return an own cookie data object
+		return new YourOwnCookies( $_COOKIE );
+	}
+}
+```
+
+When using the provided default cookie data object with construction from environment (using `$_COOKIE`), 
+you also can simply use the default trait, instead of implementing the method.
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\ConfiguresIceHawk;
+use IceHawk\IceHawk\Defaults;
+
+class IceHawkConfig implements ConfiguresIceHawk
+{
+	# ...
+	# Use default cookie data object contructed from environment (using $_COOKIE)
+	use Defaults\Traits\DefaultCookieProviding;
+	# ...
+}
+```
+
+Please see our [Cookies](@baseUrl@/docs/icehawk/cookies.html) section for more detailed information about the cookie data object.
 
 <hr class="blockspace">
 
@@ -371,6 +461,8 @@ class IceHawkConfig implements ConfiguresIceHawk
 	use Defaults\Traits\DefaultRequestInfoProviding;
 	use Defaults\Traits\DefaultReadRouting;
 	use Defaults\Traits\DefaultWriteRouting;
+	use Defaults\Traits\DefaultCookieProviding;
+	use Defaults\Traits\DefaultRequestBypassing;
 	use Defaults\Traits\DefaultEventSubscribing;
 	
 	public function getFinalReadResponder() : RespondsFinallyToReadRequests
@@ -449,9 +541,9 @@ class IceHawkConfig implements ConfiguresIceHawk
 
 **Please note:** You always get the request object as the second parameter to the final responder method, so you are able to implement custom behaviour based on the actual request.
 
-Please see our [Exceptions](/docs/icehawk/exceptions.html) section for more information about the exceptions thrown by the IceHawk component itself.
+Please see our [Exceptions](@baseUrl@/docs/icehawk/exceptions.html) section for more information about the exceptions thrown by the IceHawk component itself.
  
-Please see our [Final responding](/docs/icehawk/final-responding.html) section for more information on how to implement a final responder.
+Please see our [Final responding](@baseUrl@/docs/icehawk/final-responding.html) section for more information on how to implement a final responder.
 
 ## Use of objects provided by the config
 

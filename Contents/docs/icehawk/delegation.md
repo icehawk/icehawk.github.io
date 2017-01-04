@@ -77,7 +77,7 @@ class IceHawkDelegate implements SetsUpEnvironment
 }
 ```
 
-Please see our [Request information](/docs/icehawk/request-information.html) section for the server array keys used by the `RequestInfo` class.
+Please see our [Request information](@baseUrl@/docs/icehawk/request-information.html) section for the server array keys used by the `RequestInfo` class.
 
 <hr class="blockspace">
 

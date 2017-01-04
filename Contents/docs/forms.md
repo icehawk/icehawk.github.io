@@ -13,5 +13,5 @@ It also offers [cross-site request-forgery (CSRF)](https://en.wikipedia.org/wiki
 
 In the following chapters you can find detailed documentation about the single topics covered by this component.
 
-* [Installation](/docs/forms/installation.html)
-* [Usage](/docs/forms/usage.html)
+* [Installation](@baseUrl@/docs/forms/installation.html)
+* [Usage](@baseUrl@/docs/forms/usage.html)

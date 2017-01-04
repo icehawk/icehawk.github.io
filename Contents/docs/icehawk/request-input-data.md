@@ -44,7 +44,7 @@ As you can see `null` is defined by the `$default` parameter. If you like to use
 ## The read request input data
 
 As you can see in the [request handlers section](@baseUrl@/docs/icehawk/request-handlers.html) the IceHawk component provides a request data object to the request handler.
-This object carries the [request information](@baseUrl@/docs/icehawk/request-information.html) and the request input data.
+This object carries the [request information](@baseUrl@/docs/icehawk/request-information.html), [cookie](@baseUrl@/docs/icehawk/cookies.html) and the request input data.
 
 This example shows how you can access the request input data inside a GET request handler:
 

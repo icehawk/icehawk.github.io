@@ -12,5 +12,5 @@ The Session component is intended to wrap the supergloabl `$_SESSION` variable a
 
 In the following chapters you can find detailed documentation about the single topics covered by this component.
 
-* [Installation](/docs/session/installation.html)
-* [Usage](/docs/session/usage.html)
+* [Installation](@baseUrl@/docs/session/installation.html)
+* [Usage](@baseUrl@/docs/session/usage.html)

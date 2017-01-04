@@ -13,7 +13,7 @@ Just replace the <code>*Read*</code> classnames with <code>*Write*</code> classn
 ## Routing by URI only
 
 The routing is done by matching patterns against the current request URI. 
-The URI is provided by the [request info object](/docs/icehawk/request-information.html).
+The URI is provided by the [request info object](@baseUrl@/docs/icehawk/request-information.html).
 
 That means you can not (directly) match against the server/host name or a query string.  
 
