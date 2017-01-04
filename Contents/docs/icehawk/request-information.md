@@ -17,35 +17,93 @@ namespace IceHawk\IceHawk\Interfaces;
 
 interface ProvidesRequestInfo
 {
+	public function newWithOverwrites( array $array ) : ProvidesRequestInfo;
+    
+	public function getArgv() : array;
+
+	public function getArgc() : int;
+
 	public function isSecure() : bool;
-	
+
 	public function getMethod() : string;
-	
+
 	public function getUri() : string;
-	
+
 	public function getHost() : string;
-	
+
+	public function getConnection() : string;
+
 	public function getUserAgent() : string;
-	
+
 	public function getServerAddress() : string;
-	
+
 	public function getClientAddress() : string;
-	
+
+	public function getClientHost() : string;
+
+	public function getClientPort() : string;
+
+	public function getClientUser() : string;
+
+	public function getRedirectClientUser() : string;
+
 	public function getRequestTimeFloat() : float;
-	
+
+	public function getRequestTime() : string;
+
 	public function getAcceptedContentTypes() : string;
-	
+
+	public function getAcceptedCharsets() : string;
+
+	public function getAcceptedEncoding() : string;
+
+	public function getAcceptedLanguage() : string;
+
 	public function getQueryString() : string;
-	
+
 	public function getReferer() : string;
-	
+
+	public function getAuthType() : string;
+
+	public function getAuthDigest() : string;
+
 	public function getAuthUser() : string;
-	
+
 	public function getAuthPassword() : string;
-	
+
 	public function getContentType() : string;
-	
+
 	public function getContentLength() : string;
+
+	public function getPhpSelf() : string;
+
+	public function getGatewayInterface() : string;
+
+	public function getServerName() : string;
+
+	public function getServerSoftware() : string;
+
+	public function getServerProtocol() : string;
+
+	public function getServerAdmin() : string;
+
+	public function getServerPort() : string;
+
+	public function getServerSignature() : string;
+
+	public function getPathTranslated() : string;
+
+	public function getDocumentRoot() : string;
+
+	public function getScriptName() : string;
+
+	public function getScriptFilename() : string;
+
+	public function getPathInfo() : string;
+
+	public function getOriginalPathInfo() : string;
+
+	public function getCustomValue( string $key ) : string;
 }
 ```
 
@@ -200,31 +258,84 @@ class YourFinalReadResponder implements RespondsFinallyToReadRequest
 **Please note:**
 
 * These keys are only relevant if you use **IceHawk's default `RequestInfo` class**. In your own implementation you can of course choose whatever keys you want.
-* The keys are accessed case-sensitive and therefor need to be _UPPERCASE_.
+* The keys are accessed case-sensitive and therefor need to be _UPPERCASE_, except `argc`, `argv` and optional custom keys.
 
 **Used keys:**
 
+* `argc`
+* `argv`
+* `AUTH_TYPE`
 * `CONTENT_LENGTH`
 * `CONTENT_TYPE`
+* `DOCUMENT_ROOT`
+* `GATEWAY_INTERFACE`
 * `HTTP_ACCEPT`
+* `HTTP_ACCEPT_CHARSET`
+* `HTTP_ACCEPT_ENCODING`
+* `HTTP_ACCEPT_LANGUAGE`
+* `HTTP_CONNECTION`
 * `HTTP_HOST`
 * `HTTP_REFERER`
 * `HTTP_USER_AGENT`
 * `HTTPS`
+* `ORIG_PATH_INFO`
+* `PATH_INFO`
+* `PATH_TRANSLATED`
+* `PHP_AUTH_DIGEST`
 * `PHP_AUTH_PW`
 * `PHP_AUTH_USER`
+* `PHP_SELF`
 * `QUERY_STRING`
+* `REDIRECT_REMOTE_USER`
 * `REMOTE_ADDR`
+* `REMOTE_HOST`
 * `REQUEST_METHOD`
+* `REMOTE_PORT`
+* `REMOTE_USER`
+* `REQUEST_TIME`
 * `REQUEST_TIME_FLOAT`
 * `REQUEST_URI`
+* `SCRIPT_NAME`
+* `SCRIPT_FILENAME`
 * `SERVER_ADDR`
+* `SERVER_ADMIN`
+* `SERVER_NAME`
+* `SERVER_PORT`
+* `SERVER_PROTOCOL`
+* `SERVER_SIGNATURE`
+* `SERVER_SOFTWARE`
+* Optional custom keys
 
 Please see the official [PHP documentation](http://php.net/manual/en/reserved.variables.server.php) for more information about the `$_SERVER` indices.
 
 <hr class="blockspace">
 
 ## What do you get from the methods?
+
+```php
+public function newWithOverwrites( array $array ) : ProvidesRequestInfo
+```
+
+This method allows to create a new instance based on an existing request info object by overriding parts/all of its values. 
+Please note that the request info object is meant to be immutable, that's why you cannot change its values directly. 
+
+<hr class="blockspace">
+
+```php
+public function getArgv() : array
+```
+
+Returns an array of command line interface arguments, if any provided. (Only when run on CLI)
+
+<hr class="blockspace">
+
+```php
+public function getArgc() : int
+```
+
+Returns the number of command line interface arguments, if any provided. (Only when run on CLI) 
+
+<hr class="blockspace">
 
 ```php
 public function isSecure() : bool
@@ -241,7 +352,7 @@ This methods returns whether the current request comes on a secured (SSL) connec
 public function getMethod() : string
 ```
 
-This method returns the HTTP method (or verb) of the current request. (Key: `REQUEST_METHOD`)
+Returns the HTTP method (or verb) of the current request. (Key: `REQUEST_METHOD`)
  
 **Please note:**
  
@@ -255,7 +366,7 @@ This method returns the HTTP method (or verb) of the current request. (Key: `REQ
 public function getUri() : string
 ```
 
-This method returns the current request URI _without_ the query string. (Key: `REQUEST_URI`)
+Returns the current request URI _without_ the query string. (Key: `REQUEST_URI`)
 
 **Please note:**
 
@@ -268,9 +379,17 @@ This method returns the current request URI _without_ the query string. (Key: `R
 public function getHost() : string
 ```
 
-This method returns the current HTTP hostname. (Key: `HTTP_HOST`)
+Returns the current HTTP hostname. (Key: `HTTP_HOST`)
 
 For a request on this page, it should return: `icehawk.github.io`.
+ 
+<hr class="blockspace">
+
+```php
+public function getConnection() : string
+```
+
+Returns the contents of the `Connection:` header from the current request, if there is one. Example: `Keep-Alive`. (Key: `HTTP_CONNECTION`)
  
 <hr class="blockspace">
 
@@ -278,7 +397,7 @@ For a request on this page, it should return: `icehawk.github.io`.
 public function getUserAgent() : string
 ```
 
-This method returns the client's user agent string. (Key: `HTTP_USER_AGENT`)
+Returns the client's user agent string. (Key: `HTTP_USER_AGENT`)
 
 A request from a Google Chrome web browser for example can result in: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36`.
 
@@ -288,7 +407,7 @@ A request from a Google Chrome web browser for example can result in: `Mozilla/5
 public function getServerAddress() : string
 ```
 
-This method returns the ip address of the server handling the current request. (Key: `SERVER_ADDR`)
+Returns the ip address of the server handling the current request. (Key: `SERVER_ADDR`)
 
 <hr class="blockspace">
 
@@ -296,7 +415,49 @@ This method returns the ip address of the server handling the current request. (
 public function getClientAddress() : string
 ```
 
-This method returns the ip address of the client that issued the current request. (Key: `REMOTE_ADDR`)
+Returns the ip address of the client that issued the current request. (Key: `REMOTE_ADDR`)
+
+<hr class="blockspace">
+
+```php
+public function getClientHost() : string
+```
+
+Returns the hostname from which the user is viewing the current page. The reverse dns lookup is based off the REMOTE_ADDR of the user. (Key: `REMOTE_HOST`)
+
+**Note:** Your web server must be configured to create this variable. For example in Apache you'll need `HostnameLookups On` inside `httpd.conf` for it to exist.
+
+<hr class="blockspace">
+
+```php
+public function getClientPort() : string
+```
+
+Returns the port being used on the user's machine to communicate with the web server. (Key: `REMOTE_PORT`)
+
+<hr class="blockspace">
+
+```php
+public function getClientUser() : string
+```
+
+Returns the authenticated user. (Key: `REMOTE_USER`)
+
+<hr class="blockspace">
+
+```php
+public function getRedirectClientUser() : string
+```
+
+Returns the authenticated user if the request is internally redirected. (Key: `REDIRECT_REMOTE_USER`)
+
+<hr class="blockspace">
+
+```php
+public function getRequestTime() : string
+```
+
+Returns the timestamp when the current request hit the server. (Key: `REQUEST_TIME`)
 
 <hr class="blockspace">
 
@@ -304,7 +465,7 @@ This method returns the ip address of the client that issued the current request
 public function getRequestTimeFloat() : float
 ```
 
-This method returns the timestamp when the current request hit the server. (Key: `REQUEST_TIME_FLOAT`)
+Returns the timestamp when the current request hit the server as floating point number. (Key: `REQUEST_TIME_FLOAT`)
 
 <hr class="blockspace">
 
@@ -312,7 +473,31 @@ This method returns the timestamp when the current request hit the server. (Key:
 public function getAcceptedContentTypes() : string
 ```
 
-This method returns the contents of the _Accept_ header of the current request, if provided. (Key: `HTTP_ACCEPT`)
+Returns the contents of the _Accept_ header of the current request, if provided. (Key: `HTTP_ACCEPT`)
+
+<hr class="blockspace">
+
+```php
+public function getAcceptedCharsets() : string
+```
+
+Returns the contents of the `Accept-Charset:` header from the current request, if there is one. Example: `iso-8859-1,*,utf-8`. (Key: `HTTP_ACCEPT_CHARSET`)
+
+<hr class="blockspace">
+
+```php
+public function getAcceptedEncoding() : string
+```
+
+Returns the contents of the `Accept-Encoding:` header from the current request, if there is one. Example: `gzip`. (Key: `HTTP_ACCEPT_ENCODING`)
+
+<hr class="blockspace">
+
+```php
+public function getAcceptedLanguage() : string
+```
+
+Returns the contents of the `Accept-Language:` header from the current request, if there is one. Example: `en`. (Key: `HTTP_ACCEPT_LANGUAGE`)
 
 <hr class="blockspace">
 
@@ -320,7 +505,7 @@ This method returns the contents of the _Accept_ header of the current request, 
 public function getQueryString() : string
 ```
 
-This method returns the query string of the current request. (Key: `QUERY_STRING`)
+Returns the query string of the current request. (Key: `QUERY_STRING`)
 
 <hr class="blockspace">
 
@@ -328,7 +513,24 @@ This method returns the query string of the current request. (Key: `QUERY_STRING
 public function getReferer() : string
 ```
 
-This method returns the address of the page (if any) which referred the user agent to the current page. (Key: `HTTP_REFERER`)
+Returns the address of the page (if any) which referred the user agent to the current page. (Key: `HTTP_REFERER`)
+
+<hr class="blockspace">
+
+```php
+public function getAuthType() : string
+```
+
+Returns the type of HTTP authentication. (Key: `AUTH_TYPE`)
+
+<hr class="blockspace">
+
+```php
+ public function getAuthDigest() : string
+```
+
+When doing Digest HTTP authentication this variable is set to the `Authorization:` header sent by the client 
+(which you should then use to make the appropriate validation). (Key: `PHP_AUTH_DIGEST`)
 
 <hr class="blockspace">
 
@@ -336,7 +538,7 @@ This method returns the address of the page (if any) which referred the user age
 public function getAuthUser() : string
 ```
 
-This method returns the provided username when doing HTTP authentication. (Key: `PHP_AUTH_USER`)
+Returns the provided username when doing HTTP authentication. (Key: `PHP_AUTH_USER`)
 
 <hr class="blockspace">
 
@@ -344,7 +546,7 @@ This method returns the provided username when doing HTTP authentication. (Key: 
 public function getAuthPassword() : string
 ```
 
-This method returns the provided password when doing HTTP authentication. (Key: `PHP_AUTH_PW`)
+Returns the provided password when doing HTTP authentication. (Key: `PHP_AUTH_PW`)
 
 <hr class="blockspace">
 
@@ -352,7 +554,7 @@ This method returns the provided password when doing HTTP authentication. (Key: 
 public function getContentType() : string
 ```
 
-This method returns the provided content type header on a POST or PUT request. (Key: `CONTENT_TYPE`)
+Returns the provided content type header on a POST or PUT request. (Key: `CONTENT_TYPE`)
 
 <hr class="blockspace">
 
@@ -360,15 +562,128 @@ This method returns the provided content type header on a POST or PUT request. (
 public function getContentLength() : string
 ```
 
-This method returns the provided content length header on a POST or PUT request. (Key: `CONTENT_LENGTH`)
+Returns the provided content length header on a POST or PUT request. (Key: `CONTENT_LENGTH`)
 
 <hr class="blockspace">
 
-## Annotation
+```php
+public function getPhpSelf() : string
+```
 
-We are aware, that not all `$_SERVER` indices were considered in the current release. 
-And we also know that there is a method missing to access custom indices in the $_SERVER variable. 
-We will fix this with the `v2.1.0` milestone release.
+Returns the filename of the currently executing script, relative to the document root. 
+For instance `/foo/bar.php` for a script at the address `http://example.com/foo/bar.php`. (Key: `PHP_SELF`)
 
-* [Issue: Support ALL $_SERVER indices in RequestInfo](https://github.com/icehawk/icehawk/issues/17)
-* [Issue: Provide a getter to allow access to custom keys in RequestInfo / $_SERVER](https://github.com/icehawk/icehawk/issues/15)
+<hr class="blockspace">
+
+```php
+public function getGatewayInterface() : string
+```
+
+Returns what revision of the CGI specification the server is using. Example `FastCGI/1.0`. (Key: `GATEWAY_INTERFACE`)
+
+<hr class="blockspace">
+
+```php
+public function getServerName() : string
+```
+
+Returns the name of the server host under which the current script is executing. (Key: `SERVER_NAME`)
+
+<hr class="blockspace">
+
+```php
+public function getServerSoftware() : string
+```
+
+Returns the server identification string, given in the headers when responding to requests. (Key: `SERVER_SOFTWARE`)
+
+<hr class="blockspace">
+
+```php
+public function getServerProtocol() : string
+```
+
+Returns the name and revision of the information protocol via which the page was requested. Example: `HTTP/1.1` (Key: `SERVER_PROTOCOL`)
+
+<hr class="blockspace">
+
+```php
+public function getServerAdmin() : string
+```
+
+Returns the value given to the SERVER_ADMIN (for Apache) directive in the web server configuration file. If the script is running on a virtual host, 
+this will be the value defined for that virtual host. (Key: `SERVER_ADMIN`)
+
+<hr class="blockspace">
+
+```php
+public function getServerPort() : string
+```
+
+Returns the port on the server machine being used by the web server for communication. For default setups, 
+this will be `80`; using SSL, for instance, will change this to whatever your defined secure HTTP port is. (Key: `SERVER_PORT`)
+
+<hr class="blockspace">
+
+```php
+public function getServerSignature() : string
+```
+
+Returns a string containing the server version and virtual host name which are added to server-generated pages, if enabled. (Key: `SERVER_SIGNATURE`)
+
+<hr class="blockspace">
+
+```php
+public function getPathTranslated() : string
+```
+
+Returns the Filesystem- (not document root-) based path to the current script, after the server has done any virtual-to-real mapping. (Key: `PATH_TRANSLATED`)
+
+<hr class="blockspace">
+
+```php
+public function getDocumentRoot() : string
+```
+
+Returns the document root directory under which the current script is executing, as defined in the server's configuration file. (Key: `DOCUMENT_ROOT`)
+
+<hr class="blockspace">
+
+```php
+public function getScriptName() : string
+```
+
+Returns the current script's path. This is useful for pages which need to point to themselves. (Key: `SCRIPT_NAME`)
+
+<hr class="blockspace">
+
+```php
+public function getScriptFilename() : string
+```
+
+Returns the absolute pathname of the currently executing script. (Key: `SCRIPT_FILENAME`)
+
+<hr class="blockspace">
+
+```php
+public function getPathInfo() : string
+```
+
+Returns any client-provided pathname information trailing the actual script filename but preceding the query string, if available. 
+Example: `/some/stuff` for `http://www.example.com/php/path_info.php/some/stuff?foo=bar` (Key: `PATH_INFO`)
+
+<hr class="blockspace">
+
+```php
+public function getOriginalPathInfo() : string
+```
+
+Returns the original version of `PATH_INFO` before processed by PHP. (Key: `PATH_INFO`)
+
+<hr class="blockspace">
+
+```php
+public function getCustomValue( string $key ) : string;
+```
+
+Returns an optionally user-defined value. (Key: `<custom>`)
