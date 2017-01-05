@@ -4,8 +4,8 @@
 	"outputDir": "./",
 	"contentsDir": "Contents/",
 	"replacements": {
-		"@website_version@": "v1.0.0",
-		"@icehawk/icehawk-version@": "v2.0.4",
+		"@website_version@": "v1.1.0",
+		"@icehawk/icehawk-version@": "v2.1.0",
 		"@icehawk/session-version@": "v1.1.1",
 		"@icehawk/forms-version@": "v1.0.0",
 		"@icehawk/pubsub-version@": "v1.0.1"
@@ -104,9 +104,11 @@
 				"/docs/icehawk/configuration.html",
 				"/docs/icehawk/delegation.html",
 				"/docs/icehawk/routing.html",
+				"/docs/icehawk/request-bypassing.html",
 				"/docs/icehawk/request-information.html",
 				"/docs/icehawk/request-input-data.html",
 				"/docs/icehawk/uploaded-files.html",
+				"/docs/icehawk/cookies.html",
 				"/docs/icehawk/request-handlers.html",
 				"/docs/icehawk/auto-responding.html",
 				"/docs/icehawk/events-and-subscribers.html",
@@ -191,6 +193,25 @@
 			"contentFile": "docs/icehawk/routing.md",
 			"children": []
 		},
+		"/docs/icehawk/request-bypassing.html": {
+			"pageLevel": 4,
+			"navName": "Request bypassing",
+			"pageTitle": "Request bypassing",
+			"description": "IceHawk request bypassing - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"IceHawk",
+				"routing",
+				"documentation",
+				"request bypassing"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/request-bypassing.md",
+			"children": []
+		},
 		"/docs/icehawk/request-information.html": {
 			"pageLevel": 4,
 			"navName": "Request information",
@@ -248,6 +269,26 @@
 			"renderer": "twig",
 			"template": "page.twig",
 			"contentFile": "docs/icehawk/uploaded-files.md",
+			"children": []
+		},
+		"/docs/icehawk/cookies.html": {
+			"pageLevel": 4,
+			"navName": "Cookies",
+			"pageTitle": "Cookies",
+			"description": "IceHawk cookies - components documentation",
+			"language": "en",
+			"imageUrl": "/images/logo_121x100.png",
+			"tags": [
+				"IceHawk",
+				"request",
+				"data",
+				"documentation",
+				"cookies"
+			],
+			"contentType": "markdown",
+			"renderer": "twig",
+			"template": "page.twig",
+			"contentFile": "docs/icehawk/cookies.md",
 			"children": []
 		},
 		"/docs/icehawk/request-handlers.html": {

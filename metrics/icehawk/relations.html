@@ -156,7 +156,7 @@
                             <path d="M0 0h24v24H0z" fill="none"/>
                             <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/>
                         </svg>
-                        Violations (0)
+                        Violations (1)
                     </a>
                 </li>
                                 <li>
@@ -198,7 +198,7 @@
 
 <footer>
     <a href="http://phpmetrics.org">PhpMetrics v2.0.0</a>, by <a href="http://blog.lepine.pro">Jean-François Lépine</a>.
-    <br/>November 12th, 2016 22:50:29</footer>
+    <br/>January 5th, 2017 16:49:04</footer>
 
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="https://d3js.org/d3.v3.js"></script>
@@ -224,45 +224,26 @@
     {
         "name": "\\IceHawk\\IceHawk\\Config\\ConfigGuard",
         "size": 3000,
+        "relations": [
+            "\\InvalidEventSubscriberCollection"
+        ]
+    },
+    {
+        "name": "\\InvalidEventSubscriberCollection",
+        "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Config\\ConfigWrapper",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk",
         "size": 3000,
         "relations": []
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Exceptions\\InvalidEventSubscriberCollection",
-        "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\Exceptions\\IceHawkException"
-        ]
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Config\\ConfigWrapper",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToReadRequest",
-        "size": 3000,
-        "relations": [
-            "\\Throwable",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData"
-        ]
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToWriteRequest",
-        "size": 3000,
-        "relations": [
-            "\\Throwable",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData"
-        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Constants\\HandlerMethodInterfaceMap",
@@ -280,12 +261,36 @@
         "relations": []
     },
     {
+        "name": "\\IceHawk\\IceHawk\\Defaults\\Cookies",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData",
+            "\\self"
+        ]
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\self",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\IceHawk\\IceHawk\\Defaults\\FinalReadResponder",
         "size": 3000,
         "relations": [
             "\\IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToReadRequest",
-            "\\Throwable",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData"
+            "\\Throwable"
+        ]
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToReadRequest",
+        "size": 3000,
+        "relations": [
+            "\\Throwable"
         ]
     },
     {
@@ -294,23 +299,19 @@
         "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\IceHawk\\IceHawk\\Defaults\\FinalWriteResponder",
         "size": 3000,
         "relations": [
             "\\IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToWriteRequest",
-            "\\Throwable",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData"
+            "\\Throwable"
         ]
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData",
+        "name": "\\IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToWriteRequest",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\Throwable"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Defaults\\IceHawkConfig",
@@ -323,16 +324,13 @@
         "name": "\\IceHawk\\IceHawk\\Defaults\\IceHawkDelegate",
         "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\Interfaces\\SetsUpEnvironment",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo"
+            "\\IceHawk\\IceHawk\\Interfaces\\SetsUpEnvironment"
         ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Interfaces\\SetsUpEnvironment",
         "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo"
-        ]
+        "relations": []
     },
     {
         "name": "\\IceHawk\\IceHawk\\Defaults\\RequestInfo",
@@ -343,14 +341,16 @@
         ]
     },
     {
-        "name": "\\self",
+        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
         "size": 3000,
         "relations": []
     },
     {
         "name": "\\IceHawk\\IceHawk\\Events\\HandlingReadRequestEvent",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
@@ -358,39 +358,39 @@
         "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\IceHawk\\IceHawk\\Events\\HandlingWriteRequestEvent",
         "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData",
-        "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Events\\IceHawkWasInitializedEvent",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Events\\InitializingIceHawkEvent",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Events\\ReadRequestWasHandledEvent",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Events\\WriteRequestWasHandledEvent",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Exceptions\\IceHawkException",
@@ -403,90 +403,84 @@
         "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Exceptions\\UnresolvedRequest",
+        "name": "\\IceHawk\\IceHawk\\Exceptions\\InvalidEventSubscriberCollection",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\Exceptions\\IceHawkException"
+        ]
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo",
+        "name": "\\IceHawk\\IceHawk\\Exceptions\\UnresolvedRequest",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\Exceptions\\IceHawkException"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\IceHawk",
         "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk",
-            "\\IceHawk\\IceHawk\\Interfaces\\SetsUpEnvironment",
-            "\\IceHawk\\IceHawk\\PubSub\\EventPublisher",
-            "\\IceHawk\\IceHawk\\Config\\ConfigWrapper",
-            "\\IceHawk\\IceHawk\\Events\\InitializingIceHawkEvent",
-            "\\IceHawk\\IceHawk\\Events\\IceHawkWasInitializedEvent",
-            "\\IceHawk\\IceHawk\\Config\\ConfigGuard",
-            "\\IceHawk\\IceHawk\\RequestHandlers\\WriteRequestHandler",
-            "\\IceHawk\\IceHawk\\RequestHandlers\\ReadRequestHandler",
-            "\\IceHawk\\IceHawk\\RequestHandlers\\OptionsRequestHandler",
-            "\\IceHawk\\IceHawk\\Responses\\MethodNotImplemented"
+            "\\EventPublisher",
+            "\\ConfigWrapper",
+            "\\InitializingIceHawkEvent",
+            "\\IceHawkWasInitializedEvent",
+            "\\ConfigGuard",
+            "\\RequestBypasser",
+            "\\WriteRequestHandler",
+            "\\ReadRequestHandler",
+            "\\OptionsRequestHandler",
+            "\\MethodNotImplemented"
         ]
     },
     {
-        "name": "\\IceHawk\\IceHawk\\PubSub\\EventPublisher",
+        "name": "\\EventPublisher",
         "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\RegistersEventSubscribers",
-            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\PublishesEvents",
-            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\SubscribesToEvents",
-            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
-        ]
+        "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\RequestHandlers\\WriteRequestHandler",
+        "name": "\\ConfigWrapper",
         "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\RequestHandlers\\AbstractRequestHandler",
-            "\\IceHawk\\IceHawk\\Events\\HandlingWriteRequestEvent",
-            "\\IceHawk\\IceHawk\\Events\\WriteRequestWasHandledEvent",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
-            "\\IceHawk\\IceHawk\\Routing\\RouteRequest",
-            "\\IceHawk\\IceHawk\\Routing\\WriteRouter",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData",
-            "\\IceHawk\\IceHawk\\Requests\\WriteRequestInput",
-            "\\IceHawk\\IceHawk\\Requests\\WriteRequest",
-            "\\IceHawk\\IceHawk\\Mappers\\UploadedFilesMapper"
-        ]
+        "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\RequestHandlers\\ReadRequestHandler",
+        "name": "\\InitializingIceHawkEvent",
         "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\RequestHandlers\\AbstractRequestHandler",
-            "\\IceHawk\\IceHawk\\Events\\HandlingReadRequestEvent",
-            "\\IceHawk\\IceHawk\\Events\\ReadRequestWasHandledEvent",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
-            "\\IceHawk\\IceHawk\\Routing\\RouteRequest",
-            "\\IceHawk\\IceHawk\\Routing\\ReadRouter",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData",
-            "\\IceHawk\\IceHawk\\Requests\\ReadRequestInput",
-            "\\IceHawk\\IceHawk\\Requests\\ReadRequest"
-        ]
+        "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\RequestHandlers\\OptionsRequestHandler",
+        "name": "\\IceHawkWasInitializedEvent",
         "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\RequestHandlers\\AbstractRequestHandler",
-            "\\IceHawk\\IceHawk\\Responses\\Options",
-            "\\IceHawk\\IceHawk\\Routing\\OptionsRouter",
-            "\\IceHawk\\IceHawk\\Interfaces\\HandlesRequest"
-        ]
+        "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Responses\\MethodNotImplemented",
+        "name": "\\ConfigGuard",
         "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\Responses\\AbstractHttpResponse",
-            "\\parent"
-        ]
+        "relations": []
+    },
+    {
+        "name": "\\RequestBypasser",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\WriteRequestHandler",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\ReadRequestHandler",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\OptionsRequestHandler",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\MethodNotImplemented",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\IceHawk\\IceHawk\\Interfaces\\HandlesDeleteRequest",
@@ -498,7 +492,9 @@
     {
         "name": "\\IceHawk\\IceHawk\\Interfaces\\HandlesWriteRequest",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\Interfaces\\HandlesRequest"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Interfaces\\HandlesGetRequest",
@@ -517,7 +513,9 @@
     {
         "name": "\\IceHawk\\IceHawk\\Interfaces\\HandlesReadRequest",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\IceHawk\\IceHawk\\Interfaces\\HandlesRequest"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Interfaces\\HandlesPatchRequest",
@@ -546,7 +544,17 @@
         "relations": []
     },
     {
+        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesRequestData",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData",
         "size": 3000,
         "relations": []
     },
@@ -566,6 +574,16 @@
         "relations": []
     },
     {
+        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\IceHawk\\IceHawk\\Mappers\\UploadedFilesMapper",
         "size": 3000,
         "relations": []
@@ -575,16 +593,36 @@
         "size": 3000,
         "relations": [
             "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\SubscribesToEvents",
-            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
-            "\\IceHawk\\IceHawk\\PubSub\\Exceptions\\EventSubscriberMethodNotCallable"
+            "\\EventSubscriberMethodNotCallable"
         ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\SubscribesToEvents",
         "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\EventSubscriberMethodNotCallable",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\PubSub\\EventPublisher",
+        "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\RegistersEventSubscribers",
+            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\PublishesEvents"
         ]
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\RegistersEventSubscribers",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\PublishesEvents",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\IceHawk\\IceHawk\\PubSub\\Exceptions\\EventSubscriberMethodNotCallable",
@@ -592,18 +630,6 @@
         "relations": [
             "\\IceHawk\\IceHawk\\PubSub\\Exceptions\\PubSubException"
         ]
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\RegistersEventSubscribers",
-        "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\SubscribesToEvents"
-        ]
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\PubSub\\Interfaces\\PublishesEvents",
-        "size": 3000,
-        "relations": []
     },
     {
         "name": "\\IceHawk\\IceHawk\\PubSub\\Exceptions\\PubSubException",
@@ -618,40 +644,116 @@
         "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Responses\\Options",
+        "name": "\\IceHawk\\IceHawk\\RequestHandlers\\OptionsRequestHandler",
         "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\Responses\\AbstractHttpResponse",
-            "\\parent"
+            "\\IceHawk\\IceHawk\\RequestHandlers\\AbstractRequestHandler",
+            "\\Options",
+            "\\OptionsRouter"
         ]
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Routing\\OptionsRouter",
-        "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\Routing\\AbstractRouter"
-        ]
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
+        "name": "\\Options",
         "size": 3000,
         "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Routing\\RouteRequest",
+        "name": "\\OptionsRouter",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\RequestHandlers\\ReadRequestHandler",
         "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo"
+            "\\IceHawk\\IceHawk\\RequestHandlers\\AbstractRequestHandler",
+            "\\HandlingReadRequestEvent",
+            "\\ReadRequestWasHandledEvent",
+            "\\RouteRequest",
+            "\\ReadRouter",
+            "\\ReadRequestInput",
+            "\\ReadRequest"
         ]
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Routing\\ReadRouter",
+        "name": "\\HandlingReadRequestEvent",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\ReadRequestWasHandledEvent",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\RouteRequest",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\ReadRouter",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\ReadRequestInput",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\ReadRequest",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\RequestHandlers\\WriteRequestHandler",
         "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\Routing\\AbstractRouter",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo",
-            "\\IceHawk\\IceHawk\\Exceptions\\UnresolvedRequest"
+            "\\IceHawk\\IceHawk\\RequestHandlers\\AbstractRequestHandler",
+            "\\HandlingWriteRequestEvent",
+            "\\WriteRequestWasHandledEvent",
+            "\\RouteRequest",
+            "\\WriteRouter",
+            "\\WriteRequestInput",
+            "\\WriteRequest",
+            "\\UploadedFilesMapper"
+        ]
+    },
+    {
+        "name": "\\HandlingWriteRequestEvent",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\WriteRequestWasHandledEvent",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\WriteRouter",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\WriteRequestInput",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\WriteRequest",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\UploadedFilesMapper",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Requests\\ReadRequest",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData"
         ]
     },
     {
@@ -659,46 +761,6 @@
         "size": 3000,
         "relations": [
             "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData"
-        ]
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Requests\\ReadRequest",
-        "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData"
-        ]
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Routing\\WriteRouter",
-        "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\Routing\\AbstractRouter",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo",
-            "\\IceHawk\\IceHawk\\Exceptions\\UnresolvedRequest"
-        ]
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Requests\\WriteRequestInput",
-        "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData"
-        ]
-    },
-    {
-        "name": "\\IceHawk\\IceHawk\\Requests\\WriteRequest",
-        "size": 3000,
-        "relations": [
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
-            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData"
         ]
     },
     {
@@ -716,17 +778,42 @@
         "relations": []
     },
     {
-        "name": "\\IceHawk\\IceHawk\\Responses\\AbstractHttpResponse",
+        "name": "\\IceHawk\\IceHawk\\Requests\\WriteRequest",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData"
+        ]
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Requests\\WriteRequestInput",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData",
+            "\\UploadedFile"
+        ]
+    },
+    {
+        "name": "\\UploadedFile",
         "size": 3000,
         "relations": []
     },
     {
-        "name": "\\parent",
+        "name": "\\IceHawk\\IceHawk\\Responses\\MethodNotImplemented",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Responses\\Options",
         "size": 3000,
         "relations": []
     },
     {
         "name": "\\IceHawk\\IceHawk\\Routing\\AbstractRouter",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\RoutesAreNotTraversable",
         "size": 3000,
         "relations": []
     },
@@ -738,6 +825,16 @@
         ]
     },
     {
+        "name": "\\IceHawk\\IceHawk\\Routing\\Interfaces\\BypassesRequest",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult",
         "size": 3000,
         "relations": []
@@ -746,6 +843,23 @@
         "name": "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToHandler",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Routing\\OptionsRouter",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Routing\\AbstractRouter"
+        ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Routing\\Patterns\\Literal",
@@ -772,34 +886,68 @@
         "name": "\\IceHawk\\IceHawk\\Routing\\ReadRoute",
         "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult",
-            "\\IceHawk\\IceHawk\\Interfaces\\HandlesReadRequest"
+            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler"
         ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Routing\\ReadRouteGroup",
         "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult"
+            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler"
+        ]
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Routing\\ReadRouter",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Routing\\AbstractRouter",
+            "\\UnresolvedRequest"
+        ]
+    },
+    {
+        "name": "\\UnresolvedRequest",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Routing\\RequestBypass",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\BypassesRequest"
+        ]
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Routing\\RequestBypasser",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Routing\\RouteRequest",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo"
         ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Routing\\WriteRoute",
         "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult",
-            "\\IceHawk\\IceHawk\\Interfaces\\HandlesWriteRequest"
+            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler"
         ]
     },
     {
         "name": "\\IceHawk\\IceHawk\\Routing\\WriteRouteGroup",
         "size": 3000,
         "relations": [
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
-            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult"
+            "\\IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler"
+        ]
+    },
+    {
+        "name": "\\IceHawk\\IceHawk\\Routing\\WriteRouter",
+        "size": 3000,
+        "relations": [
+            "\\IceHawk\\IceHawk\\Routing\\AbstractRouter",
+            "\\UnresolvedRequest"
         ]
     }
 ];

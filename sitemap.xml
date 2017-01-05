@@ -57,6 +57,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://icehawk.github.io/docs/icehawk/request-bypassing.html</loc>
+    <image:image>
+      <image:loc>https://icehawk.github.io/images/logo_121x100.png</image:loc>
+      <image:caption>Request bypassing</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://icehawk.github.io/docs/icehawk/request-information.html</loc>
     <image:image>
       <image:loc>https://icehawk.github.io/images/logo_121x100.png</image:loc>
@@ -75,6 +82,13 @@
     <image:image>
       <image:loc>https://icehawk.github.io/images/logo_121x100.png</image:loc>
       <image:caption>Uploaded files</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://icehawk.github.io/docs/icehawk/cookies.html</loc>
+    <image:image>
+      <image:loc>https://icehawk.github.io/images/logo_121x100.png</image:loc>
+      <image:caption>Cookies</image:caption>
     </image:image>
   </url>
   <url>
