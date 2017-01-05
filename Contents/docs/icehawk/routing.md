@@ -207,7 +207,7 @@ The advantage of this approach is that not all routes, patterns and request hand
 
 <hr class="blockspace">
 
-## What patterns to use for matching?
+## What patterns to use for matching? <a name="uri-pattern-classes"></a>
 
 As already mentioned above, the IceHawk component provides 3 ready-to-use pattern classes. We'd like to show you examples for each of them.
 

@@ -410,6 +410,7 @@ var_dump( $notUploadedFile );
 This prints:
 
 ```php
+# $uploadedFile0
 object(IceHawk\IceHawk\Requests\UploadedFile)[17]
   private 'name' => string '...' (length=24)
   private 'tmpName' => string '...' (length=66)
@@ -417,6 +418,7 @@ object(IceHawk\IceHawk\Requests\UploadedFile)[17]
   private 'size' => int 40506
   private 'type' => string 'image/png' (length=9)
 
+# $uploadedFile4
 object(IceHawk\IceHawk\Requests\UploadedFile)[19]
   private 'name' => string '...' (length=24)
   private 'tmpName' => string '...' (length=66)
@@ -424,5 +426,12 @@ object(IceHawk\IceHawk\Requests\UploadedFile)[19]
   private 'size' => int 40506
   private 'type' => string 'image/png' (length=9)
 
-NULL
+# $notUploadedFile
+# empty UploadedFile object with error UPLOAD_ERR_NO_FILE
+object(IceHawk\IceHawk\Requests\UploadedFile)[19]
+  private 'name' => string '' (length=0)
+  private 'tmpName' => string '' (length=0)
+  private 'error' => int 4 
+  private 'size' => int 0
+  private 'type' => string '' (length=0)
 ```

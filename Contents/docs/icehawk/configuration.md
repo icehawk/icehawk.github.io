@@ -244,6 +244,70 @@ Please see our [routing section](@baseUrl@/docs/icehawk/routing.html) for more d
 
 <hr class="blockspace">
 
+## Configure request bypasses
+
+This example shows a simple request bypass:
+
+```php
+<?php declare(strict_types=1);
+
+namespace YourVendor\YourProject;
+
+use IceHawk\IceHawk\Interfaces\ConfiguresIceHawk;
+use IceHawk\IceHawk\Interfaces\RoutesToWriteHandler;
+use IceHawk\IceHawk\Routing\WriteRoute;
+use IceHawk\IceHawk\Routing\RequestBypass;
+use IceHawk\IceHawk\Constants\HttpMethod;
+use IceHawk\IceHawk\Routing\Patterns\Literal;
+use IceHawk\IceHawk\Routing\Patterns\RegExp;
+use IceHawk\IceHawk\Routing\Patterns\NamedRegExp;
+use IceHawk\IceHawk\Defaults;
+
+class IceHawkConfig implements ConfiguresIceHawk
+{
+	use Defaults\Traits\DefaultRequestProviding;
+	use Defaults\Traits\DefaultReadRouting;
+	use Defaults\Traits\DefaultEventSubscribing;
+	use Defaults\Traits\DefaultCookieProviding;
+	use Defaults\Traits\DefaultFinalReadResponding;
+	use Defaults\Traits\DefaultFinalWriteResponding;
+	
+	/**
+	 * @return array|\Traversable|BypassesRequest[]
+	 */
+	public function getRequestBypasses()
+	{
+		return [
+			new RequestBypass(
+				new Literal('/payment/success'), 
+				'/payment/mark-succeeded', 
+				HttpMethod::POST
+			),	
+		];
+	}
+	
+	/**
+	 * @return array|\Traversable|RoutesToWriteHandler[]
+	 */
+	public function getWriteRoutes()
+	{
+		return [
+			new WriteRoute( 
+				new Literal('/payment/mark-succeeded'), 
+				new MarkPaymentSucceededRequestHandler() 
+			),
+		];
+	}
+}
+```
+
+As you may noticed, we omitted the return type for this method, because we wanted to allow building a `\Generator` and `yield`ing the routes.
+In the next major release targeting PHP 7.1 we'll add the [iterable](https://github.com/php/php-src/pull/1941) return type.
+
+Please see our [request bypassing section](@baseUrl@/docs/icehawk/request-bypassing.html) for more details. 
+
+<hr class="blockspace">
+
 ## Configure event subscribers
 
 IceHawk publishes some events you can subscribe to. The following example shows how to register such event subscribers:

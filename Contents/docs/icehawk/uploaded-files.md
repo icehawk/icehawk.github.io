@@ -263,6 +263,7 @@ var_dump( $notUploadedFile );
 This prints:
 
 ```php
+# $uploadedFile0
 # file at default index 0
 object(IceHawk\IceHawk\Requests\UploadedFile)[17]
   private 'name' => string 'branding-circle.png' (length=19)
@@ -271,6 +272,7 @@ object(IceHawk\IceHawk\Requests\UploadedFile)[17]
   private 'size' => int 14273
   private 'type' => string 'image/png' (length=9)
 
+# $uploadedFile4
 # file at a string index "file4"
 object(IceHawk\IceHawk\Requests\UploadedFile)[19]
   private 'name' => string 'branding-circle.png' (length=19)
@@ -279,13 +281,15 @@ object(IceHawk\IceHawk\Requests\UploadedFile)[19]
   private 'size' => int 14273
   private 'type' => string 'image/png' (length=9)
 
-# not existing file
-NULL
+# $notUploadedFile
+# not existing file, empty UploadedFile object with error UPLOAD_ERR_NO_FILE
+object(IceHawk\IceHawk\Requests\UploadedFile)[19]
+  private 'name' => string '' (length=0)
+  private 'tmpName' => string '' (length=0)
+  private 'error' => int 4 
+  private 'size' => int 0
+  private 'type' => string '' (length=0)
 ```
-
-**Please note:** 
-[We will change the return value for not-existing files in `v2.1.0` to an empty `UploadedFile` object with the error code `UPLOAD_ERR_NO_FILE`.](https://github.com/icehawk/icehawk/issues/22)
-And will then add a return type declaration to the `getOneFile()` method.
 
 <hr class="blockspace">
 
