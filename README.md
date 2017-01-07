@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/icehawk/icehawk.github.io.svg?branch=master)](https://travis-ci.org/icehawk/icehawk.github.io)
+
 # IceHawk website
 
 ## Edit the website
