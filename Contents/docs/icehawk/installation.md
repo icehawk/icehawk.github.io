@@ -147,7 +147,7 @@ location / {
 ```
 _— nginx_
 
-Now you can visit http://your.domain/ and should see _Hello World!_.
+Now you can visit `http://your.domain/` and should see _Hello World!_.
 
 **That's it.**
 

@@ -4,7 +4,7 @@ We perform static code analysis with latest version of [PhpMetrics](http://www.p
 
 <hr class="blockspace">
 
-<a href="/metrics/icehawk/index.html" class="btn btn-primary pull-right" target="_blank">View the full metrics</a>
+<a href="@baseUrl@/metrics/icehawk/index.html" class="btn btn-primary pull-right" target="_blank">View the full metrics</a>
 ## <i class="fa fa-github"></i> IceHawk component
 
 [![Build Status](https://travis-ci.org/icehawk/icehawk.svg?branch=master)](https://travis-ci.org/icehawk/icehawk)
@@ -14,7 +14,7 @@ We perform static code analysis with latest version of [PhpMetrics](http://www.p
  
 <hr class="blockspace">
 
-<a href="/metrics/forms/index.html" class="btn btn-primary pull-right" target="_blank">View the full metrics</a>
+<a href="@baseUrl@/metrics/forms/index.html" class="btn btn-primary pull-right" target="_blank">View the full metrics</a>
 ## <i class="fa fa-github"></i> Forms component
 
 [![Build Status](https://travis-ci.org/icehawk/forms.svg?branch=master)](https://travis-ci.org/icehawk/forms)
@@ -24,7 +24,7 @@ We perform static code analysis with latest version of [PhpMetrics](http://www.p
 
 <hr class="blockspace">
 
-<a href="/metrics/session/index.html" class="btn btn-primary pull-right" target="_blank">View the full metrics</a>
+<a href="@baseUrl@/metrics/session/index.html" class="btn btn-primary pull-right" target="_blank">View the full metrics</a>
 ## <i class="fa fa-github"></i> Session component
 
 [![Build Status](https://travis-ci.org/icehawk/session.svg?branch=master)](https://travis-ci.org/icehawk/session)
@@ -34,7 +34,7 @@ We perform static code analysis with latest version of [PhpMetrics](http://www.p
 
 <hr class="blockspace">
 
-<a href="/metrics/pubsub/index.html" class="btn btn-primary pull-right" target="_blank">View the full metrics</a>
+<a href="@baseUrl@/metrics/pubsub/index.html" class="btn btn-primary pull-right" target="_blank">View the full metrics</a>
 ## <i class="fa fa-github"></i> PubSub component
 
 [![Build Status](https://travis-ci.org/icehawk/pubsub.svg?branch=master)](https://travis-ci.org/icehawk/pubsub)

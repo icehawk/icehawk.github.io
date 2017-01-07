@@ -6,7 +6,7 @@ You can also find the bleeding-edge development coverage at [coveralls.io](https
 
 <hr class="blockspace">
 
-<a href="/coverage/icehawk/index.html" class="btn btn-primary pull-right" target="_blank">View the full coverage report</a>
+<a href="@baseUrl@/coverage/icehawk/index.html" class="btn btn-primary pull-right" target="_blank">View the full coverage report</a>
 ## <i class="fa fa-github"></i> IceHawk component
 
 [![Build Status](https://travis-ci.org/icehawk/icehawk.svg?branch=master)](https://travis-ci.org/icehawk/icehawk)
@@ -15,7 +15,7 @@ You can also find the bleeding-edge development coverage at [coveralls.io](https
 
 <hr class="blockspace">
 
-<a href="/coverage/forms/index.html" class="btn btn-primary pull-right" target="_blank">View the full coverage report</a>
+<a href="@baseUrl@/coverage/forms/index.html" class="btn btn-primary pull-right" target="_blank">View the full coverage report</a>
 ## <i class="fa fa-github"></i> Forms component
 
 [![Build Status](https://travis-ci.org/icehawk/forms.svg?branch=master)](https://travis-ci.org/icehawk/forms)
@@ -24,7 +24,7 @@ You can also find the bleeding-edge development coverage at [coveralls.io](https
  
 <hr class="blockspace">
 
-<a href="/coverage/session/index.html" class="btn btn-primary pull-right" target="_blank">View the full coverage report</a>
+<a href="@baseUrl@/coverage/session/index.html" class="btn btn-primary pull-right" target="_blank">View the full coverage report</a>
 ## <i class="fa fa-github"></i> Session component
 
 [![Build Status](https://travis-ci.org/icehawk/session.svg?branch=master)](https://travis-ci.org/icehawk/session)
@@ -33,7 +33,7 @@ You can also find the bleeding-edge development coverage at [coveralls.io](https
 
 <hr class="blockspace">
 
-<a href="/coverage/pubsub/index.html" class="btn btn-primary pull-right" target="_blank">View the full coverage report</a>
+<a href="@baseUrl@/coverage/pubsub/index.html" class="btn btn-primary pull-right" target="_blank">View the full coverage report</a>
 ## <i class="fa fa-github"></i> PubSub component
 
 [![Build Status](https://travis-ci.org/icehawk/pubsub.svg?branch=master)](https://travis-ci.org/icehawk/pubsub)

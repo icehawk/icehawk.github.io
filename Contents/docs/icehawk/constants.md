@@ -64,7 +64,7 @@ else
 ## HTTP codes
 
 To help you respond requests with appropriate HTTP status codes we provide an abstract class with all available HTTP status codes, defined in 
-[Hypertext Transfer Protocol - HTTP/1.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
+"Hypertext Transfer Protocol - HTTP/1.1" (RFC 2616, Section 10)
  
 ```php
 use IceHawk\IceHawk\Constants\HttpCode;

@@ -46,7 +46,7 @@ catch ( UnresolvedRequest $e )
 }
 ```
 
-We _recommend_ that you catch this exception in your [final responders](@baseUrl/docs/icehawk/final-responding.html@) and provide a valid `404 Not Found` response.
+We _recommend_ that you catch this exception in your [final responders](@baseUrl@/docs/icehawk/final-responding.html) and provide a valid `404 Not Found` response.
 We intentionally decided not to auto-respond to unresolved requests, because:
 
 * You shall be able to create your own responses, e.g. a custom 404 page or API response.

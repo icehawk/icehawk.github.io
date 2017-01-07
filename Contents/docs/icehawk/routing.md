@@ -27,8 +27,8 @@ as the requested URI, even if it is not part of the requested URL.
 
 That means:
 
-* For the URL https://www.your-domain.com IceHawk provides the URI `/`.
-* For the URL https://www.your-domain.com/ IceHawk provides the URI `/`.
+* For the URL `https://www.your-domain.com` IceHawk provides the URI `/`.
+* For the URL `https://www.your-domain.com/` IceHawk provides the URI `/`.
 
 So you always have a reliable root URI string.
 
@@ -37,8 +37,8 @@ for all your URIs like `/shop/` IceHawk will give you the URI as is.
 
 That means:
 
-* For the URL https://www.your-domain.com/shop IceHawk provides the URI `/shop`.
-* For the URL https://www.your-domain.com/shop/ IceHawk provides the URI `/shop/`.
+* For the URL `https://www.your-domain.com/shop` IceHawk provides the URI `/shop`.
+* For the URL `https://www.your-domain.com/shop/` IceHawk provides the URI `/shop/`.
 
 If you always want trailing slashes in your URI you need to take care of that yourself, e.g. by adding an appropriate rewrite rule in your webserver's host config or `.htaccess` file.
 
