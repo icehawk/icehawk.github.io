@@ -4,8 +4,11 @@
 	"outputDir": "./",
 	"contentsDir": "Contents/",
 	"replacements": {
-		"@website_version@": "v1.1.0",
-		"@icehawk/icehawk-version@": "v2.1.0",
+		"@last_release_date@": "September 1st, 2017",
+		"@last_release_note@": "IceHawk version 2.2.0 has been released!",
+		"@last_release_note_link@": "https://github.com/icehawk/icehawk/releases",
+		"@website_version@": "v1.2.0",
+		"@icehawk/icehawk-version@": "v2.2.0",
 		"@icehawk/session-version@": "v1.1.1",
 		"@icehawk/forms-version@": "v1.0.0",
 		"@icehawk/pubsub-version@": "v1.0.1"

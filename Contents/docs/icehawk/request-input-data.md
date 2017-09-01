@@ -182,6 +182,8 @@ The `$requestInput` object retrieved in the example above is an instance of the
 
 This class is a wrapper of the superglobal `$_POST` variable and offers the following ways to access its data:
 
+<hr class="blockspace">
+
 ### 1. Get a single value
  
 Assuming we have the following post data, submitted from a registration form:
@@ -227,6 +229,8 @@ NULL                    # $captcha
 FALSE               	# $captcha
 ```
 
+<hr class="blockspace">
+
 ### 2. Get all values
 
 Assuming we have the following post data, submitted from a registration form:
@@ -255,9 +259,11 @@ array(3) {
 }
 ```
 
+<hr class="blockspace">
+
 ### 3. Get the raw request body
 
-If the client submits a data in the request body, you can access it via the `getBody()` method.
+If the client submits data in the request body, you can access it via the `getBody()` method.
 
 Assuming the following JSON string is the body:
 
@@ -284,7 +290,32 @@ Unlike other frameworks we intentionally decided to not parse the body automatic
 
 <hr class="blockspace">
 
-### 3. Get uploaded files
+### 4. Get the request body as stream resource
+
+(Available since v2.2.0)
+
+If the client sends large data in the request body, it may be useful to access this data as a stream.
+Having a stream resource allows to copy the data to another stream (e.g. a temporary file) for further processing 
+without harming the scripts memory consumption.
+
+A typical example is a large XML file in the body copied to a temporary file and then processed with php's XmlReader.
+
+To retrieve the stream resource use:
+
+```php
+$streamResource = $requestInput->getBodyAsStream();
+```
+
+The returned stream resource is identical to `fopen('php://input', 'rb')`.
+
+**Please note:**
+ 
+ * If the stream was read once you cannot rewind the pointer. So reading the body content is possible only once.
+ * A subsequent call to `$requestInput->getBody()` will return an empty string.
+
+<hr class="blockspace">
+
+### 5. Get uploaded files
 
 The IceHawk component offers a comfortable way to access uploaded files, especially when you need to handle multiple files in one request. 
 IceHawk transforms the confusing structured `$_FILES` array that PHP unpacks to a normalized array containing an object for each uploaded file.

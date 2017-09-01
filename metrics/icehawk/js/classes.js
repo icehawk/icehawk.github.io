@@ -32,8 +32,10 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 2,
+        "ccnMethodMax": 2,
         "externals": [
-            "InvalidEventSubscriberCollection"
+            "IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk",
+            "IceHawk\\IceHawk\\Exceptions\\InvalidEventSubscriberCollection"
         ],
         "lcom": 1,
         "length": 19,
@@ -63,9 +65,9 @@ var classes = [
         "totalDataComplexity": 1,
         "totalSystemComplexity": 28,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 2,
+        "instability": 0.67,
         "violations": {}
     },
     {
@@ -143,8 +145,14 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 9,
+        "ccnMethodMax": 2,
         "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk"
+            "IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk",
+            "IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData",
+            "IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToReadRequest",
+            "IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToWriteRequest"
         ],
         "lcom": 1,
         "length": 68,
@@ -174,9 +182,9 @@ var classes = [
         "totalDataComplexity": 8.11,
         "totalSystemComplexity": 584.11,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 6,
+        "instability": 0.86,
         "violations": {}
     },
     {
@@ -190,6 +198,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 0,
         "externals": [],
         "lcom": 0,
         "length": 0,
@@ -235,6 +244,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 0,
         "externals": [],
         "lcom": 0,
         "length": 74,
@@ -280,6 +290,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 0,
         "externals": [],
         "lcom": 0,
         "length": 7,
@@ -350,6 +361,7 @@ var classes = [
         "nbMethodsGetter": 1,
         "nbMethodsSetters": 1,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData",
             "self"
@@ -406,9 +418,11 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToReadRequest",
-            "Throwable"
+            "Throwable",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData"
         ],
         "lcom": 1,
         "length": 3,
@@ -439,7 +453,7 @@ var classes = [
         "totalSystemComplexity": 2,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 2,
+        "efferentCoupling": 3,
         "instability": 1,
         "violations": {}
     },
@@ -462,9 +476,11 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToWriteRequest",
-            "Throwable"
+            "Throwable",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData"
         ],
         "lcom": 1,
         "length": 3,
@@ -495,7 +511,7 @@ var classes = [
         "totalSystemComplexity": 2,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 2,
+        "efferentCoupling": 3,
         "instability": 1,
         "violations": {}
     },
@@ -510,6 +526,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 0,
         "externals": [
             "IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk"
         ],
@@ -579,8 +596,11 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\SetsUpEnvironment"
+            "IceHawk\\IceHawk\\Interfaces\\SetsUpEnvironment",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo"
         ],
         "lcom": 3,
         "length": 2,
@@ -611,7 +631,7 @@ var classes = [
         "totalSystemComplexity": 2,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 1,
+        "efferentCoupling": 3,
         "instability": 1,
         "violations": {}
     },
@@ -954,9 +974,11 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 1,
         "ccn": 2,
+        "ccnMethodMax": 2,
         "externals": [
             "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
             "self",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
             "self"
         ],
         "lcom": 2,
@@ -988,7 +1010,7 @@ var classes = [
         "totalSystemComplexity": 1153.5,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 3,
+        "efferentCoupling": 4,
         "instability": 1,
         "violations": {}
     },
@@ -1032,8 +1054,13 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData"
         ],
         "lcom": 1,
         "length": 10,
@@ -1063,9 +1090,9 @@ var classes = [
         "totalDataComplexity": 3.25,
         "totalSystemComplexity": 39.25,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 5,
+        "instability": 0.83,
         "violations": {}
     },
     {
@@ -1108,8 +1135,13 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData"
         ],
         "lcom": 1,
         "length": 10,
@@ -1139,9 +1171,9 @@ var classes = [
         "totalDataComplexity": 3.25,
         "totalSystemComplexity": 39.25,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 5,
+        "instability": 0.83,
         "violations": {}
     },
     {
@@ -1177,8 +1209,13 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData"
         ],
         "lcom": 1,
         "length": 12,
@@ -1208,9 +1245,9 @@ var classes = [
         "totalDataComplexity": 8,
         "totalSystemComplexity": 8,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 5,
+        "instability": 0.83,
         "violations": {}
     },
     {
@@ -1246,8 +1283,13 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData"
         ],
         "lcom": 1,
         "length": 12,
@@ -1277,9 +1319,9 @@ var classes = [
         "totalDataComplexity": 8,
         "totalSystemComplexity": 8,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 5,
+        "instability": 0.83,
         "violations": {}
     },
     {
@@ -1322,8 +1364,13 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData"
         ],
         "lcom": 1,
         "length": 10,
@@ -1353,9 +1400,9 @@ var classes = [
         "totalDataComplexity": 3.25,
         "totalSystemComplexity": 39.25,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 5,
+        "instability": 0.83,
         "violations": {}
     },
     {
@@ -1398,8 +1445,13 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData"
         ],
         "lcom": 1,
         "length": 10,
@@ -1429,9 +1481,9 @@ var classes = [
         "totalDataComplexity": 3.25,
         "totalSystemComplexity": 39.25,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 5,
+        "instability": 0.83,
         "violations": {}
     },
     {
@@ -1445,6 +1497,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 0,
         "externals": [
             "Exception"
         ],
@@ -1475,7 +1528,7 @@ var classes = [
         "totalStructuralComplexity": 0,
         "totalDataComplexity": 0,
         "totalSystemComplexity": 0,
-        "pageRank": 0.05,
+        "pageRank": 0.02,
         "afferentCoupling": 4,
         "efferentCoupling": 1,
         "instability": 0.2,
@@ -1505,6 +1558,7 @@ var classes = [
         "nbMethodsGetter": 1,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\Exceptions\\IceHawkException"
         ],
@@ -1536,9 +1590,9 @@ var classes = [
         "totalDataComplexity": 5,
         "totalSystemComplexity": 5,
         "pageRank": 0,
-        "afferentCoupling": 0,
+        "afferentCoupling": 1,
         "efferentCoupling": 1,
-        "instability": 1,
+        "instability": 0.5,
         "violations": {}
     },
     {
@@ -1567,8 +1621,11 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\Exceptions\\IceHawkException"
+            "IceHawk\\IceHawk\\Exceptions\\IceHawkException",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo"
         ],
         "lcom": 1,
         "length": 9,
@@ -1598,9 +1655,9 @@ var classes = [
         "totalDataComplexity": 5,
         "totalSystemComplexity": 5,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 2,
+        "efferentCoupling": 3,
+        "instability": 0.6,
         "violations": {}
     },
     {
@@ -1657,37 +1714,41 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 4,
+        "ccnMethodMax": 2,
         "externals": [
-            "EventPublisher",
-            "ConfigWrapper",
-            "InitializingIceHawkEvent",
-            "IceHawkWasInitializedEvent",
-            "ConfigGuard",
-            "RequestBypasser",
-            "WriteRequestHandler",
-            "ReadRequestHandler",
-            "OptionsRequestHandler",
-            "MethodNotImplemented"
+            "IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk",
+            "IceHawk\\IceHawk\\Interfaces\\SetsUpEnvironment",
+            "IceHawk\\IceHawk\\PubSub\\EventPublisher",
+            "IceHawk\\IceHawk\\Config\\ConfigWrapper",
+            "IceHawk\\IceHawk\\Events\\InitializingIceHawkEvent",
+            "IceHawk\\IceHawk\\Events\\IceHawkWasInitializedEvent",
+            "IceHawk\\IceHawk\\Config\\ConfigGuard",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Routing\\RequestBypasser",
+            "IceHawk\\IceHawk\\RequestHandlers\\WriteRequestHandler",
+            "IceHawk\\IceHawk\\RequestHandlers\\ReadRequestHandler",
+            "IceHawk\\IceHawk\\RequestHandlers\\OptionsRequestHandler",
+            "IceHawk\\IceHawk\\Responses\\MethodNotImplemented"
         ],
         "lcom": 1,
-        "length": 79,
+        "length": 82,
         "vocabulary": 15,
-        "volume": 308.64,
-        "difficulty": 11.27,
-        "effort": 3479.26,
-        "level": 0.09,
-        "bugs": 0.1,
-        "time": 193,
-        "intelligentContent": 27.38,
+        "volume": 320.37,
+        "difficulty": 11.82,
+        "effort": 3786.13,
+        "level": 0.08,
+        "bugs": 0.11,
+        "time": 210,
+        "intelligentContent": 27.11,
         "number_operators": 17,
-        "number_operands": 62,
+        "number_operands": 65,
         "number_operators_unique": 4,
         "number_operands_unique": 11,
         "cloc": 17,
         "loc": 80,
         "lloc": 63,
-        "mi": 75.53,
-        "mIwoC": 42.78,
+        "mi": 75.42,
+        "mIwoC": 42.67,
         "commentWeight": 32.75,
         "kanDefect": 0.68,
         "relativeStructuralComplexity": 324,
@@ -1698,1049 +1759,8 @@ var classes = [
         "totalSystemComplexity": 1944.42,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 10,
+        "efferentCoupling": 13,
         "instability": 1,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getReadRoutes",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getWriteRoutes",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getRequestBypasses",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getEventSubscribers",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getRequestInfo",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getCookies",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getFinalReadResponder",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getFinalWriteResponder",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 8,
-        "nbMethods": 8,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 8,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.02,
-        "afferentCoupling": 2,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\HandlesDeleteRequest",
-        "interface": true,
-        "methods": [],
-        "nbMethodsIncludingGettersSetters": 0,
-        "nbMethods": 0,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 0,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\HandlesWriteRequest"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\HandlesGetRequest",
-        "interface": true,
-        "methods": [],
-        "nbMethodsIncludingGettersSetters": 0,
-        "nbMethods": 0,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 0,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\HandlesHeadRequest"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\HandlesHeadRequest",
-        "interface": true,
-        "methods": [],
-        "nbMethodsIncludingGettersSetters": 0,
-        "nbMethods": 0,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 0,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\HandlesReadRequest"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 1,
-        "instability": 0.5,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\HandlesPatchRequest",
-        "interface": true,
-        "methods": [],
-        "nbMethodsIncludingGettersSetters": 0,
-        "nbMethods": 0,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 0,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\HandlesWriteRequest"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\HandlesPostRequest",
-        "interface": true,
-        "methods": [],
-        "nbMethodsIncludingGettersSetters": 0,
-        "nbMethods": 0,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 0,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\HandlesWriteRequest"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\HandlesPutRequest",
-        "interface": true,
-        "methods": [],
-        "nbMethodsIncludingGettersSetters": 0,
-        "nbMethods": 0,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 0,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\HandlesWriteRequest"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\HandlesReadRequest",
-        "interface": true,
-        "methods": [
-            {
-                "name": "handle",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\HandlesRequest"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.03,
-        "afferentCoupling": 1,
-        "efferentCoupling": 1,
-        "instability": 0.5,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\HandlesRequest",
-        "interface": true,
-        "methods": [],
-        "nbMethodsIncludingGettersSetters": 0,
-        "nbMethods": 0,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 0,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.13,
-        "afferentCoupling": 2,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\HandlesWriteRequest",
-        "interface": true,
-        "methods": [
-            {
-                "name": "handle",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\HandlesRequest"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.04,
-        "afferentCoupling": 4,
-        "efferentCoupling": 1,
-        "instability": 0.2,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getData",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "get",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 2,
-        "nbMethods": 2,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 2,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getInput",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestData"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 1,
-        "instability": 0.5,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData",
-        "interface": true,
-        "methods": [],
-        "nbMethodsIncludingGettersSetters": 0,
-        "nbMethods": 0,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 0,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInputData"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 1,
-        "instability": 0.5,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestData",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getInfo",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getCookies",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 2,
-        "nbMethods": 2,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 2,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.05,
-        "afferentCoupling": 2,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
-        "interface": true,
-        "methods": [
-            {
-                "name": "newWithOverwrites",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getArgv",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getArgc",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "isSecure",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getMethod",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getUri",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getHost",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getConnection",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getUserAgent",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getServerAddress",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getClientAddress",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getClientHost",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getClientPort",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getClientUser",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getRedirectClientUser",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getRequestTimeFloat",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getRequestTime",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getAcceptedContentTypes",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getAcceptedCharsets",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getAcceptedEncoding",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getAcceptedLanguage",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getQueryString",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getReferer",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getAuthType",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getAuthDigest",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getAuthUser",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getAuthPassword",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getContentType",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getContentLength",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getPhpSelf",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getGatewayInterface",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getServerName",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getServerSoftware",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getServerProtocol",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getServerAdmin",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getServerPort",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getServerSignature",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getPathTranslated",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getDocumentRoot",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getScriptName",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getScriptFilename",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getPathInfo",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getOriginalPathInfo",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getCustomValue",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 44,
-        "nbMethods": 44,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 44,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInputData",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getData",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "get",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 2,
-        "nbMethods": 2,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 2,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.04,
-        "afferentCoupling": 2,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesUploadedFileData",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getError",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getName",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getSize",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getTmpName",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getType",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getRealType",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getEncoding",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "didUploadSucceed",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getErrorMessage",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 9,
-        "nbMethods": 9,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 9,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesUploadedFiles",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getAllFiles",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getFiles",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getOneFile",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 3,
-        "nbMethods": 3,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 3,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getInput",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestData"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 1,
-        "instability": 0.5,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getBody",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInputData",
-            "IceHawk\\IceHawk\\Interfaces\\ProvidesUploadedFiles"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 2,
-        "instability": 0.67,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToReadRequest",
-        "interface": true,
-        "methods": [
-            {
-                "name": "handleUncaughtException",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "Throwable"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 1,
-        "instability": 0.5,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\RespondsFinallyToWriteRequest",
-        "interface": true,
-        "methods": [
-            {
-                "name": "handleUncaughtException",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "Throwable"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 1,
-        "instability": 0.5,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Interfaces\\SetsUpEnvironment",
-        "interface": true,
-        "methods": [
-            {
-                "name": "setUpGlobalVars",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "setUpErrorHandling",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "setUpSessionHandling",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 3,
-        "nbMethods": 3,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 3,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
         "violations": {}
     },
     {
@@ -2774,26 +1794,27 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 1,
         "ccn": 6,
+        "ccnMethodMax": 5,
         "externals": [],
         "lcom": 1,
-        "length": 50,
-        "vocabulary": 18,
-        "volume": 208.5,
-        "difficulty": 4,
-        "effort": 833.99,
-        "level": 0.25,
+        "length": 51,
+        "vocabulary": 20,
+        "volume": 220.42,
+        "difficulty": 5,
+        "effort": 1102.09,
+        "level": 0.2,
         "bugs": 0.07,
-        "time": 46,
-        "intelligentContent": 52.12,
-        "number_operators": 10,
+        "time": 61,
+        "intelligentContent": 44.08,
+        "number_operators": 11,
         "number_operands": 40,
-        "number_operators_unique": 3,
-        "number_operands_unique": 15,
+        "number_operators_unique": 4,
+        "number_operands_unique": 16,
         "cloc": 14,
         "loc": 48,
         "lloc": 34,
-        "mi": 86.67,
-        "mIwoC": 49.55,
+        "mi": 86.5,
+        "mIwoC": 49.38,
         "commentWeight": 37.12,
         "kanDefect": 1.14,
         "relativeStructuralComplexity": 1,
@@ -2803,7 +1824,7 @@ var classes = [
         "totalDataComplexity": 3.5,
         "totalSystemComplexity": 6.5,
         "pageRank": 0,
-        "afferentCoupling": 0,
+        "afferentCoupling": 1,
         "efferentCoupling": 0,
         "instability": 0,
         "violations": {}
@@ -2841,9 +1862,12 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 2,
+        "ccnMethodMax": 2,
         "externals": [
             "IceHawk\\IceHawk\\PubSub\\Interfaces\\SubscribesToEvents",
-            "EventSubscriberMethodNotCallable"
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
+            "IceHawk\\IceHawk\\PubSub\\Exceptions\\EventSubscriberMethodNotCallable"
         ],
         "lcom": 2,
         "length": 22,
@@ -2874,7 +1898,7 @@ var classes = [
         "totalSystemComplexity": 28.25,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 2,
+        "efferentCoupling": 4,
         "instability": 1,
         "violations": {}
     },
@@ -2911,9 +1935,12 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 4,
+        "ccnMethodMax": 3,
         "externals": [
             "IceHawk\\IceHawk\\PubSub\\Interfaces\\RegistersEventSubscribers",
-            "IceHawk\\IceHawk\\PubSub\\Interfaces\\PublishesEvents"
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\PublishesEvents",
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\SubscribesToEvents",
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
         ],
         "lcom": 1,
         "length": 17,
@@ -2943,9 +1970,9 @@ var classes = [
         "totalDataComplexity": 0.67,
         "totalSystemComplexity": 12.67,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 2,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 4,
+        "instability": 0.8,
         "violations": {}
     },
     {
@@ -2972,6 +1999,7 @@ var classes = [
         "nbMethodsGetter": 1,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\PubSub\\Exceptions\\PubSubException"
         ],
@@ -3003,9 +2031,9 @@ var classes = [
         "totalDataComplexity": 5,
         "totalSystemComplexity": 5,
         "pageRank": 0,
-        "afferentCoupling": 0,
+        "afferentCoupling": 1,
         "efferentCoupling": 1,
-        "instability": 1,
+        "instability": 0.5,
         "violations": {}
     },
     {
@@ -3019,6 +2047,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 0,
         "externals": [
             "IceHawk\\IceHawk\\Exceptions\\IceHawkException"
         ],
@@ -3049,132 +2078,10 @@ var classes = [
         "totalStructuralComplexity": 0,
         "totalDataComplexity": 0,
         "totalSystemComplexity": 0,
-        "pageRank": 0.01,
+        "pageRank": 0,
         "afferentCoupling": 1,
         "efferentCoupling": 1,
         "instability": 0.5,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getRequestInfo",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getRequestCookies",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 2,
-        "nbMethods": 2,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 2,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.05,
-        "afferentCoupling": 6,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\PubSub\\Interfaces\\PublishesEvents",
-        "interface": true,
-        "methods": [
-            {
-                "name": "publish",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\PubSub\\Interfaces\\RegistersEventSubscribers",
-        "interface": true,
-        "methods": [
-            {
-                "name": "register",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\PubSub\\Interfaces\\SubscribesToEvents",
-        "interface": true,
-        "methods": [
-            {
-                "name": "acceptsEvent",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "notify",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 2,
-        "nbMethods": 2,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 2,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
         "violations": {}
     },
     {
@@ -3210,38 +2117,44 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
-        "externals": [],
+        "ccnMethodMax": 1,
+        "externals": [
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ConfiguresIceHawk",
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\PublishesEvents",
+            "IceHawk\\IceHawk\\PubSub\\Interfaces\\CarriesEventData"
+        ],
         "lcom": 2,
-        "length": 11,
-        "vocabulary": 5,
-        "volume": 25.54,
-        "difficulty": 1.13,
-        "effort": 28.73,
-        "level": 0.89,
+        "length": 15,
+        "vocabulary": 6,
+        "volume": 38.77,
+        "difficulty": 1.2,
+        "effort": 46.53,
+        "level": 0.83,
         "bugs": 0.01,
-        "time": 2,
-        "intelligentContent": 22.7,
-        "number_operators": 2,
-        "number_operands": 9,
+        "time": 3,
+        "intelligentContent": 32.31,
+        "number_operators": 3,
+        "number_operands": 12,
         "number_operators_unique": 1,
-        "number_operands_unique": 4,
-        "cloc": 10,
-        "loc": 26,
-        "lloc": 16,
-        "mi": 104.73,
-        "mIwoC": 63.75,
-        "commentWeight": 40.98,
+        "number_operands_unique": 5,
+        "cloc": 7,
+        "loc": 25,
+        "lloc": 18,
+        "mi": 97.91,
+        "mIwoC": 61.36,
+        "commentWeight": 36.55,
         "kanDefect": 0.15,
         "relativeStructuralComplexity": 1,
-        "relativeDataComplexity": 0.5,
-        "relativeSystemComplexity": 1.5,
+        "relativeDataComplexity": 0.67,
+        "relativeSystemComplexity": 1.67,
         "totalStructuralComplexity": 3,
-        "totalDataComplexity": 1.5,
-        "totalSystemComplexity": 4.5,
-        "pageRank": 0.01,
+        "totalDataComplexity": 2,
+        "totalSystemComplexity": 5,
+        "pageRank": 0,
         "afferentCoupling": 3,
-        "efferentCoupling": 0,
-        "instability": 0,
+        "efferentCoupling": 4,
+        "instability": 0.57,
         "violations": {}
     },
     {
@@ -3290,43 +2203,45 @@ var classes = [
         "nbMethodsPublic": 1,
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
-        "ccn": 4,
+        "ccn": 5,
+        "ccnMethodMax": 3,
         "externals": [
             "IceHawk\\IceHawk\\RequestHandlers\\AbstractRequestHandler",
-            "Options",
-            "OptionsRouter"
+            "IceHawk\\IceHawk\\Responses\\Options",
+            "IceHawk\\IceHawk\\Routing\\OptionsRouter",
+            "IceHawk\\IceHawk\\Interfaces\\HandlesRequest"
         ],
         "lcom": 1,
-        "length": 64,
+        "length": 65,
         "vocabulary": 18,
-        "volume": 266.88,
-        "difficulty": 4.6,
-        "effort": 1227.63,
-        "level": 0.22,
+        "volume": 271.05,
+        "difficulty": 4.7,
+        "effort": 1273.91,
+        "level": 0.21,
         "bugs": 0.09,
-        "time": 68,
-        "intelligentContent": 58.02,
+        "time": 71,
+        "intelligentContent": 57.67,
         "number_operators": 18,
-        "number_operands": 46,
+        "number_operands": 47,
         "number_operators_unique": 3,
         "number_operands_unique": 15,
-        "cloc": 10,
-        "loc": 53,
-        "lloc": 43,
-        "mi": 78,
-        "mIwoC": 46.84,
-        "commentWeight": 31.16,
-        "kanDefect": 0.68,
-        "relativeStructuralComplexity": 121,
-        "relativeDataComplexity": 0.38,
-        "relativeSystemComplexity": 121.38,
-        "totalStructuralComplexity": 605,
-        "totalDataComplexity": 1.92,
-        "totalSystemComplexity": 606.92,
+        "cloc": 11,
+        "loc": 56,
+        "lloc": 45,
+        "mi": 77.92,
+        "mIwoC": 46.23,
+        "commentWeight": 31.7,
+        "kanDefect": 0.91,
+        "relativeStructuralComplexity": 100,
+        "relativeDataComplexity": 0.42,
+        "relativeSystemComplexity": 100.42,
+        "totalStructuralComplexity": 500,
+        "totalDataComplexity": 2.09,
+        "totalSystemComplexity": 502.09,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 3,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 4,
+        "instability": 0.8,
         "violations": {}
     },
     {
@@ -3369,46 +2284,49 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\RequestHandlers\\AbstractRequestHandler",
-            "HandlingReadRequestEvent",
-            "ReadRequestWasHandledEvent",
-            "RouteRequest",
-            "ReadRouter",
-            "ReadRequestInput",
-            "ReadRequest"
+            "IceHawk\\IceHawk\\Events\\HandlingReadRequestEvent",
+            "IceHawk\\IceHawk\\Events\\ReadRequestWasHandledEvent",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
+            "IceHawk\\IceHawk\\Routing\\RouteRequest",
+            "IceHawk\\IceHawk\\Routing\\ReadRouter",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData",
+            "IceHawk\\IceHawk\\Requests\\ReadRequestInput",
+            "IceHawk\\IceHawk\\Requests\\ReadRequest"
         ],
         "lcom": 1,
-        "length": 67,
-        "vocabulary": 20,
-        "volume": 289.57,
-        "difficulty": 4.32,
-        "effort": 1251.96,
-        "level": 0.23,
-        "bugs": 0.1,
-        "time": 70,
-        "intelligentContent": 66.98,
-        "number_operators": 18,
-        "number_operands": 49,
+        "length": 58,
+        "vocabulary": 19,
+        "volume": 246.38,
+        "difficulty": 4.03,
+        "effort": 993.22,
+        "level": 0.25,
+        "bugs": 0.08,
+        "time": 55,
+        "intelligentContent": 61.12,
+        "number_operators": 15,
+        "number_operands": 43,
         "number_operators_unique": 3,
-        "number_operands_unique": 17,
-        "cloc": 12,
-        "loc": 53,
-        "lloc": 41,
-        "mi": 81.06,
-        "mIwoC": 47.45,
-        "commentWeight": 33.61,
+        "number_operands_unique": 16,
+        "cloc": 13,
+        "loc": 51,
+        "lloc": 38,
+        "mi": 83.9,
+        "mIwoC": 48.66,
+        "commentWeight": 35.24,
         "kanDefect": 0.15,
-        "relativeStructuralComplexity": 225,
-        "relativeDataComplexity": 0.14,
-        "relativeSystemComplexity": 225.14,
-        "totalStructuralComplexity": 900,
-        "totalDataComplexity": 0.56,
-        "totalSystemComplexity": 900.56,
+        "relativeStructuralComplexity": 196,
+        "relativeDataComplexity": 0.15,
+        "relativeSystemComplexity": 196.15,
+        "totalStructuralComplexity": 784,
+        "totalDataComplexity": 0.6,
+        "totalSystemComplexity": 784.6,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 7,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 9,
+        "instability": 0.9,
         "violations": {}
     },
     {
@@ -3444,13 +2362,6 @@ var classes = [
                 "_type": "Hal\\Metric\\FunctionMetric"
             },
             {
-                "name": "getRequestBody",
-                "role": null,
-                "public": false,
-                "private": true,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
                 "name": "getUploadedFiles",
                 "role": null,
                 "public": false,
@@ -3458,54 +2369,57 @@ var classes = [
                 "_type": "Hal\\Metric\\FunctionMetric"
             }
         ],
-        "nbMethodsIncludingGettersSetters": 6,
-        "nbMethods": 6,
-        "nbMethodsPrivate": 5,
+        "nbMethodsIncludingGettersSetters": 5,
+        "nbMethods": 5,
+        "nbMethodsPrivate": 4,
         "nbMethodsPublic": 1,
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\RequestHandlers\\AbstractRequestHandler",
-            "HandlingWriteRequestEvent",
-            "WriteRequestWasHandledEvent",
-            "RouteRequest",
-            "WriteRouter",
-            "WriteRequestInput",
-            "WriteRequest",
-            "UploadedFilesMapper"
+            "IceHawk\\IceHawk\\Events\\HandlingWriteRequestEvent",
+            "IceHawk\\IceHawk\\Events\\WriteRequestWasHandledEvent",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
+            "IceHawk\\IceHawk\\Routing\\RouteRequest",
+            "IceHawk\\IceHawk\\Routing\\WriteRouter",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData",
+            "IceHawk\\IceHawk\\Requests\\WriteRequestInput",
+            "IceHawk\\IceHawk\\Requests\\WriteRequest",
+            "IceHawk\\IceHawk\\Mappers\\UploadedFilesMapper"
         ],
         "lcom": 1,
-        "length": 84,
-        "vocabulary": 26,
-        "volume": 394.84,
-        "difficulty": 3.98,
-        "effort": 1570.76,
-        "level": 0.25,
-        "bugs": 0.13,
-        "time": 87,
-        "intelligentContent": 99.25,
-        "number_operators": 23,
-        "number_operands": 61,
+        "length": 64,
+        "vocabulary": 21,
+        "volume": 281.11,
+        "difficulty": 3.92,
+        "effort": 1101.01,
+        "level": 0.26,
+        "bugs": 0.09,
+        "time": 61,
+        "intelligentContent": 71.77,
+        "number_operators": 17,
+        "number_operands": 47,
         "number_operators_unique": 3,
-        "number_operands_unique": 23,
+        "number_operands_unique": 18,
         "cloc": 8,
-        "loc": 59,
-        "lloc": 52,
-        "mi": 71.25,
-        "mIwoC": 44.25,
-        "commentWeight": 27,
+        "loc": 51,
+        "lloc": 43,
+        "mi": 75.88,
+        "mIwoC": 47.09,
+        "commentWeight": 28.79,
         "kanDefect": 0.15,
-        "relativeStructuralComplexity": 324,
-        "relativeDataComplexity": 0.22,
-        "relativeSystemComplexity": 324.22,
-        "totalStructuralComplexity": 1944,
-        "totalDataComplexity": 1.32,
-        "totalSystemComplexity": 1945.32,
+        "relativeStructuralComplexity": 256,
+        "relativeDataComplexity": 0.19,
+        "relativeSystemComplexity": 256.19,
+        "totalStructuralComplexity": 1280,
+        "totalDataComplexity": 0.94,
+        "totalSystemComplexity": 1280.94,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 8,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 10,
+        "instability": 0.91,
         "violations": {}
     },
     {
@@ -3548,8 +2462,15 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData"
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData"
         ],
         "lcom": 1,
         "length": 18,
@@ -3579,9 +2500,9 @@ var classes = [
         "totalDataComplexity": 15,
         "totalSystemComplexity": 15,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 7,
+        "instability": 0.88,
         "violations": {}
     },
     {
@@ -3613,6 +2534,7 @@ var classes = [
         "nbMethodsGetter": 1,
         "nbMethodsSetters": 1,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\Interfaces\\ProvidesReadRequestInputData"
         ],
@@ -3644,9 +2566,9 @@ var classes = [
         "totalDataComplexity": 9,
         "totalSystemComplexity": 9,
         "pageRank": 0,
-        "afferentCoupling": 0,
+        "afferentCoupling": 1,
         "efferentCoupling": 1,
-        "instability": 1,
+        "instability": 0.5,
         "violations": {}
     },
     {
@@ -3728,6 +2650,7 @@ var classes = [
         "nbMethodsGetter": 5,
         "nbMethodsSetters": 0,
         "ccn": 3,
+        "ccnMethodMax": 2,
         "externals": [
             "IceHawk\\IceHawk\\Interfaces\\ProvidesUploadedFileData",
             "self",
@@ -3762,9 +2685,9 @@ var classes = [
         "totalDataComplexity": 69,
         "totalSystemComplexity": 80,
         "pageRank": 0,
-        "afferentCoupling": 0,
+        "afferentCoupling": 1,
         "efferentCoupling": 4,
-        "instability": 1,
+        "instability": 0.8,
         "violations": {}
     },
     {
@@ -3807,8 +2730,15 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData"
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesCookieData"
         ],
         "lcom": 1,
         "length": 18,
@@ -3838,9 +2768,9 @@ var classes = [
         "totalDataComplexity": 15,
         "totalSystemComplexity": 15,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 7,
+        "instability": 0.88,
         "violations": {}
     },
     {
@@ -3868,7 +2798,16 @@ var classes = [
             },
             {
                 "name": "getBody",
-                "role": "getter",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getBodyAsStream",
+                "role": null,
+                "public": true,
+                "private": false,
                 "_type": "Hal\\Metric\\FunctionMetric"
             },
             {
@@ -3891,48 +2830,50 @@ var classes = [
                 "_type": "Hal\\Metric\\FunctionMetric"
             }
         ],
-        "nbMethodsIncludingGettersSetters": 7,
-        "nbMethods": 4,
+        "nbMethodsIncludingGettersSetters": 8,
+        "nbMethods": 6,
         "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 4,
-        "nbMethodsGetter": 3,
+        "nbMethodsPublic": 6,
+        "nbMethodsGetter": 2,
         "nbMethodsSetters": 0,
-        "ccn": 1,
+        "ccn": 3,
+        "ccnMethodMax": 2,
         "externals": [
             "IceHawk\\IceHawk\\Interfaces\\ProvidesWriteRequestInputData",
-            "UploadedFile"
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesUploadedFileData",
+            "IceHawk\\IceHawk\\Requests\\UploadedFile"
         ],
         "lcom": 1,
-        "length": 45,
-        "vocabulary": 14,
-        "volume": 171.33,
-        "difficulty": 4.36,
-        "effort": 747.63,
-        "level": 0.23,
-        "bugs": 0.06,
-        "time": 42,
-        "intelligentContent": 39.26,
-        "number_operators": 13,
-        "number_operands": 32,
-        "number_operators_unique": 3,
-        "number_operands_unique": 11,
-        "cloc": 24,
-        "loc": 62,
-        "lloc": 38,
-        "mi": 90.83,
-        "mIwoC": 49.76,
-        "commentWeight": 41.07,
-        "kanDefect": 0.15,
-        "relativeStructuralComplexity": 1,
-        "relativeDataComplexity": 3.57,
-        "relativeSystemComplexity": 4.57,
-        "totalStructuralComplexity": 7,
-        "totalDataComplexity": 25,
-        "totalSystemComplexity": 32,
+        "length": 63,
+        "vocabulary": 19,
+        "volume": 267.62,
+        "difficulty": 7.5,
+        "effort": 2007.15,
+        "level": 0.13,
+        "bugs": 0.09,
+        "time": 112,
+        "intelligentContent": 35.68,
+        "number_operators": 21,
+        "number_operands": 42,
+        "number_operators_unique": 5,
+        "number_operands_unique": 14,
+        "cloc": 29,
+        "loc": 78,
+        "lloc": 50,
+        "mi": 86.05,
+        "mIwoC": 45.54,
+        "commentWeight": 40.51,
+        "kanDefect": 0.29,
+        "relativeStructuralComplexity": 4,
+        "relativeDataComplexity": 2.63,
+        "relativeSystemComplexity": 6.63,
+        "totalStructuralComplexity": 32,
+        "totalDataComplexity": 21,
+        "totalSystemComplexity": 53,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 2,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 3,
+        "instability": 0.75,
         "violations": {}
     },
     {
@@ -3959,6 +2900,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 1,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [],
         "lcom": 1,
         "length": 7,
@@ -3988,7 +2930,7 @@ var classes = [
         "totalDataComplexity": 1,
         "totalSystemComplexity": 1,
         "pageRank": 0,
-        "afferentCoupling": 0,
+        "afferentCoupling": 1,
         "efferentCoupling": 0,
         "instability": 0,
         "violations": {}
@@ -4017,6 +2959,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 1,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [],
         "lcom": 1,
         "length": 9,
@@ -4046,7 +2989,7 @@ var classes = [
         "totalDataComplexity": 1,
         "totalSystemComplexity": 1,
         "pageRank": 0,
-        "afferentCoupling": 0,
+        "afferentCoupling": 1,
         "efferentCoupling": 0,
         "instability": 0,
         "violations": {}
@@ -4082,29 +3025,30 @@ var classes = [
         "nbMethodsGetter": 1,
         "nbMethodsSetters": 0,
         "ccn": 2,
+        "ccnMethodMax": 2,
         "externals": [
-            "RoutesAreNotTraversable"
+            "IceHawk\\IceHawk\\Routing\\Exceptions\\RoutesAreNotTraversable"
         ],
         "lcom": 1,
-        "length": 13,
-        "vocabulary": 6,
-        "volume": 33.6,
-        "difficulty": 9,
-        "effort": 302.44,
-        "level": 0.11,
+        "length": 14,
+        "vocabulary": 7,
+        "volume": 39.3,
+        "difficulty": 6.67,
+        "effort": 262.02,
+        "level": 0.15,
         "bugs": 0.01,
-        "time": 17,
-        "intelligentContent": 3.73,
+        "time": 15,
+        "intelligentContent": 5.9,
         "number_operators": 4,
-        "number_operands": 9,
+        "number_operands": 10,
         "number_operators_unique": 4,
-        "number_operands_unique": 2,
-        "cloc": 16,
-        "loc": 36,
+        "number_operands_unique": 3,
+        "cloc": 18,
+        "loc": 38,
         "lloc": 20,
-        "mi": 103.6,
-        "mIwoC": 60.66,
-        "commentWeight": 42.94,
+        "mi": 103.96,
+        "mIwoC": 60.19,
+        "commentWeight": 43.77,
         "kanDefect": 0.22,
         "relativeStructuralComplexity": 1,
         "relativeDataComplexity": 0.83,
@@ -4112,7 +3056,7 @@ var classes = [
         "totalStructuralComplexity": 3,
         "totalDataComplexity": 2.5,
         "totalSystemComplexity": 5.5,
-        "pageRank": 0.02,
+        "pageRank": 0.01,
         "afferentCoupling": 3,
         "efferentCoupling": 1,
         "instability": 0.25,
@@ -4129,6 +3073,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 0,
         "externals": [
             "IceHawk\\IceHawk\\Exceptions\\IceHawkException"
         ],
@@ -4159,218 +3104,10 @@ var classes = [
         "totalStructuralComplexity": 0,
         "totalDataComplexity": 0,
         "totalSystemComplexity": 0,
-        "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 1,
-        "instability": 1,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Routing\\Interfaces\\BypassesRequest",
-        "interface": true,
-        "methods": [
-            {
-                "name": "matches",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getFinalUri",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getFinalMethod",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getUriParams",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 4,
-        "nbMethods": 4,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 4,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
         "pageRank": 0.01,
         "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getUri",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getRequestMethod",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 2,
-        "nbMethods": 2,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 2,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.01,
-        "afferentCoupling": 1,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult",
-        "interface": true,
-        "methods": [
-            {
-                "name": "matches",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getMatches",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 2,
-        "nbMethods": 2,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 2,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.03,
-        "afferentCoupling": 3,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToHandler",
-        "interface": true,
-        "methods": [
-            {
-                "name": "matches",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            },
-            {
-                "name": "getUriParams",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 2,
-        "nbMethods": 2,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 2,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [],
-        "kanDefect": 0.15,
-        "pageRank": 0.09,
-        "afferentCoupling": 2,
-        "efferentCoupling": 0,
-        "instability": 0,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getRequestHandler",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToHandler"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.02,
-        "afferentCoupling": 2,
         "efferentCoupling": 1,
-        "instability": 0.33,
-        "violations": {}
-    },
-    {
-        "name": "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
-        "interface": true,
-        "methods": [
-            {
-                "name": "getRequestHandler",
-                "role": null,
-                "public": true,
-                "private": false,
-                "_type": "Hal\\Metric\\FunctionMetric"
-            }
-        ],
-        "nbMethodsIncludingGettersSetters": 1,
-        "nbMethods": 1,
-        "nbMethodsPrivate": 0,
-        "nbMethodsPublic": 1,
-        "nbMethodsGetter": 0,
-        "nbMethodsSetters": 0,
-        "ccn": 1,
-        "externals": [
-            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToHandler"
-        ],
-        "kanDefect": 0.15,
-        "pageRank": 0.02,
-        "afferentCoupling": 2,
-        "efferentCoupling": 1,
-        "instability": 0.33,
+        "instability": 0.5,
         "violations": {}
     },
     {
@@ -4392,6 +3129,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 3,
+        "ccnMethodMax": 3,
         "externals": [
             "IceHawk\\IceHawk\\Routing\\AbstractRouter"
         ],
@@ -4423,9 +3161,9 @@ var classes = [
         "totalDataComplexity": 0.67,
         "totalSystemComplexity": 4.67,
         "pageRank": 0,
-        "afferentCoupling": 0,
+        "afferentCoupling": 1,
         "efferentCoupling": 1,
-        "instability": 1,
+        "instability": 0.5,
         "violations": {}
     },
     {
@@ -4459,6 +3197,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 1,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult"
         ],
@@ -4528,6 +3267,7 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 4,
+        "ccnMethodMax": 4,
         "externals": [
             "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult"
         ],
@@ -4597,36 +3337,37 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 3,
+        "ccnMethodMax": 3,
         "externals": [
             "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult"
         ],
         "lcom": 1,
-        "length": 45,
-        "vocabulary": 18,
-        "volume": 187.65,
-        "difficulty": 9.55,
-        "effort": 1791.17,
-        "level": 0.1,
-        "bugs": 0.06,
-        "time": 100,
-        "intelligentContent": 19.66,
-        "number_operators": 15,
-        "number_operands": 30,
-        "number_operators_unique": 7,
-        "number_operands_unique": 11,
+        "length": 34,
+        "vocabulary": 14,
+        "volume": 129.45,
+        "difficulty": 6.39,
+        "effort": 827.04,
+        "level": 0.16,
+        "bugs": 0.04,
+        "time": 46,
+        "intelligentContent": 20.26,
+        "number_operators": 11,
+        "number_operands": 23,
+        "number_operators_unique": 5,
+        "number_operands_unique": 9,
         "cloc": 7,
-        "loc": 36,
-        "lloc": 29,
-        "mi": 83.34,
-        "mIwoC": 51.78,
-        "commentWeight": 31.56,
-        "kanDefect": 0.22,
+        "loc": 35,
+        "lloc": 28,
+        "mi": 85.17,
+        "mIwoC": 53.24,
+        "commentWeight": 31.94,
+        "kanDefect": 0.45,
         "relativeStructuralComplexity": 0,
-        "relativeDataComplexity": 3,
-        "relativeSystemComplexity": 3,
+        "relativeDataComplexity": 4,
+        "relativeSystemComplexity": 4,
         "totalStructuralComplexity": 0,
-        "totalDataComplexity": 9,
-        "totalSystemComplexity": 9,
+        "totalDataComplexity": 12,
+        "totalSystemComplexity": 12,
         "pageRank": 0,
         "afferentCoupling": 0,
         "efferentCoupling": 1,
@@ -4673,8 +3414,12 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler"
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult",
+            "IceHawk\\IceHawk\\Interfaces\\HandlesReadRequest",
+            "IceHawk\\IceHawk\\Interfaces\\HandlesReadRequest"
         ],
         "lcom": 1,
         "length": 16,
@@ -4705,7 +3450,7 @@ var classes = [
         "totalSystemComplexity": 21,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 1,
+        "efferentCoupling": 4,
         "instability": 1,
         "violations": {}
     },
@@ -4751,31 +3496,34 @@ var classes = [
         "nbMethodsPublic": 3,
         "nbMethodsGetter": 2,
         "nbMethodsSetters": 0,
-        "ccn": 5,
+        "ccn": 7,
+        "ccnMethodMax": 6,
         "externals": [
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult",
             "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler"
         ],
         "lcom": 1,
-        "length": 40,
-        "vocabulary": 8,
-        "volume": 120,
-        "difficulty": 8.4,
-        "effort": 1008,
-        "level": 0.12,
-        "bugs": 0.04,
-        "time": 56,
-        "intelligentContent": 14.29,
+        "length": 43,
+        "vocabulary": 10,
+        "volume": 142.84,
+        "difficulty": 6.64,
+        "effort": 948.89,
+        "level": 0.15,
+        "bugs": 0.05,
+        "time": 53,
+        "intelligentContent": 21.5,
         "number_operators": 12,
-        "number_operands": 28,
+        "number_operands": 31,
         "number_operators_unique": 3,
-        "number_operands_unique": 5,
+        "number_operands_unique": 7,
         "cloc": 11,
-        "loc": 53,
-        "lloc": 42,
-        "mi": 81.79,
-        "mIwoC": 49.36,
-        "commentWeight": 32.43,
-        "kanDefect": 0.75,
+        "loc": 56,
+        "lloc": 45,
+        "mi": 79.6,
+        "mIwoC": 47.91,
+        "commentWeight": 31.7,
+        "kanDefect": 0.98,
         "relativeStructuralComplexity": 25,
         "relativeDataComplexity": 0.97,
         "relativeSystemComplexity": 25.97,
@@ -4784,7 +3532,7 @@ var classes = [
         "totalSystemComplexity": 129.83,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 1,
+        "efferentCoupling": 3,
         "instability": 1,
         "violations": {}
     },
@@ -4807,9 +3555,12 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 5,
+        "ccnMethodMax": 5,
         "externals": [
             "IceHawk\\IceHawk\\Routing\\AbstractRouter",
-            "UnresolvedRequest"
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToReadHandler",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo",
+            "IceHawk\\IceHawk\\Exceptions\\UnresolvedRequest"
         ],
         "lcom": 1,
         "length": 20,
@@ -4839,9 +3590,9 @@ var classes = [
         "totalDataComplexity": 0.29,
         "totalSystemComplexity": 36.29,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 2,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 4,
+        "instability": 0.8,
         "violations": {}
     },
     {
@@ -4885,8 +3636,10 @@ var classes = [
         "nbMethodsGetter": 3,
         "nbMethodsSetters": 0,
         "ccn": 2,
+        "ccnMethodMax": 2,
         "externals": [
-            "IceHawk\\IceHawk\\Routing\\Interfaces\\BypassesRequest"
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\BypassesRequest",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult"
         ],
         "lcom": 1,
         "length": 27,
@@ -4917,7 +3670,7 @@ var classes = [
         "totalSystemComplexity": 29.67,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 1,
+        "efferentCoupling": 2,
         "instability": 1,
         "violations": {}
     },
@@ -4981,39 +3734,48 @@ var classes = [
         "nbMethodsPublic": 2,
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
-        "ccn": 4,
-        "externals": [],
+        "ccn": 6,
+        "ccnMethodMax": 4,
+        "externals": [
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\BypassesRequest",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\BypassesRequest",
+            "IceHawk\\IceHawk\\Interfaces\\ProvidesRequestInfo"
+        ],
         "lcom": 1,
-        "length": 121,
+        "length": 132,
         "vocabulary": 26,
-        "volume": 568.75,
-        "difficulty": 13.65,
-        "effort": 7763.48,
+        "volume": 620.46,
+        "difficulty": 14.55,
+        "effort": 9027.66,
         "level": 0.07,
-        "bugs": 0.19,
-        "time": 431,
-        "intelligentContent": 41.67,
-        "number_operators": 30,
-        "number_operands": 91,
+        "bugs": 0.21,
+        "time": 502,
+        "intelligentContent": 42.64,
+        "number_operators": 35,
+        "number_operands": 97,
         "number_operators_unique": 6,
         "number_operands_unique": 20,
         "cloc": 5,
-        "loc": 65,
-        "lloc": 60,
-        "mi": 62.21,
-        "mIwoC": 41.38,
-        "commentWeight": 20.83,
-        "kanDefect": 0.52,
+        "loc": 69,
+        "lloc": 64,
+        "mi": 60.49,
+        "mIwoC": 40.24,
+        "commentWeight": 20.25,
+        "kanDefect": 0.66,
         "relativeStructuralComplexity": 169,
-        "relativeDataComplexity": 0.53,
-        "relativeSystemComplexity": 169.53,
+        "relativeDataComplexity": 0.74,
+        "relativeSystemComplexity": 169.74,
         "totalStructuralComplexity": 1183,
-        "totalDataComplexity": 3.71,
-        "totalSystemComplexity": 1186.71,
+        "totalDataComplexity": 5.21,
+        "totalSystemComplexity": 1188.21,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 0,
-        "instability": 0,
+        "afferentCoupling": 1,
+        "efferentCoupling": 7,
+        "instability": 0.88,
         "violations": {}
     },
     {
@@ -5045,6 +3807,7 @@ var classes = [
         "nbMethodsGetter": 2,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
             "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo"
         ],
@@ -5076,9 +3839,9 @@ var classes = [
         "totalDataComplexity": 8,
         "totalSystemComplexity": 8,
         "pageRank": 0,
-        "afferentCoupling": 0,
+        "afferentCoupling": 2,
         "efferentCoupling": 1,
-        "instability": 1,
+        "instability": 0.33,
         "violations": {}
     },
     {
@@ -5121,8 +3884,12 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 1,
+        "ccnMethodMax": 1,
         "externals": [
-            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler"
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult",
+            "IceHawk\\IceHawk\\Interfaces\\HandlesWriteRequest",
+            "IceHawk\\IceHawk\\Interfaces\\HandlesWriteRequest"
         ],
         "lcom": 1,
         "length": 16,
@@ -5153,7 +3920,7 @@ var classes = [
         "totalSystemComplexity": 21,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 1,
+        "efferentCoupling": 4,
         "instability": 1,
         "violations": {}
     },
@@ -5199,40 +3966,43 @@ var classes = [
         "nbMethodsPublic": 3,
         "nbMethodsGetter": 2,
         "nbMethodsSetters": 0,
-        "ccn": 5,
+        "ccn": 7,
+        "ccnMethodMax": 6,
         "externals": [
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesMatchResult",
             "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler"
         ],
         "lcom": 1,
-        "length": 40,
-        "vocabulary": 8,
-        "volume": 120,
-        "difficulty": 8.4,
-        "effort": 1008,
-        "level": 0.12,
-        "bugs": 0.04,
-        "time": 56,
-        "intelligentContent": 14.29,
-        "number_operators": 12,
-        "number_operands": 28,
+        "length": 44,
+        "vocabulary": 10,
+        "volume": 146.16,
+        "difficulty": 6.64,
+        "effort": 970.95,
+        "level": 0.15,
+        "bugs": 0.05,
+        "time": 54,
+        "intelligentContent": 22,
+        "number_operators": 13,
+        "number_operands": 31,
         "number_operators_unique": 3,
-        "number_operands_unique": 5,
+        "number_operands_unique": 7,
         "cloc": 11,
-        "loc": 53,
-        "lloc": 42,
-        "mi": 81.79,
-        "mIwoC": 49.36,
-        "commentWeight": 32.43,
-        "kanDefect": 0.75,
+        "loc": 57,
+        "lloc": 46,
+        "mi": 79.09,
+        "mIwoC": 47.63,
+        "commentWeight": 31.46,
+        "kanDefect": 0.98,
         "relativeStructuralComplexity": 25,
-        "relativeDataComplexity": 0.97,
-        "relativeSystemComplexity": 25.97,
+        "relativeDataComplexity": 1.13,
+        "relativeSystemComplexity": 26.13,
         "totalStructuralComplexity": 125,
-        "totalDataComplexity": 4.83,
-        "totalSystemComplexity": 129.83,
+        "totalDataComplexity": 5.67,
+        "totalSystemComplexity": 130.67,
         "pageRank": 0,
         "afferentCoupling": 0,
-        "efferentCoupling": 1,
+        "efferentCoupling": 3,
         "instability": 1,
         "violations": {}
     },
@@ -5255,9 +4025,12 @@ var classes = [
         "nbMethodsGetter": 0,
         "nbMethodsSetters": 0,
         "ccn": 5,
+        "ccnMethodMax": 5,
         "externals": [
             "IceHawk\\IceHawk\\Routing\\AbstractRouter",
-            "UnresolvedRequest"
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\RoutesToWriteHandler",
+            "IceHawk\\IceHawk\\Routing\\Interfaces\\ProvidesDestinationInfo",
+            "IceHawk\\IceHawk\\Exceptions\\UnresolvedRequest"
         ],
         "lcom": 1,
         "length": 20,
@@ -5287,9 +4060,9 @@ var classes = [
         "totalDataComplexity": 0.29,
         "totalSystemComplexity": 36.29,
         "pageRank": 0,
-        "afferentCoupling": 0,
-        "efferentCoupling": 2,
-        "instability": 1,
+        "afferentCoupling": 1,
+        "efferentCoupling": 4,
+        "instability": 0.8,
         "violations": {}
     }
 ]
