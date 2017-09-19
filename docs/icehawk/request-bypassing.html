@@ -57,8 +57,8 @@
     <meta property="og:description" content="IceHawk request bypassing - components documentation"/>
     <meta property="og:url" content="https://icehawk.github.io/docs/icehawk/request-bypassing.html"/>
     <meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-    <meta property="article:published_time" content="2017-09-01T23:25:10+02:00"/>
-    <meta property="article:modified_time" content="2017-09-01T23:25:10+02:00"/>
+    <meta property="article:published_time" content="2017-09-19T14:54:57+02:00"/>
+    <meta property="article:modified_time" content="2017-09-19T14:54:57+02:00"/>
             <meta property="article:tag" content="IceHawk"/>
             <meta property="article:tag" content="routing"/>
             <meta property="article:tag" content="documentation"/>
@@ -83,8 +83,8 @@
     },
     "headline": "Request bypassing | IceHawk | PHP micro-framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/icehawk/request-bypassing.html",
-    "datePublished": "2017-09-01T23:25:10+02:00",
-    "dateModified": "2017-09-01T23:25:10+02:00",
+    "datePublished": "2017-09-19T14:54:57+02:00",
+    "dateModified": "2017-09-19T14:54:57+02:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, routing, documentation, request bypassing",
     "description": "IceHawk request bypassing - components documentation"
@@ -380,6 +380,23 @@ class IceHawkConfig implements ConfiguresIceHawk
 }</code></pre>
 <p><strong>Please note:</strong> The <code>MarkPaymentSucceededRequestHandler</code> has to implement the <code>IceHawk\IceHawk\Interfaces\HandlesPostRequest</code> interface.</p>
 <p>Of course you can use any of the <a href="https://icehawk.github.io/docs/icehawk/routing.html#uri-pattern-classes">URI pattern classes</a> for matching in the request bypass.</p>
+<p>To use uri parameters of your request for the final uri you can use this pattern within your uri: </p>
+<ul>
+<li>
+<p>_:PARAMETER<em>NAME</em></p>
+<p>Example:</p>
+<pre><code class="language-php"> public function getRequestBypasses()
+    {
+        return [
+            new RequestBypass(
+                new NamedRegExp('^/orders/(?&lt;orderId&gt;\d*)$'), 
+                '/update/order/:orderId', 
+                HttpMethod::PUT
+            ),  
+        ];
+    }</code></pre>
+</li>
+</ul>
                 <div id="footer" class="row small">
                     <div class="col-xs-2 col-sm-2 col-md-1 text-center">
                         v1.2.0
