@@ -95,3 +95,20 @@ class IceHawkConfig implements ConfiguresIceHawk
 **Please note:** The `MarkPaymentSucceededRequestHandler` has to implement the `IceHawk\IceHawk\Interfaces\HandlesPostRequest` interface.
 
 Of course you can use any of the [URI pattern classes](@baseUrl@/docs/icehawk/routing.html#uri-pattern-classes) for matching in the request bypass.
+
+To use uri parameters of your request for the final uri you can use this pattern within your uri: 
+ - _:PARAMETER_NAME_
+ 
+ Example:
+```php
+	 public function getRequestBypasses()
+        {
+        	return [
+        	    new RequestBypass(
+        	    	new NamedRegExp('^/orders/(?<orderId>\d*)$'), 
+        	    	'/update/order/:orderId', 
+        	    	HttpMethod::PUT
+        	    ),	
+    		];
+        }
+```
