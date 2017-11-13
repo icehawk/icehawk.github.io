@@ -133,8 +133,8 @@ So you should configure your webserver to pass all requests to that script. Here
 
 ```apache
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule .* /index.php [L,QSA]
 ```
 _— Apache (.htaccess)_
