@@ -167,9 +167,9 @@ This object carries the [request information](@baseUrl@/docs/icehawk/request-inf
 This example shows how you can access the request input data inside a POST(/PUT/PATCH/DELETE) request handler:
 
 ```php
-class YourGetRequestHandler implements HandlesGetRequest
+class YourPostRequestHandler implements HandlesPostRequest
 {
-	public function handle( ProvidesReadRequestData $request )
+	public function handle( ProvidesWriteRequestData $request )
 	{
 		# Get the request input data
 		$requestInput = $request->getInput();
