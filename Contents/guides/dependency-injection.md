@@ -98,7 +98,7 @@ We omitted that here for better readability and a smaller scope to comprehend.
 
 ## Injecting the container to request handlers
 
-In the first place we will want to use the container in our request handlers where we call our buisiness logic.
+In the first place we will want to use the container in our request handlers where we call our business logic.
 As described [in the documentation](@baseUrl@/docs/icehawk/configuration.html) request handlers are constructed in the IceHawk configuration class.
  
 So we will first inject our container into the IceHawk config. Let's do this in the `index.php`:
@@ -183,7 +183,8 @@ Depending on your choice how you want to access the container inside a request h
 
 ### 1. Add container injection to every request handler
 
-The easiest variant is obviously to give each request handler a contructor that gets passed the container object and the usage via private member access.
+The easiest variant is obviously to give each request handler a constructor that gets passed the container object and
+ the usage via private member access.
 
 ```php
 <?php declare(strict_types=1);
