@@ -107,8 +107,8 @@ $session->addDataMapper( new MyDataMapper(), [Session::KEY_SOME_STRING_VALUE] );
 $session->addDataMapper( new MyDataMapper(), [Session::KEY_SOME_STRING_VALUE, Session::KEY_SOME_OTHER_VALUE] );
 ```
 
-- The data mapper's `toSessionData()` is called when the `AbstractSesion::set()` method gets invoked.
-- The data mapper's `fromSessionData()` is called when the `AbstractSesion::get()` method gets invoked.
+- The data mapper's `toSessionData()` is called when the `AbstractSession::set()` method gets invoked.
+- The data mapper's `fromSessionData()` is called when the `AbstractSession::get()` method gets invoked.
 
 <hr class="blockspace">
 
