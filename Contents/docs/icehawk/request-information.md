@@ -134,7 +134,7 @@ As you can see you can inject any array into the constructor of the class. This 
 
 <hr class="blockspace">
 
-## Where to intantiate the object?
+## Where to instantiate the object?
 
 As shown in the [configuration section](@baseUrl@/docs/icehawk/configuration.html) you need to provide an instance of the `RequestInfo` class 
 (or an implementation of the `ProvidesRequestInfo` interface) once in the `getRequestInfo()` method. IceHawk will then inject it to all subsequent objects. 
@@ -175,7 +175,7 @@ Every IceHawk request handler, regardless of read or write side, needs to implem
 public function handle( ProvidesReadRequestData $request );
 
 # Write side
-public function handle( ProvidesReadRequestData $request );
+public function handle( ProvidesWriteRequestData $request );
 ```
 
 These methods are defined by the two base interfaces for request handlers: 
