@@ -57,8 +57,8 @@
     <meta property="og:description" content="IceHawk request input data - components documentation"/>
     <meta property="og:url" content="https://icehawk.github.io/docs/icehawk/request-input-data.html"/>
     <meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-    <meta property="article:published_time" content="2017-11-13T15:02:50+01:00"/>
-    <meta property="article:modified_time" content="2017-11-13T15:02:50+01:00"/>
+    <meta property="article:published_time" content="2019-06-14T11:50:16+00:00"/>
+    <meta property="article:modified_time" content="2019-06-14T11:50:16+00:00"/>
             <meta property="article:tag" content="IceHawk"/>
             <meta property="article:tag" content="request"/>
             <meta property="article:tag" content="data"/>
@@ -83,8 +83,8 @@
     },
     "headline": "Request input data | IceHawk | PHP micro-framework respecting CQRS",
     "url": "https://icehawk.github.io/docs/icehawk/request-input-data.html",
-    "datePublished": "2017-11-13T15:02:50+01:00",
-    "dateModified": "2017-11-13T15:02:50+01:00",
+    "datePublished": "2019-06-14T11:50:16+00:00",
+    "dateModified": "2019-06-14T11:50:16+00:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, request, data, documentation",
     "description": "IceHawk request input data - components documentation"
@@ -416,9 +416,9 @@ var_dump( $allData );</code></pre>
 <p>As you can see in the <a href="https://icehawk.github.io/docs/icehawk/request-handlers.html">request handlers section</a> the IceHawk component provides a request data object to the request handler.
 This object carries the <a href="https://icehawk.github.io/docs/icehawk/request-information.html">request information</a> and the request input data.</p>
 <p>This example shows how you can access the request input data inside a POST(/PUT/PATCH/DELETE) request handler:</p>
-<pre><code class="language-php">class YourGetRequestHandler implements HandlesGetRequest
+<pre><code class="language-php">class YourPostRequestHandler implements HandlesPostRequest
 {
-    public function handle( ProvidesReadRequestData $request )
+    public function handle( ProvidesWriteRequestData $request )
     {
         # Get the request input data
         $requestInput = $request-&gt;getInput();

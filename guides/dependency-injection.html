@@ -57,8 +57,8 @@
     <meta property="og:description" content="IceHawk dependency injection - guide"/>
     <meta property="og:url" content="https://icehawk.github.io/guides/dependency-injection.html"/>
     <meta property="og:image" content="https://icehawk.github.io/images/logo_121x100.png"/>
-    <meta property="article:published_time" content="2017-11-13T15:02:51+01:00"/>
-    <meta property="article:modified_time" content="2017-11-13T15:02:51+01:00"/>
+    <meta property="article:published_time" content="2019-06-14T11:50:16+00:00"/>
+    <meta property="article:modified_time" content="2019-06-14T11:50:16+00:00"/>
             <meta property="article:tag" content="IceHawk"/>
             <meta property="article:tag" content="dependency injection"/>
             <meta property="article:tag" content="container"/>
@@ -84,8 +84,8 @@
     },
     "headline": "Dependency injection | IceHawk | PHP micro-framework respecting CQRS",
     "url": "https://icehawk.github.io/guides/dependency-injection.html",
-    "datePublished": "2017-11-13T15:02:51+01:00",
-    "dateModified": "2017-11-13T15:02:51+01:00",
+    "datePublished": "2019-06-14T11:50:16+00:00",
+    "dateModified": "2019-06-14T11:50:16+00:00",
     "image": "https://icehawk.github.io/images/logo_121x100.png",
     "keywords": "IceHawk, dependency injection, container, object pool, service locator",
     "description": "IceHawk dependency injection - guide"
@@ -303,7 +303,7 @@ final class Container extends AbstractObjectPool
 We omitted that here for better readability and a smaller scope to comprehend.</p>
 <hr class="blockspace">
 <h2>Injecting the container to request handlers</h2>
-<p>In the first place we will want to use the container in our request handlers where we call our buisiness logic.
+<p>In the first place we will want to use the container in our request handlers where we call our business logic.
 As described <a href="https://icehawk.github.io/docs/icehawk/configuration.html">in the documentation</a> request handlers are constructed in the IceHawk configuration class.</p>
 <p>So we will first inject our container into the IceHawk config. Let's do this in the <code>index.php</code>:</p>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
@@ -370,7 +370,8 @@ final class IceHawkConfig implements ConfiguresIceHawk
 <h2>Request handler base class(es)</h2>
 <p>Depending on your choice how you want to access the container inside a request handler, there are at least three ways of implementation.</p>
 <h3>1. Add container injection to every request handler</h3>
-<p>The easiest variant is obviously to give each request handler a contructor that gets passed the container object and the usage via private member access.</p>
+<p>The easiest variant is obviously to give each request handler a constructor that gets passed the container object and
+the usage via private member access.</p>
 <pre><code class="language-php">&lt;?php declare(strict_types=1);
 
 namespace YourVendor\YourProject;
