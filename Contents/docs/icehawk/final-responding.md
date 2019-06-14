@@ -137,7 +137,7 @@ use IceHawk\IceHawk\Interfaces\RespondsFinallyToWriteRequest;
 use IceHawk\IceHawk\Interfaces\ProvidesWriteRequestData;
 use IceHawk\IceHawk\Constants\HttpCode;
 
-final class YourFinalReadResponder implements RespondsFinallyToWriteRequest
+final class YourFinalWriteResponder implements RespondsFinallyToWriteRequest
 {
 	public function handleUncaughtException( \Throwable $throwable, ProvidesWriteRequestData $request )
 	{

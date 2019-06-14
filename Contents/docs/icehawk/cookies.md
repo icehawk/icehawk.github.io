@@ -28,7 +28,7 @@ class YourGetRequestHandler implements HandlesGetRequest
 
 <hr class="blockspace">
 
-## Where to intantiate the object?
+## Where to instantiate the object?
 
 As shown in the [configuration section](@baseUrl@/docs/icehawk/configuration.html) you need to provide an instance of the `Cookies` class 
 (or an implementation of the `ProvidesCookieData` interface) once in the `getCookies()` method. IceHawk will then inject it to all subsequent objects.
